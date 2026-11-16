@@ -1,0 +1,20 @@
+{% extends "app.html" %}
+{% block title %}{{ title|t }}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{{ title|t }}</h1>
+<form method="post" class="card pad stack" style="max-width:720px">
+  {% csrf_token %}
+  {% if form.non_field_errors %}<div class="badge danger">{{ form.non_field_errors.0|t }}</div>{% endif %}
+  <div class="form-grid">
+    {% for field in form %}
+      <div class="field {% if field.name == 'schedule' or field.name == 'name' %}full{% endif %}">
+        <span>{{ field.label }}{% if field.field.required %} ·{% endif %}</span>
+        {{ field }}
+        {% if field.help_text %}<span class="small muted" style="font-weight:500">{{ field.help_text }}</span>{% endif %}
+        {% if field.errors %}<span class="small" style="color:var(--danger);font-weight:600">{{ field.errors.0|t }}</span>{% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <button class="btn" type="submit">{% t "Сохранить группу" %}</button>
+</form>
+{% endblock %}

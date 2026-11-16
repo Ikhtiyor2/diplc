@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load icons static %}
+
+{% block body %}
+<div class="page">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="{% url 'web:dashboard' %}">
+      {% include "includes/logo.html" %}
+      <span>
+        <strong>DiplomacyLC</strong>
+        <span>{% t "языковой центр" %}</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="{% url 'web:dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">{% icon 'home' %} {% t "Обзор" %}</a>
+      <a href="{% url 'web:groups' %}" class="{% if 'group' in request.resolver_match.url_name %}active{% endif %}">{% icon 'users' %} {% t "Группы" %}</a>
+      {% if user.is_admin or user.is_teaching_staff %}
+      <a href="{% url 'web:students' %}" class="{% if 'student' in request.resolver_match.url_name %}active{% endif %}">{% icon 'book' %} {% t "Ученики" %}</a>
+      {% endif %}
+      {% if user.is_admin %}
+      <a href="{% url 'web:teachers' %}" class="{% if 'teacher' in request.resolver_match.url_name or request.resolver_match.url_name == 'assistant-create' or request.resolver_match.url_name == 'lector-create' %}active{% endif %}">{% icon 'shield' %} {% t "Преподаватели" %}</a>
+      {% endif %}
+      {% if user.is_admin or user.can_manage_lectures %}
+      <a href="{% url 'web:lecture-streams' %}" class="{% if 'lecture' in request.resolver_match.url_name %}active{% endif %}">{% icon 'target' %} {% t "Лекции" %}</a>
+      {% endif %}
+      {% if user.is_primary_admin %}
+      <a href="{% url 'web:admins' %}" class="{% if request.resolver_match.url_name == 'admins' or request.resolver_match.url_name == 'admin-create' %}active{% endif %}">{% icon 'shield' %} {% t "Администраторы" %}</a>
+      {% endif %}
+      <a href="{% url 'web:homework' %}" class="{% if 'homework' in request.resolver_match.url_name or request.resolver_match.url_name == 'submission-review' %}active{% endif %}">{% icon 'file' %} {% t "Домашние задания" %}</a>
+      {% if user.is_student %}
+      <a href="{% url 'web:progress' %}" class="{% if request.resolver_match.url_name == 'progress' %}active{% endif %}">{% icon 'chart' %} {% t "Прогресс" %}</a>
+      {% endif %}
+      {% if user.is_admin or user.is_teaching_staff %}
+      <a href="{% url 'web:progress' %}" class="{% if request.resolver_match.url_name == 'progress' or request.resolver_match.url_name == 'student-analytics' %}active{% endif %}">{% icon 'chart' %} {% t "Успеваемость" %}</a>
+      {% endif %}
+      {% if user.is_primary_admin %}
+      <a href="{% url 'web:audit' %}">{% icon 'eye' %} {% t "Журнал действий" %}</a>
+      {% endif %}
+      {% if user.is_admin %}
+      <a href="{% url 'web:telegram' %}">{% icon 'bell' %} Telegram</a>
+      {% endif %}
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-btn" href="{% url 'web:profile' %}">{% icon 'settings' %} {% t "Профиль" %}</a>
+      <form method="post" action="{% url 'web:logout' %}">
+        {% csrf_token %}
+        <button class="nav-btn" type="submit">{% icon 'logout' %} {% t "Выйти" %}</button>
+      </form>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-label="{% t "Меню" %}">{% icon 'menu' %}</button>
+      {% if user.is_admin or user.is_teaching_staff %}
+      <form class="search" method="get" action="{% url 'web:students' %}" hx-get="{% url 'web:student-search' %}" hx-trigger="keyup changed delay:300ms from:input" hx-target="#search-results">
+        {% icon 'search' %}
+        <input type="search" name="q" placeholder="{% t "Поиск учеников по имени или логину" %}" value="{{ request.GET.q }}">
+      </form>
+      {% else %}
+      <div class="search">{% icon 'spark' %}<span class="muted">{% t "DiplomacyLC · занятия в классе, прогресс онлайн" %}</span></div>
+      {% endif %}
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="{% t "Тема" %}">{% icon 'moon' %}</button>
+      {% language_switch %}
+      <a class="userchip" href="{% url 'web:profile' %}">
+        {% include "includes/avatar.html" with person=user %}
+        <span>
+          <strong>{{ user.full_name }}</strong>
+          <span class="small muted">{{ user.role_label }}</span>
+        </span>
+      </a>
+    </header>
+    <div id="search-results"></div>
+    <main id="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="{% url 'web:dashboard' %}">{% icon 'home' %}</a>
+  <a href="{% url 'web:groups' %}">{% icon 'users' %}</a>
+  {% if user.is_admin or user.is_teaching_staff %}
+  <a href="{% url 'web:students' %}">{% icon 'book' %}</a>
+  {% endif %}
+  {% if user.is_admin or user.can_manage_lectures %}
+  <a href="{% url 'web:lecture-streams' %}">{% icon 'target' %}</a>
+  {% endif %}
+  <a href="{% url 'web:homework' %}">{% icon 'file' %}</a>
+</nav>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/htmx.org@2.0.4"></script>
+<script>
+  document.body.addEventListener('htmx:configRequest', (event) => {
+    event.detail.headers['X-CSRFToken'] = document.querySelector('[name=csrfmiddlewaretoken], meta[name="csrf-token"]').getAttribute('content') || '{{ csrf_token }}';
+  });
+</script>
+{% block page_js %}{% endblock %}
+{% endblock %}

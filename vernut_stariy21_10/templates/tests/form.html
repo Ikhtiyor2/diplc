@@ -1,0 +1,42 @@
+{% extends "app.html" %}
+{% block title %}{% t "Новый тест" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{% t "Новый тест" %}</h1>
+<form method="post" class="card pad stack" id="test-form">
+  {% csrf_token %}
+  <div class="form-grid">
+    {% for field in form %}
+      <label class="field {% if field.name == 'description' or field.name == 'title' %}full{% endif %}">{{ field.label }} {{ field }}</label>
+    {% endfor %}
+  </div>
+  <h2>{% t "Вопросы" %}</h2>
+  <p class="muted small">{% t "Типы: single, multiple, fill_blank, match, text. Payload — JSON с правильными ответами." %}</p>
+  <div id="questions" class="stack">
+    <article class="card pad">
+      <label class="field">{% t "Текст вопроса" %}<textarea class="input" name="q_text" rows="2"></textarea></label>
+      <label class="field">{% t "Тип" %}
+        <select class="input" name="q_type">
+          <option value="single">Single Choice</option>
+          <option value="multiple">Multiple Choice</option>
+          <option value="fill_blank">Fill in the Blank</option>
+          <option value="match">Match</option>
+          <option value="text">Text Answer</option>
+        </select>
+      </label>
+      <label class="field">{% t "Баллы" %}<input class="input" name="q_points" type="number" value="1"></label>
+      <label class="field">JSON payload<textarea class="input mono" name="q_payload" rows="4">{"options":["a","b","c"],"correct":"a"}</textarea></label>
+    </article>
+  </div>
+  <button class="btn-secondary" type="button" id="add-q">{% t "Добавить вопрос" %}</button>
+  <button class="btn" type="submit">{% t "Создать тест" %}</button>
+</form>
+{% endblock %}
+{% block page_js %}
+<script>
+  document.getElementById('add-q').addEventListener('click', () => {
+    const node = document.querySelector('#questions article').cloneNode(true);
+    node.querySelectorAll('textarea, input').forEach((el) => { if (el.name !== 'q_type') el.value = el.name === 'q_points' ? '1' : ''; });
+    document.getElementById('questions').appendChild(node);
+  });
+</script>
+{% endblock %}

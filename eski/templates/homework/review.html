@@ -1,0 +1,66 @@
+{% extends "app.html" %}
+{% block title %}{% t "Проверка работы" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{{ submission.assignment.title }}</h1>
+<p class="muted">{{ submission.student.full_name }} · {{ submission.get_status_display|t }}</p>
+{% include "homework/_review_legend.html" %}
+{% if not claimed and locked_by %}
+  <p class="review-lock checking">{% t "Сейчас проверяет" %} {{ locked_by.full_name }}. {% t "Оценка будет доступна, когда коллега закончит или через полторы минуты бездействия." %}</p>
+{% elif claimed and submission.review_state == "checking" %}
+  <p class="review-lock claimed">{% t "Вы проверяете эту работу — у коллеги она подсвечена жёлтым." %}</p>
+{% endif %}
+<article class="card pad review-card {{ submission.review_state }}">
+  <h3>{% t "Ответ" %}</h3>
+  <p>{{ submission.answer|linebreaks }}</p>
+  {% for key, value in submission.answers_map.items %}
+    <p><strong>{% t "Вопрос" %} {{ key }}:</strong> {{ value }}</p>
+  {% endfor %}
+  {% for file in submission.files.all %}
+    {% if file.public_url %}
+    <a class="file-chip" href="{{ file.public_url }}" target="_blank">{{ file.original_name }}</a>
+    {% else %}
+    <span class="file-chip muted">{{ file.original_name }} ({% t "файл недоступен" %})</span>
+    {% endif %}
+  {% empty %}
+    <p class="muted">{% t "Файлы ученик не приложил." %}</p>
+  {% endfor %}
+</article>
+<form method="post" class="card pad stack" style="margin-top:16px;max-width:640px" id="review-form" {% if not claimed %}aria-disabled="true"{% endif %}>
+  {% csrf_token %}
+  <label class="field">{% t "Оценка (0–100)" %}<input class="input" type="number" min="0" max="100" name="score" value="{{ submission.score|default:'' }}" {% if not claimed %}disabled{% endif %}></label>
+  <label class="field">{% t "Комментарий" %}<textarea class="input" name="feedback" rows="4" {% if not claimed %}disabled{% endif %}>{{ submission.feedback }}</textarea></label>
+  <div class="gap">
+    <button class="btn" type="submit" {% if not claimed %}disabled{% endif %}>{% t "Поставить оценку" %}</button>
+    <button class="btn-danger" type="submit" name="return_for_revision" value="1" formnovalidate {% if not claimed %}disabled{% endif %}>{% t "Вернуть на доработку" %}</button>
+    <a class="btn-secondary" href="{% url 'web:homework-detail' submission.assignment_id %}">{% t "К списку" %}</a>
+  </div>
+</form>
+{% endblock %}
+
+{% block page_js %}
+{% if claimed and submission.status != "graded" %}
+<script>
+  (function () {
+    const url = "{% url 'web:submission-review-lock' submission.pk %}";
+    const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content") || "";
+    const form = document.getElementById("review-form");
+    let leaving = true;
+    const ping = (action) => {
+      const body = new URLSearchParams({ action });
+      return fetch(url, {
+        method: "POST",
+        headers: { "X-CSRFToken": csrf, "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+        keepalive: action === "release",
+      });
+    };
+    const timer = setInterval(() => ping("ping"), 25000);
+    form?.addEventListener("submit", () => { leaving = false; });
+    window.addEventListener("pagehide", () => {
+      clearInterval(timer);
+      if (leaving) ping("release");
+    });
+  })();
+</script>
+{% endif %}
+{% endblock %}

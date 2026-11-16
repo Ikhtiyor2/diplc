@@ -1,0 +1,31 @@
+{% extends "app.html" %}
+{% block title %}{% t "Журнал" %} · {{ group.name }}{% endblock %}
+{% block content %}
+<div class="row">
+  <h1 class="display" style="font-size:40px;margin:0">{% t "Журнал группы" %}</h1>
+  <div class="gap">
+    <a class="btn-secondary" href="{% url 'web:export-grades' group.pk %}">{% t "Оценки в Excel" %}</a>
+    <a class="btn-secondary" href="{% url 'web:export-attendance' group.pk %}">{% t "Посещаемость в Excel" %}</a>
+  </div>
+</div>
+<p class="muted">{{ group.name }} · посещаемость {{ kpis.attendance|default:"—" }}% · средний балл {{ kpis.average|default:"—" }}</p>
+<article class="card" style="margin-top:16px">
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Посещаемость" %}</th><th>{% t "Средний балл" %}</th><th>{% t "Сдано ДЗ" %}</th><th>{% t "Не сдано" %}</th><th></th></tr></thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>{{ row.student.full_name }}</td>
+          <td>{{ row.attendance|default:"—" }}%</td>
+          <td>{{ row.average|default:"—" }}</td>
+          <td>{{ row.done }}</td>
+          <td>{{ row.pending }}</td>
+          <td><a href="{% url 'web:student-analytics' row.student.pk %}">{% t "Успеваемость" %}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

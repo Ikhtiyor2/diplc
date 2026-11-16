@@ -1,0 +1,11 @@
+<div class="card pad" style="margin:16px 0">
+  <div class="row">
+    <h2 class="display" style="margin:0;font-size:22px">{% t "Отметились" %}</h2>
+    <span class="badge teal">{{ present_count }} / {{ student_count }}</span>
+  </div>
+  {% for person in checkins %}
+    <div class="row"><strong>{{ person.full_name }}</strong><span class="badge ok">{% t "здесь" %}</span></div>
+  {% empty %}
+    <p class="muted">{% t "Пока никто не отметился. Отправьте ссылку в чат." %}</p>
+  {% endfor %}
+</div>

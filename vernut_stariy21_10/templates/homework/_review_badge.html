@@ -1,0 +1,7 @@
+{% if item.review_state == "done" %}
+  <span class="badge done">{% t "Проверено" %}</span>
+{% elif item.review_state == "checking" %}
+  <span class="badge checking">{% t "Проверяет" %} {{ item.reviewing_by.full_name }}</span>
+{% else %}
+  <span class="badge pending">{% t "Не проверено" %}</span>
+{% endif %}

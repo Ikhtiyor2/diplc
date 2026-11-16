@@ -1,0 +1,43 @@
+{% extends "app.html" %}
+{% block title %}{{ stream.name }}{% endblock %}
+{% block content %}
+<div class="row" style="margin-bottom:16px">
+  <div>
+    <p class="muted small"><a href="{% url 'web:lecture-streams' %}">{% t "Потоки лекций" %}</a></p>
+    <h1 class="display" style="font-size:40px;margin:0">{{ stream.name }}</h1>
+    <p class="muted">{% if stream.schedule %}{{ stream.schedule }} · {% endif %}{{ stream.lector.full_name }}{% if stream.room %} · {{ stream.room }}{% endif %}</p>
+    <p class="small muted">{% for g in stream.groups.all %}{{ g.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  </div>
+  <div class="gap">
+    <a class="btn-secondary" href="{% url 'web:lecture-attendance' %}?stream={{ stream.pk }}&date={% now 'Y-m-d' %}">{% t "Посещаемость" %}</a>
+    {% if user.is_admin %}
+    <a class="btn-secondary" href="{% url 'web:lecture-session-create' stream.pk %}">{% t "Добавить лекцию" %}</a>
+    <a class="btn-ghost" href="{% url 'web:lecture-stream-edit' stream.pk %}">{% t "Изменить поток" %}</a>
+    {% endif %}
+  </div>
+</div>
+<article class="card">
+  <div class="pad"><h2 class="display" style="margin:0;font-size:24px">{% t "Проведённые лекции" %}</h2><p class="small muted" style="margin:8px 0 0">{% t "Появляются после сохранения посещаемости или если админ добавил дату заранее." %}</p></div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Дата" %}</th><th>{% t "Тема" %}</th><th></th></tr></thead>
+      <tbody>
+        {% for session in sessions %}
+        <tr>
+          <td>{{ session.date }}</td>
+          <td>{% if session.is_cancelled %}<span class="badge warn">{% t "Отменена" %}</span> {% endif %}{{ session.topic }}</td>
+          <td class="gap">
+            <a href="{% url 'web:lecture-attendance' %}?stream={{ stream.pk }}&date={{ session.date|date:'Y-m-d' }}">{% t "Посещаемость" %}</a>
+            {% if user.is_admin %}
+            <a href="{% url 'web:lecture-session-edit' session.pk %}">{% t "Изменить" %}</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">{% t "Лекций в расписании пока нет." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Посещаемость" %} · {{ group.name }}{% endblock %}
+{% block content %}
+<div class="att-page">
+  <header class="att-head">
+    <div>
+      <p class="att-kicker">{% t "Посещаемость" %}</p>
+      <h1 class="display att-title">{{ group.name }}</h1>
+      <p class="muted att-meta">{{ lesson_on|date:"d.m.Y" }} · {{ student_count }} {% t "учеников" %}{% if group.level %} · {{ group.level }}{% endif %}</p>
+    </div>
+    <div class="card att-side">
+      <div class="att-stats">
+        <span class="stat ok"><b>{{ present_count }}</b> {% t "присут." %}</span>
+        <span class="stat danger"><b>{{ absent_marked }}</b> {% t "отсут." %}</span>
+        <span class="stat"><b>{{ open_marked }}</b> {% t "не отмечен" %}</span>
+      </div>
+      {% if student_count %}
+      <div class="att-meter" role="img" aria-label="{% t "Посещаемость" %}">
+        <span class="ok" style="width:{% widthratio present_count student_count 100 %}%"></span>
+        <span class="no" style="width:{% widthratio absent_marked student_count 100 %}%"></span>
+      </div>
+      {% endif %}
+      <form method="get" class="att-date">
+        <label class="field">
+          <span class="small muted">{% t "Дата занятия" %}</span>
+          <span class="att-date-row">
+            <input class="input" type="date" name="date" value="{{ lesson_date }}">
+            <button class="btn-secondary" type="submit">{% t "Показать" %}</button>
+          </span>
+        </label>
+      </form>
+      <a class="btn-secondary" href="{% url 'web:export-attendance' group.pk %}">{% t "Посещаемость в Excel" %}</a>
+    </div>
+  </header>
+
+  {% if session and session.is_open %}
+  <article class="card pad att-checkin">
+    <div class="att-qr">
+      <div id="qr-box" data-url="{{ checkin_url }}"></div>
+      <span class="badge ok">{% t "Сбор открыт" %}</span>
+    </div>
+    <div class="att-checkin-copy">
+      <h2 class="display att-h2">{% t "Отметиться на занятии" %}</h2>
+      <p class="muted">{% t "Ученик сканирует код или открывает ссылку." %}</p>
+      <label class="field">{% t "Ссылка для чата" %}
+        <div class="copy-row">
+          <input class="input" id="checkin-link" value="{{ checkin_url }}" readonly>
+          <button class="btn" type="button" id="copy-link">{% icon 'file' 16 %} {% t "Копировать" %}</button>
+        </div>
+      </label>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+        <button class="btn-secondary" type="submit" name="action" value="close">{% t "Закрыть сбор" %}</button>
+      </form>
+    </div>
+  </article>
+  {% else %}
+  <article class="card pad att-idle">
+    <div class="att-idle-mark" aria-hidden="true">{% icon 'target' 26 %}</div>
+    <div>
+      <h2 class="display att-h2">{% t "Отметиться на занятии" %}</h2>
+      <p class="muted">{% t "QR и ссылка появятся, когда сбор открыт." %}</p>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+      <button class="btn" type="submit" name="action" value="open">{% icon 'target' 18 %} {% t "Открыть посещаемость" %}</button>
+    </form>
+  </article>
+  {% endif %}
+
+  <section class="att-section">
+    <h2 class="display att-h2">{% t "Группы" %}</h2>
+    <div class="card att-groups">
+      {% for item in peer_groups %}
+        {% if item.pk == group.pk %}
+        <details class="att-fold is-current" open>
+          <summary>
+            <span class="att-group">
+              <span class="att-group-mark" aria-hidden="true">{% icon 'users' 18 %}</span>
+              <span class="att-group-copy">
+                <strong class="att-group-name">{{ item.name }}</strong>
+                <span class="att-group-meta">
+                  <span class="badge teal">{{ item.language }} · {{ item.level }}</span>
+                  <span>
+                    {{ student_count }} {% t "учеников" %}
+                    {% if item.schedule %} · {{ item.schedule }}{% endif %}
+                    {% if item.room %} · {{ item.room }}{% endif %}
+                  </span>
+                </span>
+              </span>
+              <span class="att-chevron" aria-hidden="true">{% icon 'chevron' 16 %}</span>
+            </span>
+          </summary>
+          <div class="att-fold-body">
+            <form method="post" id="group-attendance-form">
+              {% csrf_token %}
+              <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+              {% if rows %}
+              <div class="att-toolbar">
+                <div class="gap">
+                  <button class="btn-secondary btn-sm" type="button" data-mark-all="present">{% t "Все присутствовали" %}</button>
+                  <button class="btn-secondary btn-sm" type="button" data-mark-all="absent">{% t "Все отсутствовали" %}</button>
+                </div>
+              </div>
+              {% endif %}
+              <div class="mark-list">
+                {% for row in rows %}
+                <div class="mark-row {% if row.status == 'present' %}is-present{% elif row.status == 'absent' %}is-absent{% else %}is-open{% endif %}">
+                  <div class="att-person">
+                    {% include "includes/avatar.html" with person=row.student %}
+                    <div class="mark-who">
+                      <strong>{{ row.student.full_name }}</strong>
+                      <span class="small mark-state">
+                        {% if row.status == 'present' %}{% t "Присутствовал" %}{% elif row.status == 'absent' %}{% t "Отсутствовал" %}{% else %}{% t "Не отмечен" %}{% endif %}
+                      </span>
+                    </div>
+                  </div>
+                  {% include "includes/mark_choices.html" with student_id=row.student.id status=row.status %}
+                </div>
+                {% empty %}
+                <p class="muted">{% t "В группе пока нет учеников." %}</p>
+                {% endfor %}
+              </div>
+              {% if rows %}
+              <div class="mark-save">
+                <button class="btn" type="submit" name="action" value="save">{% t "Сохранить посещаемость" %}</button>
+              </div>
+              {% endif %}
+            </form>
+          </div>
+        </details>
+        {% else %}
+        <a class="att-group" href="{% url 'web:group-attendance' item.pk %}?date={{ lesson_date }}">
+          <span class="att-group-mark" aria-hidden="true">{% icon 'users' 18 %}</span>
+          <span class="att-group-copy">
+            <strong class="att-group-name">{{ item.name }}</strong>
+            <span class="att-group-meta">
+              <span class="badge teal">{{ item.language }} · {{ item.level }}</span>
+              <span>
+                {{ item.student_count }} {% t "учеников" %}
+                {% if item.schedule %} · {{ item.schedule }}{% endif %}
+                {% if item.room %} · {{ item.room }}{% endif %}
+              </span>
+            </span>
+          </span>
+          <span class="att-chevron" aria-hidden="true">{% icon 'chevron' 16 %}</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="att-section">
+    <h2 class="display att-h2">{% t "Сохранённые" %}</h2>
+    {% if saved_days %}
+    <div class="card att-groups">
+      {% for day in saved_days %}
+      <details class="att-fold">
+        <summary>
+          <span class="att-group">
+            <span class="att-group-mark att-day-num">{{ day.date|date:"d" }}</span>
+            <span class="att-group-copy">
+              <strong class="att-group-name">{{ day.date|date:"d.m.Y" }}</strong>
+              <span class="att-group-meta">
+                <span class="badge ok">{{ day.present }} {% t "присут." %}</span>
+                <span class="badge danger">{{ day.absent }} {% t "отсут." %}</span>
+              </span>
+            </span>
+            <span class="att-chevron" aria-hidden="true">{% icon 'chevron' 16 %}</span>
+          </span>
+        </summary>
+        <div class="att-fold-body">
+          {% for rec in day.records %}
+          <div class="att-record">
+            {% include "includes/avatar.html" with person=rec.student %}
+            <span class="att-record-name">{{ rec.student.full_name }}</span>
+            <span class="badge {% if rec.status == 'present' %}ok{% else %}danger{% endif %}">{{ rec.get_status_display|t }}</span>
+          </div>
+          {% endfor %}
+          <a class="btn-secondary btn-sm att-edit" href="?date={{ day.date|date:'Y-m-d' }}">{% t "Править эту дату" %}</a>
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="card empty">{% t "Пока нет сохранённых занятий." %}</div>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
+
+{% block page_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  const box = document.getElementById("qr-box");
+  if (box && window.QRCode) {
+    new QRCode(box, { text: box.dataset.url, width: 220, height: 220, correctLevel: QRCode.CorrectLevel.M });
+  }
+  const copyBtn = document.getElementById("copy-link");
+  const linkInput = document.getElementById("checkin-link");
+  copyBtn?.addEventListener("click", async () => {
+    linkInput.select();
+    try {
+      await navigator.clipboard.writeText(linkInput.value);
+    } catch (err) {
+      document.execCommand("copy");
+    }
+    copyBtn.textContent = "{% js_t "Скопировано" %}";
+    setTimeout(() => { copyBtn.innerHTML = "{% js_t "Копировать" %}"; }, 1600);
+  });
+  const attendanceForm = document.getElementById("group-attendance-form");
+  const stateLabel = {
+    present: "{% js_t "Присутствовал" %}",
+    absent: "{% js_t "Отсутствовал" %}",
+    clear: "{% js_t "Не отмечен" %}",
+  };
+  const paintMarks = (root) => {
+    root?.querySelectorAll(".mark-row").forEach((row) => {
+      const picked = row.querySelector('input[type="radio"]:checked');
+      const value = picked ? picked.value : "clear";
+      row.classList.remove("is-present", "is-absent", "is-open");
+      row.classList.add(value === "present" ? "is-present" : value === "absent" ? "is-absent" : "is-open");
+      const state = row.querySelector(".mark-state");
+      if (state) state.textContent = stateLabel[value] || stateLabel.clear;
+    });
+  };
+  document.querySelectorAll("#group-attendance-form [data-mark-all]").forEach((button) => {
+    button.addEventListener("click", () => {
+      attendanceForm?.querySelectorAll(`input[type="radio"][value="${button.dataset.markAll}"]`).forEach((input) => {
+        input.checked = true;
+      });
+      paintMarks(attendanceForm);
+    });
+  });
+  attendanceForm?.addEventListener("change", () => paintMarks(attendanceForm));
+</script>
+{% endblock %}

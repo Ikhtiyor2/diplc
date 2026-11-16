@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load icons static %}
+
+{% block title %}{% t "Вход — DiplomacyLC" %}{% endblock %}
+
+{% block body %}
+<div class="hero" style="min-height:100vh;display:grid;place-items:center">
+  <div class="card pad" style="width:min(440px, 92vw)">
+    <a class="brand" href="/">{% include "includes/logo.html" %}<span><strong>DiplomacyLC</strong><span>{% t "Вход в кабинет" %}</span></span></a>
+    <div style="display:flex;justify-content:flex-end;margin-top:8px">{% language_switch %}</div>
+    <h1 class="display" style="font-size:34px;margin:18px 0 8px">{% t "С возвращением" %}</h1>
+    <p class="muted">{% t "Логин и пароль выдаёт администратор центра." %}</p>
+    <form method="post" class="stack" style="margin-top:18px">
+      {% csrf_token %}
+      {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+      {% if form.non_field_errors %}<div class="badge danger">{{ form.non_field_errors.0|t }}</div>{% endif %}
+      <label class="field">{% t "Логин" %} {{ form.username }}</label>
+      <label class="field">{% t "Пароль" %} {{ form.password }}</label>
+      <button class="btn" type="submit">{% t "Войти" %}</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

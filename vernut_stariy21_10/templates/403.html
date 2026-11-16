@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{% t "Нет доступа" %}{% endblock %}
+{% block body %}
+<div class="hero" style="min-height:70vh;display:grid;place-items:center">
+  <div class="card pad" style="max-width:480px">
+    <h1 class="display">{% t "Нет доступа" %}</h1>
+    <p class="muted">{% t "У вашей роли нет прав на этот раздел." %}</p>
+    <a class="btn" href="/">{% t "На главную" %}</a>
+  </div>
+</div>
+{% endblock %}

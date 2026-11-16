@@ -1,0 +1,150 @@
+{% extends "app.html" %}
+{% block title %}{% t "Успеваемость" %} · {{ student.full_name }}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <p class="muted small">{% t "Успеваемость ученика" %}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{{ student.full_name }}</h1>
+    <p class="muted">{{ student.login }}{% for item in groups %} · {{ item.group.name }}{% endfor %}</p>
+    {% if stats.risk %}<p><span class="badge warn">{% t "Внимание:" %} {% for reason in stats.risk_reasons %}{{ reason|t }}{% if not forloop.last %}, {% endif %}{% endfor %}</span></p>{% endif %}
+  </div>
+  <a class="btn-secondary" href="{% url 'web:progress' %}">{% t "Все ученики" %}</a>
+</div>
+<section class="kpis" style="margin:18px 0">
+  <article class="card kpi">
+    <span class="label">{% t "Средний балл" %}</span>
+    <span class="value">{{ average|default:"—" }}</span>
+    <div class="progress glow" style="margin-top:8px"><span style="width:{% if average %}{{ average }}{% else %}0{% endif %}%"></span></div>
+  </article>
+  <article class="card kpi">
+    <span class="label">{% t "Посещаемость" %}</span>
+    <span class="value">{% if attendance != None %}{{ attendance }}%{% else %}—{% endif %}</span>
+    <div class="progress glow" style="margin-top:8px"><span style="width:{% if attendance != None %}{{ attendance }}{% else %}0{% endif %}%"></span></div>
+  </article>
+  <article class="card kpi"><span class="label">{% t "Сдано ДЗ" %}</span><span class="value">{{ progress.done }}/{{ progress.total }}</span></article>
+  <article class="card kpi"><span class="label">{% t "Не сдано" %}</span><span class="value">{{ progress.pending }}</span>{% if progress.returned %}<span class="small muted">{% t "на доработке:" %} {{ progress.returned }}</span>{% endif %}</article>
+</section>
+<div class="chart-grid">
+  <article class="card pad">
+    <h2 class="display" style="font-size:24px;margin:0 0 12px">{% t "Динамика оценок" %}</h2>
+    {% if scores %}
+      <div class="chart-box"><canvas id="scoreChart"></canvas></div>
+    {% else %}
+      <p class="muted">{% t "Пока нет оценённых работ — поставьте оценку, и здесь появится график." %}</p>
+    {% endif %}
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="font-size:24px;margin:0 0 12px">{% t "Статус ДЗ" %}</h2>
+    <div class="chart-box"><canvas id="mixChart"></canvas></div>
+  </article>
+</div>
+<article class="card pad" style="margin-top:16px">
+  <h2 class="display" style="font-size:24px;margin:0 0 8px">{% t "Посещаемость по занятиям" %}</h2>
+  {% if attendance_chart %}
+    <div class="chart-box" style="min-height:180px"><canvas id="attChart"></canvas></div>
+    <div class="att-dots" aria-hidden="true">
+      {% for item in attendance_rows reversed %}
+        <span class="att-dot {% if item.status == 'present' %}on{% else %}off{% endif %}" title="{{ item.lesson_date|date:'d.m' }}"></span>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">{% t "Пока нет отметок." %}</p>
+  {% endif %}
+</article>
+<div class="grid-2" style="margin-top:16px">
+  <article class="card">
+    <div class="pad"><h2 class="display" style="font-size:28px;margin:0">{% t "Домашние задания" %}</h2></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>{% t "Задание" %}</th><th>{% t "Статус" %}</th><th>{% t "Оценка" %}</th><th></th></tr></thead>
+        <tbody>
+          {% for item in submissions %}
+          <tr>
+            <td>
+              <strong>{{ item.assignment.title }}</strong>
+              <div class="small muted">{{ item.assignment.group.name }}{% if item.feedback %}<br>{{ item.feedback }}{% endif %}</div>
+            </td>
+            <td>{{ item.get_status_display|t }}</td>
+            <td>
+              {% if item.score != None %}
+                <div class="meter-cell">
+                  <span>{{ item.score }}</span>
+                  <div class="progress glow"><span style="width:{{ item.score }}%"></span></div>
+                </div>
+              {% else %}—{% endif %}
+            </td>
+            <td><a href="{% url 'web:submission-review' item.pk %}">{% t "Проверить" %}</a></td>
+          </tr>
+          {% empty %}<tr><td colspan="4">{% t "Работ ещё нет." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="font-size:28px;margin:0 0 12px">{% t "Журнал посещаемости" %}</h2>
+    {% for item in attendance_rows %}
+      <div class="row">
+        <span>{{ item.lesson_date|date:"d.m.Y" }} · {{ item.group.name }}</span>
+        <span class="badge {% if item.status == 'present' %}ok{% elif item.status == 'absent' %}danger{% else %}warn{% endif %}">{{ item.get_status_display|t }}</span>
+      </div>
+    {% empty %}<p class="muted">{% t "Пока нет отметок." %}</p>{% endfor %}
+  </article>
+</div>
+{% endblock %}
+{% block page_js %}
+{{ scores|json_script:"score-data" }}
+{{ mix|json_script:"mix-data" }}
+{{ attendance_chart|json_script:"att-data" }}
+{% include "includes/charts.html" %}
+<script>
+  const scores = JSON.parse(document.getElementById("score-data").textContent);
+  const mix = JSON.parse(document.getElementById("mix-data").textContent);
+  const att = JSON.parse(document.getElementById("att-data").textContent);
+  const scoreCtx = document.getElementById("scoreChart");
+  if (scoreCtx && scores.length) {
+    new Chart(scoreCtx, {
+      type: "line",
+      data: {
+        labels: scores.map(s => s.label),
+        datasets: [{
+          data: scores.map(s => s.value),
+          borderColor: "#a78bfa",
+          backgroundColor: "rgba(167,139,250,.22)",
+          fill: true,
+          tension: .4,
+          pointBackgroundColor: "#c4b5fd",
+          pointRadius: 4,
+        }],
+      },
+      options: { ...aulaAxis(100), plugins: { legend: { display: false } } },
+    });
+  }
+  const mixCtx = document.getElementById("mixChart");
+  if (mixCtx) {
+    new Chart(mixCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["{% js_t "Оценено" %}", "{% js_t "На проверке" %}", "{% js_t "На доработке" %}", "{% js_t "Не сдано" %}"],
+        datasets: [{
+          data: [mix.graded, mix.submitted, mix.returned, mix.missing],
+          backgroundColor: ["rgba(134,212,164,.9)", "rgba(125,211,252,.8)", "rgba(240,192,121,.85)", "rgba(167,139,250,.45)"],
+          borderWidth: 0,
+        }],
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: aulaTheme().ink } } } },
+    });
+  }
+  const attCtx = document.getElementById("attChart");
+  if (attCtx && att.length) {
+    new Chart(attCtx, {
+      type: "bar",
+      data: {
+        labels: att.map(s => s.label),
+        datasets: [{ data: att.map(s => s.value), backgroundColor: att.map(s => s.value ? "rgba(134,212,164,.9)" : "rgba(240,163,156,.85)"), borderRadius: 8 }],
+      },
+      options: { ...aulaAxis(100), plugins: { legend: { display: false } } },
+    });
+  }
+</script>
+{% endblock %}

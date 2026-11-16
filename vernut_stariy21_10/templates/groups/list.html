@@ -1,0 +1,25 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Группы" %}{% endblock %}
+{% block content %}
+<div class="row" style="margin-bottom:18px">
+  <h1 class="display" style="margin:0;font-size:40px">{% t "Группы" %}</h1>
+  {% if user.is_admin %}<a class="btn" href="{% url 'web:group-create' %}">{% icon 'plus' %} {% t "Создать группу" %}</a>{% endif %}
+</div>
+<div class="grid-3">
+  {% for card in cards %}
+  <a class="card pad" href="{% url 'web:group-detail' card.group.pk %}">
+    <span class="badge teal">{{ card.group.language }} · {{ card.group.level }}</span>
+    <h2 class="display" style="margin:10px 0 6px">{{ card.group.name }}</h2>
+    <p class="muted small">{% if card.group.teacher %}{{ card.group.teacher.full_name }}{% else %}{% t "Без преподавателя" %}{% endif %}{% if card.group.schedule %} · {{ card.group.schedule }}{% endif %}</p>
+    {% include "groups/_lecture_streams.html" with group=card.group %}
+    <div class="row" style="margin-top:16px">
+      <span>{{ card.kpis.students }} {% t "учеников" %}</span>
+      <span>{{ card.kpis.attendance|default:"—" }}% {% t "посещ." %}</span>
+    </div>
+  </a>
+  {% empty %}
+  <div class="card empty">{% t "Групп пока нет." %}</div>
+  {% endfor %}
+</div>
+{% endblock %}

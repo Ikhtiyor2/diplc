@@ -1,0 +1,99 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{{ title|t }}{% endblock %}
+{% block content %}
+<p class="muted small">{% t "Для преподавателя" %}</p>
+<h1 class="display" style="font-size:40px;margin:0 0 8px">{{ title|t }}</h1>
+<p class="muted" style="margin-bottom:18px">{% t "Загрузите PDF, Word, картинки или аудио — ученики скачают файлы и сдадут свою работу." %}</p>
+
+<form method="post" enctype="multipart/form-data" class="stack" style="max-width:840px" id="hw-form">
+  {% csrf_token %}
+  <article class="card pad">
+    <div class="form-grid">
+      {% if form.non_field_errors %}<div class="badge danger full">{{ form.non_field_errors.0|t }}</div>{% endif %}
+      {% for field in form %}
+        {% if field.name == "groups" %}
+        <div class="field full">
+          <div class="row" style="margin-bottom:4px">
+            <span>{{ field.label }}</span>
+            <button class="btn-ghost btn-sm" type="button" id="select-all-groups">{% t "Все группы" %}</button>
+          </div>
+          {% if field.help_text %}<p class="small muted" style="margin:0 0 8px">{{ field.help_text }}</p>{% endif %}
+          <div class="check-grid">{{ field }}</div>
+          {% if field.errors %}<span class="small" style="color:var(--danger)">{{ field.errors.0|t }}</span>{% endif %}
+        </div>
+        {% else %}
+        <label class="field {% if field.name == 'description' or field.name == 'title' %}full{% endif %}">
+          {{ field.label }} {{ field }}
+          {% if field.errors %}<span class="small" style="color:var(--danger)">{{ field.errors.0|t }}</span>{% endif %}
+        </label>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </article>
+
+  {% if assignment and assignment.files.all %}
+  <article class="card pad">
+    <h2 class="display" style="font-size:22px;margin:0 0 12px">{% t "Уже загружено" %}</h2>
+    <div class="file-list">
+      {% for file in assignment.files.all %}
+        <div class="file-chip">
+          <a href="{{ file.file.url }}" target="_blank">{{ file.original_name }}</a>
+          <button class="btn-ghost btn-sm" type="submit" name="delete_file" value="{{ file.pk }}">{% t "Удалить" %}</button>
+        </div>
+      {% endfor %}
+    </div>
+  </article>
+  {% endif %}
+
+  <article class="card pad">
+    <h2 class="display" style="font-size:22px;margin:0 0 8px">{% t "Файлы задания" %}</h2>
+    <p class="small muted" style="margin-bottom:12px">{% t "PDF, Word, JPG, PNG, MP3, ZIP. Можно несколько сразу." %}</p>
+    <label class="dropzone" for="attachments">
+      {% icon 'upload' 28 %}
+      <strong>{% t "Нажмите или перетащите файлы сюда" %}</strong>
+      <span class="small muted" id="file-names">{% t "Файлы не выбраны" %}</span>
+      <input id="attachments" class="dropzone-input" type="file" name="attachments" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.gif,.mp3,.wav,.m4a,.zip,.ppt,.pptx,.txt">
+    </label>
+  </article>
+
+  <div class="gap">
+    <button class="btn" type="submit">{% icon 'upload' 18 %} {% if assignment %}{% t "Сохранить" %}{% else %}{% t "Опубликовать задание" %}{% endif %}</button>
+    <a class="btn-secondary" href="{% url 'web:homework' %}">{% t "Отмена" %}</a>
+  </div>
+</form>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  const input = document.getElementById("attachments");
+  const label = document.getElementById("file-names");
+  const zone = document.querySelector(".dropzone");
+  const names = () => {
+    const files = [...(input.files || [])];
+    label.textContent = files.length ? files.map((file) => file.name).join(", ") : "{% js_t "Файлы не выбраны" %}";
+  };
+  input?.addEventListener("change", names);
+  ["dragenter", "dragover"].forEach((eventName) => {
+    zone?.addEventListener(eventName, (event) => { event.preventDefault(); zone.classList.add("over"); });
+  });
+  ["dragleave", "drop"].forEach((eventName) => {
+    zone?.addEventListener(eventName, (event) => { event.preventDefault(); zone.classList.remove("over"); });
+  });
+  zone?.addEventListener("drop", (event) => {
+    if (!input) return;
+    const transfer = new DataTransfer();
+    [...(input.files || [])].forEach((file) => transfer.items.add(file));
+    [...(event.dataTransfer?.files || [])].forEach((file) => transfer.items.add(file));
+    input.files = transfer.files;
+    names();
+  });
+  const selectAll = document.getElementById("select-all-groups");
+  selectAll?.addEventListener("click", () => {
+    const boxes = [...document.querySelectorAll('#hw-form input[name="groups"]')];
+    const allOn = boxes.length > 0 && boxes.every((box) => box.checked);
+    boxes.forEach((box) => { box.checked = !allOn; });
+    selectAll.textContent = allOn ? "{% js_t "Все группы" %}" : "{% js_t "Снять выбор" %}";
+  });
+</script>
+{% endblock %}

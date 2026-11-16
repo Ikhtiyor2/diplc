@@ -1,0 +1,23 @@
+{% extends "app.html" %}
+{% block title %}{% t "Журнал преподавателя" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{% t "Журнал преподавателя" %}</h1>
+<div class="grid-2">
+  <article class="card pad">
+    <h2 class="display" style="margin:0 0 12px;font-size:28px">{% t "Последние занятия" %}</h2>
+    {% for lesson in lessons %}
+      <div class="row"><span>{{ lesson.group__name }}</span><span class="muted">{{ lesson.lesson_date }}</span></div>
+    {% empty %}<p class="muted">{% t "Занятий за месяц не было." %}</p>{% endfor %}
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="margin:0 0 12px;font-size:28px">{% t "Очередь проверки" %}</h2>
+    {% include "homework/_review_legend.html" %}
+    {% for item in pending %}
+      <a class="row review-row {{ item.review_state }}" href="{% url 'web:submission-review' item.pk %}">
+        <span>{{ item.student.full_name }} · {{ item.assignment.title }}</span>
+        {% include "homework/_review_badge.html" %}
+      </a>
+    {% empty %}<p class="muted">{% t "Очередь пуста." %}</p>{% endfor %}
+  </article>
+</div>
+{% endblock %}

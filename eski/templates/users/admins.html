@@ -1,0 +1,28 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Администраторы" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Администраторы" %}</h1>
+    <p class="muted" style="margin:8px 0 0">{% t "Главный админ видит действия второстепенных и может добавлять новых." %}</p>
+  </div>
+  <a class="btn" href="{% url 'web:admin-create' %}">{% icon 'plus' %} {% t "Администратор" %}</a>
+</div>
+<div class="grid-3" style="margin-top:16px">
+  {% for person in admins %}
+  <article class="card pad">
+    <a href="{% url 'web:user-detail' person.pk %}">
+      {% include "includes/avatar.html" with person=person size="avatar-lg" %}
+      <h2 style="margin:12px 0 4px;font-size:18px">{{ person.full_name }}</h2>
+      <p class="muted small mono">{{ person.login }}</p>
+    </a>
+    {% if person.is_primary_admin %}
+      <span class="badge ok" style="margin-top:8px">{% t "Главный" %}</span>
+    {% else %}
+      <span class="badge pending" style="margin-top:8px">{% t "Второстепенный" %}</span>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

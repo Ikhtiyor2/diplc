@@ -1,0 +1,14 @@
+{% extends "app.html" %}
+{% block title %}{% t "Telegram-бот" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{% t "Telegram-бот" %}</h1>
+<section class="kpis">
+  <article class="card kpi"><span class="label">{% t "Статус" %}</span><span class="value">{% if configured %}ON{% else %}OFF{% endif %}</span></article>
+  <article class="card kpi"><span class="label">{% t "Привязано" %}</span><span class="value">{{ linked }}</span></article>
+</section>
+<article class="card pad" style="margin-top:16px;max-width:720px">
+  <p>{% t "Бот:" %} <strong>@{{ username }}</strong></p>
+  <p class="muted">{% t "Пользователи привязывают аккаунт кодом из профиля. После этого ученики получают уведомления о заданиях, тестах, оценках и дедлайнах, а преподаватели — о новых сдачах." %}</p>
+  <p class="muted">Webhook: <code>/api/v1/telegram/webhook/</code>{% t ". Для polling запустите сервис" %} <code>bot</code> {% t "в Docker Compose или команду" %} <code>python manage.py run_telegram_bot</code>.</p>
+</article>
+{% endblock %}

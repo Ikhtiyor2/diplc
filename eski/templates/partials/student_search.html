@@ -1,0 +1,13 @@
+{% load icons %}
+{% if students %}
+<div class="card pad" style="margin-bottom:16px">
+  <div class="stack">
+    {% for student in students %}
+      <a class="row" href="{% url 'web:user-detail' student.pk %}">
+        <span class="gap"><span class="avatar">{{ student.initials }}</span><strong>{{ student.full_name }}</strong></span>
+        <span class="muted small">{{ student.login }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

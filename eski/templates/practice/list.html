@@ -1,0 +1,20 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Упражнения" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <h1 class="display" style="font-size:40px;margin:0">{% t "Онлайн-упражнения" %}</h1>
+  {% if not user.is_student %}<a class="btn" href="{% url 'web:exercise-create' %}">{% icon 'plus' %} {% t "Создать" %}</a>{% endif %}
+</div>
+<div class="grid-3" style="margin-top:16px">
+  {% for item in exercises %}
+  <a class="card pad" href="{% url 'web:exercise-detail' item.pk %}">
+    <span class="badge teal">{{ item.get_type_display }}</span>
+    <h2>{{ item.title }}</h2>
+    <p class="muted small">{{ item.language.name }}{% if item.level %} · {{ item.level }}{% endif %}</p>
+    {% if item.id in attempts %}<span class="badge ok">{{ attempts.item.score }}</span>{% endif %}
+  </a>
+  {% empty %}<div class="card empty">{% t "Упражнений нет." %}</div>
+  {% endfor %}
+</div>
+{% endblock %}

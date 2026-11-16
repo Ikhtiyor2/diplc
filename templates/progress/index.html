@@ -1,0 +1,94 @@
+{% extends "app.html" %}
+{% block title %}{% t "Прогресс" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{% t "Мой прогресс" %}</h1>
+<section class="kpis">
+  <article class="card kpi">
+    <span class="label">{% t "Средний балл" %}</span>
+    <span class="value">{{ average|default:"—" }}</span>
+    <div class="progress glow" style="margin-top:8px"><span style="width:{% if average %}{{ average }}{% else %}0{% endif %}%"></span></div>
+  </article>
+  <article class="card kpi">
+    <span class="label">{% t "Посещаемость" %}</span>
+    <span class="value">{% if attendance != None %}{{ attendance }}%{% else %}—{% endif %}</span>
+    <div class="progress glow" style="margin-top:8px"><span style="width:{% if attendance != None %}{{ attendance }}{% else %}0{% endif %}%"></span></div>
+  </article>
+  <article class="card kpi"><span class="label">{% t "Задания" %}</span><span class="value">{{ progress.done }}/{{ progress.total }}</span></article>
+</section>
+<div class="chart-grid">
+  <article class="card pad">
+    <h2 class="display" style="font-size:24px;margin:0 0 12px">{% t "Динамика оценок" %}</h2>
+    {% if scores %}
+      <div class="chart-box"><canvas id="scoreChart"></canvas></div>
+    {% else %}
+      <p class="muted">{% t "Когда преподаватель поставит оценку, здесь появится график." %}</p>
+    {% endif %}
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="font-size:24px;margin:0 0 12px">{% t "Статус ДЗ" %}</h2>
+    <div class="chart-box"><canvas id="mixChart"></canvas></div>
+  </article>
+</div>
+<div class="grid-2" style="margin-top:16px">
+  <article class="card pad">
+    <h2>{% t "Оценки и комментарии" %}</h2>
+    {% for item in submissions %}
+      <div class="row">
+        <span>{{ item.assignment.title }}</span>
+        <span class="badge">{% if item.score != None %}{{ item.score }}{% else %}{{ item.get_status_display|t }}{% endif %}</span>
+      </div>
+      {% if item.score != None %}<div class="progress glow" style="margin:6px 0 10px"><span style="width:{{ item.score }}%"></span></div>{% endif %}
+      {% if item.feedback %}<p class="small muted">{{ item.feedback }}</p>{% endif %}
+    {% empty %}<p class="muted">{% t "Пока нет работ." %}</p>
+    {% endfor %}
+  </article>
+  <article class="card pad">
+    <h2>{% t "Посещаемость" %}</h2>
+    {% for item in attendance_rows %}
+      <div class="row"><span>{{ item.lesson_date }} · {{ item.group.name }}</span><span class="badge {% if item.status == 'present' %}ok{% else %}danger{% endif %}">{{ item.get_status_display|t }}</span></div>
+    {% empty %}<p class="muted">{% t "Пока нет отметок." %}</p>{% endfor %}
+  </article>
+</div>
+{% endblock %}
+{% block page_js %}
+{{ scores|json_script:"score-data" }}
+{{ mix|json_script:"mix-data" }}
+{% include "includes/charts.html" %}
+<script>
+  const scores = JSON.parse(document.getElementById("score-data").textContent);
+  const mix = JSON.parse(document.getElementById("mix-data").textContent);
+  const scoreCtx = document.getElementById("scoreChart");
+  if (scoreCtx && scores.length) {
+    new Chart(scoreCtx, {
+      type: "line",
+      data: {
+        labels: scores.map(s => s.label),
+        datasets: [{
+          data: scores.map(s => s.value),
+          borderColor: "#a78bfa",
+          backgroundColor: "rgba(167,139,250,.22)",
+          fill: true,
+          tension: .4,
+          pointBackgroundColor: "#c4b5fd",
+        }],
+      },
+      options: { ...aulaAxis(100), plugins: { legend: { display: false } } },
+    });
+  }
+  const mixCtx = document.getElementById("mixChart");
+  if (mixCtx) {
+    new Chart(mixCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["{% js_t "Оценено" %}", "{% js_t "На проверке" %}", "{% js_t "На доработке" %}", "{% js_t "Не сдано" %}"],
+        datasets: [{
+          data: [mix.graded, mix.submitted, mix.returned, mix.missing],
+          backgroundColor: ["rgba(134,212,164,.9)", "rgba(125,211,252,.8)", "rgba(240,192,121,.85)", "rgba(167,139,250,.45)"],
+          borderWidth: 0,
+        }],
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: aulaTheme().ink } } } },
+    });
+  }
+</script>
+{% endblock %}

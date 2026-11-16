@@ -1,0 +1,65 @@
+{% extends "app.html" %}
+{% block title %}{{ exercise.title }}{% endblock %}
+{% block content %}
+<p class="badge teal">{{ exercise.get_type_display }} · {{ exercise.language.name }}</p>
+<h1 class="display" style="font-size:40px">{{ exercise.title }}</h1>
+<p>{{ exercise.prompt|linebreaks }}</p>
+{% if last %}<p class="badge ok">{% t "Последний результат:" %} {% if last.score != None %}{{ last.score }}{% else %}{% t "без автооценки" %}{% endif %}</p>{% endif %}
+
+{% if user.is_student %}
+<form method="post" class="card pad stack">
+  {% csrf_token %}
+  {% if exercise.type == 'vocabulary' or exercise.type == 'grammar' %}
+    {% for option in exercise.content.options %}
+      <button class="choice" type="button" data-choice data-name="answer" data-value="{{ option }}" data-target="answer-input">{{ option }}</button>
+    {% endfor %}
+    <input type="hidden" name="answer" id="answer-input">
+  {% elif exercise.type == 'matching' %}
+    <div class="match-grid">
+      {% for left, right in exercise.content.pairs %}
+        <div class="muted">{{ left }}</div>
+        <select class="input" name="pair_{{ left }}">
+          <option value="">{% t "Выберите перевод" %}</option>
+          {% for l2, r2 in exercise.content.pairs %}
+            <option value="{{ r2 }}">{{ r2 }}</option>
+          {% endfor %}
+        </select>
+      {% endfor %}
+    </div>
+  {% elif exercise.type == 'sentence_builder' %}
+    <p class="small muted">{% t "Нажимайте слова, чтобы собрать предложение." %}</p>
+    <div class="words card pad" id="sentence-box"></div>
+    <div class="words" id="word-bank">
+      {% for word in exercise.content.words %}
+        <button class="chip" type="button" data-word="{{ word }}">{{ word }}</button>
+      {% endfor %}
+    </div>
+    <div id="sentence-hidden"></div>
+  {% elif exercise.type == 'reading' %}
+    <article class="reading card pad">{{ exercise.content.text }}</article>
+    {% for question in exercise.content.questions %}
+      <label class="field">{{ question.question_text|default:question.prompt }}
+        {% if question.options %}
+          {% for option in question.options %}
+            <label class="choice"><input type="radio" name="q_{{ forloop.parentloop.counter0 }}" value="{{ option }}"> {{ option }}</label>
+          {% endfor %}
+        {% else %}
+          <input class="input" name="q_{{ forloop.counter0 }}">
+        {% endif %}
+      </label>
+    {% endfor %}
+  {% elif exercise.type == 'listening' %}
+    {% if exercise.audio %}<audio controls src="{{ exercise.audio.url }}"></audio>
+    {% elif exercise.content.audio_url %}<audio controls src="{{ exercise.content.audio_url }}"></audio>{% endif %}
+    {% for question in exercise.content.questions %}
+      <label class="field">{{ question.question_text|default:question.prompt }}
+        <input class="input" name="q_{{ forloop.counter0 }}">
+      </label>
+    {% endfor %}
+  {% else %}
+    <label class="field">{% t "Ваш текст" %}<textarea class="input" name="answer" rows="8"></textarea></label>
+  {% endif %}
+  <button class="btn" type="submit">{% t "Проверить" %}</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Ученики" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <h1 class="display" style="font-size:40px;margin:0">{% t "Ученики" %}</h1>
+  {% if user.is_admin %}<a class="btn" href="{% url 'web:student-create' %}">{% icon 'plus' %} {% t "Добавить ученика" %}</a>{% endif %}
+</div>
+<p class="muted" style="margin:8px 0 0">{% if user.is_admin %}{% t "Распределяйте учеников по преподавателям через группу. " %}{% endif %}{% t "Успеваемость — средний балл, посещаемость и сданные ДЗ." %}</p>
+<form class="search" method="get" style="margin:16px 0;max-width:520px">
+  {% icon 'search' %}
+  <input type="search" name="q" value="{{ query }}" placeholder="{% t "Имя, фамилия или логин" %}">
+</form>
+<article class="card">
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Логин" %}</th><th>{% t "Преподаватель" %}</th><th>{% t "Группа" %}</th><th>{% t "Факультет" %}</th><th>{% t "Курс" %}</th><th>{% t "Посещаемость" %}</th><th>{% t "Балл" %}</th><th>{% t "ДЗ" %}</th><th></th></tr></thead>
+      <tbody>
+        {% for row in students %}
+        <tr>
+          <td><a href="{% url 'web:student-analytics' row.user.pk %}">{{ row.user.full_name }}</a>{% if row.risk %} <span class="badge warn">{% t "риск" %}</span>{% endif %}</td>
+          <td class="mono">{{ row.user.login }}</td>
+          <td>
+            {% for item in row.groups %}
+              {{ item.group.teacher.full_name|default:"—" }}{% if not forloop.last %}<br>{% endif %}
+            {% empty %}—{% endfor %}
+          </td>
+          <td>
+            {% for item in row.groups %}
+              {{ item.group.name }} · {{ item.group.language }}{% if not forloop.last %}<br>{% endif %}
+            {% empty %}—{% endfor %}
+          </td>
+          <td>{% if row.user.profile_completed %}{{ row.user.faculty|default:"—" }}{% else %}<span class="badge warn">{% t "анкета" %}</span>{% endif %}</td>
+          <td>{{ row.user.course|default:"—" }}</td>
+          <td>{% if row.attendance != None %}{{ row.attendance }}%{% else %}—{% endif %}</td>
+          <td>{% if row.average != None %}{{ row.average }}{% else %}—{% endif %}</td>
+          <td>{{ row.progress.done }}/{{ row.progress.total }}</td>
+          <td>
+            <a class="btn-ghost btn-sm" href="{% url 'web:student-analytics' row.user.pk %}">{% t "Успеваемость" %}</a>
+            {% if user.is_admin %}<a class="btn-ghost btn-sm" href="{% url 'web:user-edit' row.user.pk %}">{% t "Распределить" %}</a>{% endif %}
+          </td>
+        </tr>
+        {% empty %}<tr><td colspan="10">{% t "Никого не найдено." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

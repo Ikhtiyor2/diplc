@@ -1,0 +1,93 @@
+{% extends "app.html" %}
+{% block title %}{{ test.title }}{% endblock %}
+{% block content %}
+<div class="exam-shell">
+  <div class="exam-head">
+    <div>
+      <span class="badge teal">{{ test.format_label }}</span>
+      <h1 class="display" style="font-size:32px;margin:8px 0 0">{{ test.title }}</h1>
+      {% if test.instructions %}<p class="muted">{{ test.instructions }}</p>{% endif %}
+    </div>
+    {% if test.time_limit_minutes %}<p class="small muted">{% t "Время:" %} {{ test.time_limit_minutes }} {% t "мин" %}</p>{% endif %}
+  </div>
+
+  <form method="post" id="exam-form" class="exam-body">
+    {% csrf_token %}
+    {% for group in grouped %}
+      {% if test.kind == 'reading' %}
+        <div class="ielts runner split">
+          <aside class="card pad ielts-passage runner-pane">
+            <h2 class="display" style="font-size:24px;margin:0 0 12px">{{ group.section.title|default:"Passage" }}</h2>
+            <div class="reading">{{ group.section.body|linebreaks }}</div>
+          </aside>
+          <div class="stack runner-pane">
+            {% for item in group.questions %}
+              {% include "tests/_question.html" with question=item.question number=item.number end=item.end notes_html=item.notes_html %}
+            {% empty %}
+              <div class="card empty">{% t "В этой секции нет вопросов." %}</div>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <article class="card pad" style="margin-bottom:16px">
+          <div class="row">
+            <h2 class="display" style="font-size:24px;margin:0">{{ group.section.title|default:"Questions" }}</h2>
+          </div>
+          {% if group.section.audio %}
+            <audio controls src="{{ group.section.audio.url }}" style="width:100%;margin:12px 0"></audio>
+          {% endif %}
+          {% if test.kind != 'listening' and group.section.body %}
+            <div class="reading">{{ group.section.body|linebreaks }}</div>
+          {% endif %}
+        </article>
+        <div class="stack">
+          {% for item in group.questions %}
+            {% include "tests/_question.html" with question=item.question number=item.number end=item.end notes_html=item.notes_html %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <div class="exam-nav">
+      <div class="qnav">
+        {% for item in qnav %}
+          <button type="button" class="qnav-btn" data-jump="{{ item.n }}">{{ item.n }}</button>
+        {% endfor %}
+      </div>
+      <button class="btn enav-submit" type="submit">{% t "Отправить ответы" %}</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block page_js %}
+<script>
+(() => {
+  const mark = () => {
+    document.querySelectorAll("[data-qnav]").forEach((input) => {
+      const n = input.dataset.qnav;
+      const btn = document.querySelector(`[data-jump="${n}"]`);
+      if (btn) btn.classList.toggle("answered", Boolean((input.value || input.checked) && String(input.value).trim()));
+    });
+    document.querySelectorAll("input[type=radio]:checked, input[type=checkbox]:checked, select").forEach((input) => {
+      const host = input.closest("[data-qstart]");
+      if (!host) return;
+      const start = Number(host.dataset.qstart);
+      const idx = Number(input.dataset.qidx || 0);
+      const btn = document.querySelector(`[data-jump="${start + idx}"]`);
+      if (btn && (input.value || input.checked)) btn.classList.add("answered");
+    });
+  };
+  document.querySelectorAll("[data-jump]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(`qnav-${btn.dataset.jump}`) || document.querySelector(`[data-qnav="${btn.dataset.jump}"]`);
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+      target?.focus();
+    });
+  });
+  document.getElementById("exam-form")?.addEventListener("input", mark);
+  document.getElementById("exam-form")?.addEventListener("change", mark);
+  mark();
+})();
+</script>
+{% endblock %}

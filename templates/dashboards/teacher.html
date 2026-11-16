@@ -1,0 +1,129 @@
+{% extends "app.html" %}
+{% load icons %}
+
+{% block title %}{% if user.is_lector %}{% t "Кабинет лектора" %}{% else %}{% t "Кабинет преподавателя" %}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="row" style="margin-bottom:18px">
+  <div>
+    <p class="muted small">{% if user.is_assistant %}{% t "Ассистент" %}{% if user.lead_teacher %} · {{ user.lead_teacher.full_name }}{% endif %}{% elif user.is_lector %}{% t "Лектор" %}{% else %}{% t "Преподаватель" %}{% endif %}</p>
+    <h1 class="display" style="font-size:40px;margin:0;letter-spacing:-0.05em">{% t "Здравствуйте" %}{% if user.first_name %}, {{ user.first_name }}{% endif %}</h1>
+  </div>
+  <div class="gap">
+    {% if user.can_manage_lectures %}
+    <a class="btn-secondary" href="{% url 'web:lecture-attendance' %}">{% t "Посещаемость лекции" %}</a>
+    {% endif %}
+    {% if user.is_teacher or user.is_assistant %}
+    {% if attendance_group %}
+    <a class="btn-secondary" href="{% url 'web:group-attendance' attendance_group.pk %}">{% t "Посещаемость" %}</a>
+    {% endif %}
+    {% endif %}
+    <a class="btn" href="{% url 'web:homework-create' %}">{% t "Загрузить ДЗ" %}</a>
+  </div>
+</div>
+<section class="kpis">
+  <article class="card kpi"><span class="label">{% t "Мои группы" %}</span><span class="value">{{ groups.count }}</span></article>
+  <article class="card kpi"><span class="label">{% t "На проверке" %}</span><span class="value">{{ pending_count }}</span></article>
+  <article class="card kpi"><span class="label">{% t "Средний балл" %}</span><span class="value">{{ class_average|default:"—" }}</span></article>
+  <article class="card kpi"><span class="label">{% t "Риск" %}</span><span class="value">{{ risk_count }}</span><span class="small muted">{% t "низкий балл или пропуски" %}</span></article>
+</section>
+<div class="grid-2" style="margin-top:16px">
+  <article class="card pad">
+    <div class="row"><h2 class="display" style="margin:0;font-size:28px">{% t "Группы" %}</h2><a href="{% url 'web:groups' %}">{% t "Все" %}</a></div>
+    {% for group in groups %}
+      <a class="row" href="{% url 'web:group-detail' group.pk %}">
+        <span><strong>{{ group.name }}</strong><div class="small muted">{{ group.language }}{% if group.schedule %} · {{ group.schedule }}{% endif %}{% include "groups/_lecture_streams.html" %}</div></span>
+        {% icon 'chevron' %}
+      </a>
+    {% empty %}<p class="muted">{% t "Группы ещё не назначены." %}</p>{% endfor %}
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="margin:0 0 12px;font-size:28px">{% t "Ждут проверки" %}</h2>
+    {% include "homework/_review_legend.html" %}
+    {% for item in pending %}
+      <a class="row review-row {{ item.review_state }}" href="{% url 'web:submission-review' item.pk %}">
+        <span><strong>{{ item.student.full_name }}</strong><div class="small muted">{{ item.assignment.title }}</div></span>
+        {% include "homework/_review_badge.html" %}
+      </a>
+    {% empty %}<p class="muted">{% t "Все работы проверены." %}</p>{% endfor %}
+  </article>
+</div>
+{% if class_charts.labels %}
+<div class="chart-grid" style="margin-top:16px">
+  <article class="card pad">
+    <div class="row"><h2 class="display" style="margin:0;font-size:24px">{% t "Баллы группы" %}</h2><a href="{% url 'web:progress' %}">{% t "Открыть" %}</a></div>
+    <div class="chart-box"><canvas id="dashScoreChart"></canvas></div>
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="margin:0 0 12px;font-size:24px">{% t "Домашние задания" %}</h2>
+    <div class="chart-box"><canvas id="dashHwChart"></canvas></div>
+  </article>
+</div>
+{% endif %}
+<article class="card" style="margin-top:16px">
+  <div class="pad row">
+    <h2 class="display" style="margin:0;font-size:28px">{% t "Успеваемость учеников" %}</h2>
+    <a href="{% url 'web:progress' %}">{% t "Все" %}</a>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Группа" %}</th><th>{% t "Балл" %}</th><th>{% t "Посещаемость" %}</th><th>{% t "ДЗ" %}</th><th></th></tr></thead>
+      <tbody>
+        {% for row in roster %}
+        <tr>
+          <td>
+            <a href="{% url 'web:student-analytics' row.student.pk %}"><strong>{{ row.student.full_name }}</strong></a>
+            {% if row.risk %}<span class="badge warn">{% for reason in row.risk_reasons %}{{ reason|t }}{% if not forloop.last %}, {% endif %}{% endfor %}</span>{% endif %}
+          </td>
+          <td>{% for item in row.groups %}{{ item.group.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}</td>
+          <td>{% if row.average != None %}{{ row.average }}{% else %}—{% endif %}</td>
+          <td>{% if row.attendance != None %}{{ row.attendance }}%{% else %}—{% endif %}</td>
+          <td>{{ row.progress.done }}/{{ row.progress.total }}</td>
+          <td><a href="{% url 'web:student-analytics' row.student.pk %}">{% t "Открыть" %}</a></td>
+        </tr>
+        {% empty %}<tr><td colspan="6">{% t "Пока нет учеников в ваших группах." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}
+
+{% block page_js %}
+{% if class_charts.labels %}
+{{ class_charts|json_script:"class-charts" }}
+{% include "includes/charts.html" %}
+<script>
+  const data = JSON.parse(document.getElementById("class-charts").textContent);
+  const scoreCtx = document.getElementById("dashScoreChart");
+  if (scoreCtx && data.labels.length) {
+    new Chart(scoreCtx, {
+      type: "bar",
+      data: {
+        labels: data.labels,
+        datasets: [
+          { label: "{% js_t "Средний балл" %}", data: data.averages, backgroundColor: "rgba(167,139,250,.85)", borderRadius: 8 },
+          { label: "{% js_t "Посещаемость" %}", data: data.attendance, backgroundColor: "rgba(125,211,252,.75)", borderRadius: 8 },
+        ],
+      },
+      options: aulaAxis(100),
+    });
+  }
+  const hwCtx = document.getElementById("dashHwChart");
+  if (hwCtx) {
+    new Chart(hwCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["{% js_t "Сдано" %}", "{% js_t "Не сдано" %}", "{% js_t "На доработке" %}"],
+        datasets: [{
+          data: [data.homework.done, data.homework.pending, data.homework.returned],
+          backgroundColor: ["rgba(134,212,164,.9)", "rgba(167,139,250,.75)", "rgba(240,192,121,.85)"],
+          borderWidth: 0,
+        }],
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: aulaTheme().ink } } } },
+    });
+  }
+</script>
+{% endif %}
+{% endblock %}

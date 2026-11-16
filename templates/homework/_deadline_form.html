@@ -1,0 +1,21 @@
+<form method="post" action="{% url 'web:homework-detail' item.pk %}" class="deadline-row tone-{{ item.deadline_tone }}">
+  {% csrf_token %}
+  <input type="hidden" name="action" value="deadline">
+  <input type="hidden" name="next" value="{{ next_url }}">
+  <div class="deadline-copy">
+    <a href="{% url 'web:homework-detail' item.pk %}"><strong>{{ item.title }}</strong></a>
+    <span class="small muted">{{ item.group.name }}</span>
+    {% if item.deadline_tone == "late" %}
+      <span class="badge danger">{% t "Просрочен" %}</span>
+    {% elif item.deadline_tone == "soon" %}
+      <span class="badge warn">{% t "Скоро" %}</span>
+    {% elif item.deadline_tone == "none" %}
+      <span class="badge pending">{% t "Без срока" %}</span>
+    {% endif %}
+  </div>
+  <label class="field">
+    <span>{% t "Сдать до" %}</span>
+    <input class="input" type="datetime-local" name="deadline" value="{{ item.deadline_local_input }}">
+  </label>
+  <button class="btn-secondary btn-sm" type="submit">{% t "Сохранить дедлайн" %}</button>
+</form>

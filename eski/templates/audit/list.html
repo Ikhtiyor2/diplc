@@ -1,0 +1,47 @@
+{% extends "app.html" %}
+{% block title %}{% t "Журнал действий" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "История действий" %}</h1>
+    <p class="muted" style="margin:8px 0 0">{% t "Что делали второстепенные администраторы — и весь журнал центра." %}</p>
+  </div>
+  <div class="gap">
+    <a class="btn{% if scope != 'staff' %}-secondary{% endif %}" href="{% url 'web:audit' %}?scope=staff">{% t "Админы" %}</a>
+    <a class="btn{% if scope != 'all' %}-secondary{% endif %}" href="{% url 'web:audit' %}?scope=all">{% t "Все" %}</a>
+  </div>
+</div>
+<article class="card" style="margin-top:16px">
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Время" %}</th><th>{% t "Кто" %}</th><th>{% t "Действие" %}</th><th>{% t "Детали" %}</th><th>IP</th></tr></thead>
+      <tbody>
+        {% for item in logs %}
+        <tr class="{% if item.actor.is_admin and not item.actor.is_primary_admin %}review-row checking{% endif %}">
+          <td>{{ item.created_at|date:"d.m.Y H:i" }}</td>
+          <td>
+            {% if item.actor %}
+              {{ item.actor.full_name }}
+              <div class="small muted">{{ item.actor.login }} · {{ item.actor.role_label }}</div>
+            {% else %}{% t "система" %}{% endif %}
+          </td>
+          <td>{{ item.action|t }}</td>
+          <td class="small">
+            {% if item.metadata.fields %}
+              {% for key, value in item.metadata.fields.items %}
+                <div><span class="muted">{{ key }}:</span> {{ value }}</div>
+              {% endfor %}
+            {% else %}
+              <span class="mono muted">{{ item.path }}</span>
+            {% endif %}
+          </td>
+          <td>{{ item.ip_address }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">{% t "Пока нет действий." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

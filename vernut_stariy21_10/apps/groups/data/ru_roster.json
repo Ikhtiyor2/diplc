@@ -1,0 +1,4386 @@
+{
+  "teachers": [
+    {
+      "login": "t.bahrom",
+      "first_name": "Бахром",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$J2Z4hCCUuoj1j8iO1MRBTJ$xBWdb5PiRcmu1joHLR6UVrrOb/75Ojv/Zwz0Gca0md4="
+    },
+    {
+      "login": "t.charos",
+      "first_name": "Чарос",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$EDcKKMtSFCwUKtpIgD2ym3$iFzoRBV1NB3QLmhqR8C8vLXAQKZBB5AYZcSmmT8dWvM="
+    },
+    {
+      "login": "t.farangiz",
+      "first_name": "Фарангиз",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$lbmVW7muoAbZEfIZfA3XGv$0IarlFXTFffTIliOrurH2I7KZ2CIAv9aQZ/LNEhX52w="
+    },
+    {
+      "login": "t.nazokat",
+      "first_name": "Назокат",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$j0jA61YVuj4BKcZKWmxeUL$7mYnds+kOPj1AXRaQQAyoJHBRX/AAj1a5XOPgN1N+Hc="
+    }
+  ],
+  "assistants": [
+    {
+      "login": "a.maftuna",
+      "first_name": "Мафтуна",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$vglB4cUnib2ewySpM1Iv42$3Ycl5nMsLkIdG45NF/4l5JOSU5qJvtXa/Z+T1AoG/Vg=",
+      "lead_teacher": "t.nazokat"
+    },
+    {
+      "login": "a.muhammadaziz",
+      "first_name": "Мухаммадазиз",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$yo7HZGWRi1sFwcwQIXVBur$pbZl4tGo14owilEqOxLZ292vy3OJj6o76esccAWD0so=",
+      "lead_teacher": "t.bahrom"
+    },
+    {
+      "login": "a.shodiyona",
+      "first_name": "Шодийона",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$J47OsiYPrYuioJu9PqSKuA$lPqx244Z0CO4fJfVW6cbVJneKZqqJi/2UUs3lcnMEcc=",
+      "lead_teacher": "t.charos"
+    },
+    {
+      "login": "a.sitora",
+      "first_name": "Ситора",
+      "last_name": "",
+      "password": "pbkdf2_sha256$870000$g9yDlig2D0oh4nU96Uo5fD$aNraYSRZ8bNxB0cUMO+Aj3pixARTACdJV6wxUTk+Ylo=",
+      "lead_teacher": "t.farangiz"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Русский · Аралаш",
+      "teacher": "t.charos",
+      "level": "A1",
+      "schedule": "по расписанию",
+      "room": ""
+    },
+    {
+      "name": "Русский · МО1",
+      "teacher": "t.farangiz",
+      "level": "A1",
+      "schedule": "Пн / Ср 20:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МО2",
+      "teacher": "t.charos",
+      "level": "A1",
+      "schedule": "Пн / Ср 21:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МО3",
+      "teacher": "t.charos",
+      "level": "A1",
+      "schedule": "Пн / Ср 21:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МО4",
+      "teacher": "t.farangiz",
+      "level": "A1",
+      "schedule": "Вт / Чт 20:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МО5",
+      "teacher": "t.farangiz",
+      "level": "A1",
+      "schedule": "Вт / Чт 20:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МО6",
+      "teacher": "t.charos",
+      "level": "A1",
+      "schedule": "Вт / Чт 21:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МП1",
+      "teacher": "t.farangiz",
+      "level": "A1",
+      "schedule": "Пн / Ср 20:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО1",
+      "teacher": "t.bahrom",
+      "level": "A1",
+      "schedule": "Пн / Ср 07:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО2",
+      "teacher": "t.bahrom",
+      "level": "A1",
+      "schedule": "Пн / Ср 07:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО3",
+      "teacher": "t.nazokat",
+      "level": "A1",
+      "schedule": "Пн / Ср 09:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО4",
+      "teacher": "t.nazokat",
+      "level": "A1",
+      "schedule": "Пн / Ср 09:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО5",
+      "teacher": "t.bahrom",
+      "level": "A1",
+      "schedule": "Вт / Чт 07:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО6",
+      "teacher": "t.bahrom",
+      "level": "A1",
+      "schedule": "Вт / Чт 07:30",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО7",
+      "teacher": "t.nazokat",
+      "level": "A1",
+      "schedule": "Вт / Чт 09:00",
+      "room": ""
+    },
+    {
+      "name": "Русский · МЭО8",
+      "teacher": "t.nazokat",
+      "level": "A1",
+      "schedule": "Вт / Чт 09:00",
+      "room": ""
+    }
+  ],
+  "students": [
+    {
+      "login": "s.abbosovm",
+      "first_name": "Muhammadzohid",
+      "last_name": "Abbosov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Abbosov Muhammadzohid",
+      "password": "pbkdf2_sha256$870000$2ZPx8fM2gLYK2xqnkTzAGk$qfgvzDFbF9xmPgyd55GSz5JYjNaGb1mkwxxRwmIFK7M=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.abdiganieva",
+      "first_name": "Aman",
+      "last_name": "Abdiganiev",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Abdiganiev Aman",
+      "password": "pbkdf2_sha256$870000$ynuRg86TGDwqV8d2uDWr5d$TVfG/gjdOQo/HecOLNI7VOvaDB69kffPPoiVIh+8IoE=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.abdimalikovam",
+      "first_name": "Marjona",
+      "last_name": "Abdimalikova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Abdimalikova Marjona",
+      "password": "pbkdf2_sha256$870000$C8STynNEgTifproc0Lj2q1$4NkDwZbJOjE+Viuv2zCtcpj5v2cWMqg9heTRh1jUPOU=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.abdinazarovag",
+      "first_name": "Gulasal",
+      "last_name": "Abdinazarova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Abdinazarova Gulasal",
+      "password": "pbkdf2_sha256$870000$OwGcPTgPbSabeD8KTkFq5t$zhjvEPfX/0ijmSsHEZG49r0z3yV9kMRYLZf/b3q//qM=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.abdivahobovas",
+      "first_name": "Sug’diyona",
+      "last_name": "Abdivahobova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Abdivahobova Sug’diyona",
+      "password": "pbkdf2_sha256$870000$w1MxmAdUdAyjtAOmxmsPZl$feJN79z/qTQ3XLQT3grk5QFx9GaWujKfNQ7G2uI4G5s=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.abdivaliyevs",
+      "first_name": "Sardorbek",
+      "last_name": "Abdivaliyev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Abdivaliyev Sardorbek",
+      "password": "pbkdf2_sha256$870000$gLb65cX2nc9k294ULAcndb$YdvAkJoOabCXj/5tKIPTkJJWpaT5Pupj+3IvN3f8hLw=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.abdugofforovm",
+      "first_name": "Mirzaalibek",
+      "last_name": "Abdug’offorov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Abdug’offorov Mirzaalibek",
+      "password": "pbkdf2_sha256$870000$8lNiaOZEx4JWtVdxfsDtCl$oLm5Er2UUtWhs5rWu9JFpwOIsLbyJgiv5HXH5pD7JG8=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.abduhamidovas",
+      "first_name": "Shodiyona",
+      "last_name": "Abduhamidova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Abduhamidova Shodiyona",
+      "password": "pbkdf2_sha256$870000$nVWWC987AIkFDUk42FmNii$Gu2S8EyEFqEwtkoSX82Zeycz26rt0Rmo+on5LLAhWMU=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.abdulazizova",
+      "first_name": "Azizbek",
+      "last_name": "Abdulazizov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Abdulazizov Azizbek",
+      "password": "pbkdf2_sha256$870000$fvXNPrdApgXcIIlG1ilUg8$gNFifO2gCwVKYgsmH9c0MxsVSufe9JHvLU/Uhp40Crw=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.abdulhakimovm",
+      "first_name": "Muhammadrizo",
+      "last_name": "Abdulhakimov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Abdulhakimov Muhammadrizo",
+      "password": "pbkdf2_sha256$870000$m8x4pIBUXxCVTR6pT4Moks$ojFX9RB8X95S13J+dtKs5Wk/7mVIiFErtcHQusuNUtg=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.abdullayevaf",
+      "first_name": "Farangiz",
+      "last_name": "Abdullayeva",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Abdullayeva Farangiz",
+      "password": "pbkdf2_sha256$870000$diNd0c1zpqJOld5vXyxZGV$l2cwxIMOsUIkORvMpm+KSkwlHNG2/get2GtT+uwSzsI=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.abdullayevaz",
+      "first_name": "Zarina",
+      "last_name": "Abdullayeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Abdullayeva Zarina",
+      "password": "pbkdf2_sha256$870000$k0uLSVfVxdQpyckt4nG768$p6zbr66YiQseFnh5CMn3lSF/lpp348pURYM/UyU2dxE=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.abdullayevm",
+      "first_name": "Muhammadrizo",
+      "last_name": "Abdullayev",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Abdullayev Muhammadrizo",
+      "password": "pbkdf2_sha256$870000$9MLihlIxeuIWbgn9OrjiiJ$5zbmsgekbEIWvqnaNLn7HMrGbEkikbAp/ptPkDwVU98=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.abdumominovl",
+      "first_name": "Lazizbek",
+      "last_name": "Abdumo’minov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Abdumo’minov Lazizbek",
+      "password": "pbkdf2_sha256$870000$GPFYxgPXiolcqBroXBQ54U$YKVGMpgR5vne6FjANrQUTJEMG9M3UEhsXsPljQm1DLw=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.abduqahhorovk",
+      "first_name": "Komiljon",
+      "last_name": "Abduqahhorov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Abduqahhorov Komiljon",
+      "password": "pbkdf2_sha256$870000$c3z1EBuYSu6ZKLlqxBin8k$bRaj+Oq8eHDUvPNnfx1tuvQuqn/FOlzobNvYBkc5L+U=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.abduqodirovam",
+      "first_name": "Malika",
+      "last_name": "Abduqodirova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Abduqodirova Malika",
+      "password": "pbkdf2_sha256$870000$ufVqmohQI9wfUiQxKDFCah$8KhhCm8wZqTcCZ4z9s1G05bNtSb7kOPCQRADhSBx3aY=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.abdurahims",
+      "first_name": "Shokirov",
+      "last_name": "Abdurahim",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Abdurahim Shokirov",
+      "password": "pbkdf2_sha256$870000$yd9oPizbJPefbsPEvFYFtt$kgBb7oijgtk5+5iffVJ+zGmttEI1AxGSynmpWgVB4DM=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.abdurasulovb",
+      "first_name": "Behruzbek",
+      "last_name": "Abdurasulov",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Abdurasulov Behruzbek",
+      "password": "pbkdf2_sha256$870000$XFmXHipKLMMDxBrWKBvZK0$rfVgInBP0xMXlKHbAcZsJ4Ol9/wlHuDtfFbQ2uSabVc=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.abduraximovi",
+      "first_name": "Isomiddin",
+      "last_name": "Abduraximov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Abduraximov Isomiddin",
+      "password": "pbkdf2_sha256$870000$qhIlv9wVUIAhVcLc8au7PM$/7ITFA2Jg315SnlEJmUYKcBZzeE8pCtvAySV/rGC9yY=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.abduraxmonovb",
+      "first_name": "Behruz",
+      "last_name": "Abduraxmonov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Abduraxmonov Behruz",
+      "password": "pbkdf2_sha256$870000$eredQPKhBDHvx7pjZqWTkS$KUhmeiCzss7ebDzHOiU1EvBjLJX4HiKrTXzhiGZ5WfE=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.abdusalimovaf",
+      "first_name": "Firdavsxon",
+      "last_name": "Abdusalimova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Abdusalimova Firdavsxon",
+      "password": "pbkdf2_sha256$870000$2RGxd1intGmbDcK7K6Oyam$Zlm6DEDUiFGs+WzpH/cOJ42tqRL3vHryunPIAKuW9gc=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.abdusamatovas",
+      "first_name": "Sarvinoz",
+      "last_name": "Abdusamatova",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Abdusamatova Sarvinoz",
+      "password": "pbkdf2_sha256$870000$pV7MmX5JstahSqw4AiB6zC$xIJCmlWcxXzcrBNszaxEEiokh6m6AxZxcDW5gBHf2C0=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.abdusattarovam",
+      "first_name": "Muxlisa",
+      "last_name": "Abdusattarova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Abdusattarova Muxlisa",
+      "password": "pbkdf2_sha256$870000$ozGgf7VaxMshznLnSA1xbY$+CljYu+vqdwuZqQCOV7/qI4Cr0zAWupp9papBA8fcYo=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.abdusolomovo",
+      "first_name": "ollohberdi",
+      "last_name": "abdusolomov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|abdusolomov ollohberdi",
+      "password": "pbkdf2_sha256$870000$TVOh6JRyZcek0f5pRbKbtc$HWv3YrtjfPoVjcCMckGoFxGwbPRsgnbcH1V0racwlpE=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.abduvohidovan",
+      "first_name": "Nafisaxon",
+      "last_name": "Abduvohidova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Abduvohidova Nafisaxon",
+      "password": "pbkdf2_sha256$870000$Wc98jUXjo8Fkf0F1zk48s4$U0o03Q5AYdcwFbw/Vu/GjI2BpR1ez2fJImS3eoiZf28=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.adxamboyeva",
+      "first_name": "Abrorjon",
+      "last_name": "Adxamboyev",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Adxamboyev Abrorjon",
+      "password": "pbkdf2_sha256$870000$8HVze1rHRn4aM9csVakyuZ$UQUjRJ4U5tnlFu6bQs3k12XKjfjDW5EaVAslhnjdDQU=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.ahmadjonovaz",
+      "first_name": "Zilola",
+      "last_name": "Ahmadjonova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Ahmadjonova Zilola",
+      "password": "pbkdf2_sha256$870000$cCGxvMCrZ8uYi9wfkN1Zp0$nAS6bKmtM8JnnONmokq6GOHooSMgTiK0ul+BRXWjO2I=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.akbarovaf",
+      "first_name": "Feruza",
+      "last_name": "Akbarova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Akbarova Feruza",
+      "password": "pbkdf2_sha256$870000$hhFc5waJmRdkLeWFkrgt2W$AX7RSyzyDMfb5pH5qNv0Vt6p0ad0qIi+f0UU6fVtYcA=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.akbarovar",
+      "first_name": "Rayxona",
+      "last_name": "Akbarova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Akbarova Rayxona",
+      "password": "pbkdf2_sha256$870000$3MI7tLvbJJgC3MiLk9bDGV$90uZcnE0OK6jmbtUCQKTU5i1/sZ1FLNyRvBIsh2FjSI=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.akramovar",
+      "first_name": "Ra'no",
+      "last_name": "Akramova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Akramova Ra'no",
+      "password": "pbkdf2_sha256$870000$KdVklPTE7eedtH2Quzmkfo$Ewp+85BcOjNRY91Nos9gvpVYz2WS9hl76aXfCI0HuAI=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.akromaliyeva",
+      "first_name": "Azamat",
+      "last_name": "Akromaliyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Akromaliyev Azamat",
+      "password": "pbkdf2_sha256$870000$Mtjm33QYIPqJGYVyVqg4va$zsLKk1eVwyDTErvhf1xtixeser+du6GHyye96FfT6hg=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.aliboyeva",
+      "first_name": "Avazbek",
+      "last_name": "Aliboyev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Aliboyev Avazbek",
+      "password": "pbkdf2_sha256$870000$TzLox3x8xPAlbwWMORWO9q$v+vNxR2vrNq8dChT1L7uEuadsSVH28xOyHgeIQ5dmr4=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.alimova",
+      "first_name": "Abdua'zim",
+      "last_name": "Alimov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Alimov Abdua'zim",
+      "password": "pbkdf2_sha256$870000$a8ksWmPBKuODu0N2yfWi8N$DsM2tzH2yMAcwV6Kz/4P9xPNc/rNJ/TMQigQLCe96Fc=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.aliyevd",
+      "first_name": "Dilbek",
+      "last_name": "Aliyev",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Aliyev Dilbek",
+      "password": "pbkdf2_sha256$870000$b21KRxwtqVwpVhvLUDKvwK$upSOAteRfyNc05oOpTnMdKE0htjuhfnWJrpriGolSU8=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.allaberganovx",
+      "first_name": "Xasan",
+      "last_name": "Allaberganov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Allaberganov Xasan",
+      "password": "pbkdf2_sha256$870000$msOzgNgka61TpRbcnF1PLc$J4PAcW6LHSMODtzsEahZd3knFuPOl3OIVdypi+5UX4M=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.allaberganovx2",
+      "first_name": "Xasan",
+      "last_name": "Allaberganov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Allaberganov Xasan",
+      "password": "pbkdf2_sha256$870000$STXgVaH30P5pyOOAb2LvDh$5vObCEnNcG9iEWHiHaFERJDTjTPTwMZPZNfdWbftJyA=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.amirbek",
+      "first_name": "",
+      "last_name": "Amirbek",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Amirbek",
+      "password": "pbkdf2_sha256$870000$TB33Y6UOyuEaApPEZUXkew$jnJOxe7fAPTmbxXDX4Ajpxs+JIT4NYDkwcZQWe4XDug=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.amirbekr",
+      "first_name": "Ruzmanov",
+      "last_name": "Amirbek",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Amirbek Ruzmanov",
+      "password": "pbkdf2_sha256$870000$4c6ZVp0y6uScRaI30be1sX$OjEHnh/sBm2Z7pbkKBvvBw2OiDDM5fCSoXU97PUeX+U=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.amriddinovav",
+      "first_name": "Visola",
+      "last_name": "Amriddinova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Amriddinova Visola",
+      "password": "pbkdf2_sha256$870000$xK58A00Q8wKP8Srczp3nU6$KPp/1Dt2N4g4O6g640QdutlQM8ZRYnTUR2OW7VqJa3Q=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.anvari",
+      "first_name": "Izbosov",
+      "last_name": "Anvar",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Anvar Izbosov",
+      "password": "pbkdf2_sha256$870000$ce4jA8iYasfs4ZDd8KkAhH$YhyGcipZMLrAMO4snroDhfQNaDKm+2shyBOxMXebqjc=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.ashuraliyeva",
+      "first_name": "Azizbek",
+      "last_name": "Ashuraliyev",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Ashuraliyev Azizbek",
+      "password": "pbkdf2_sha256$870000$iFvuozhHSanweOMVD3EtKe$hd0rvce0d44bJNg/uPcUe2keRLg5jVrMTUam/QcrHgU=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.asqarova",
+      "first_name": "Abduaziz",
+      "last_name": "Asqarov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Asqarov Abduaziz",
+      "password": "pbkdf2_sha256$870000$KXAmXX6Dm67hWAp1jyVnbD$9LK/xgSiiLTknQqTIly54Z6TqQ1y58PnQBJIRDQEU7U=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.avazovam",
+      "first_name": "Mohinur",
+      "last_name": "Avazova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Avazova Mohinur",
+      "password": "pbkdf2_sha256$870000$838CmPBgkLniEmgtKiJmyO$rbOeuXCat1XaJtr/3Cxuo3z/bNUYvN69rXaBCUoAJbs=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.axatjonovam",
+      "first_name": "Muxtasar",
+      "last_name": "Axatjonova",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Axatjonova Muxtasar",
+      "password": "pbkdf2_sha256$870000$exLV4uEEndnkhuL2rnelAx$2dpocR/YwJKkq68mswqF0G0InnkruaRH20z1RY4WkUE=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.axtamovm",
+      "first_name": "Mexriddin",
+      "last_name": "Axtamov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Axtamov Mexriddin",
+      "password": "pbkdf2_sha256$870000$U4Gkj99AEodj2RKWYJEaNF$w1e7FXpWrg1LKcWxrQqPdlSwJjYvExqHB1Iv8DHUF90=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.aytbaevas",
+      "first_name": "Sarvinoz",
+      "last_name": "Aytbaeva",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Aytbaeva Sarvinoz",
+      "password": "pbkdf2_sha256$870000$Dh0AD4UcMiKEvFfwWDmugN$RAO+c/S+WTgJcgq7XdjLqtm25REYnuhDrK/cwwSUiLA=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.azamatova",
+      "first_name": "Azizjon",
+      "last_name": "Azamatov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Azamatov Azizjon",
+      "password": "pbkdf2_sha256$870000$nGsmSvQKd5Mbj5TEuQbg8r$VXUQxj2G2aUx0h0u+oLK7dw9hnXwrusSFE9FhF9fPWQ=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.azamovac",
+      "first_name": "Charosxon",
+      "last_name": "Azamova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Azamova Charosxon",
+      "password": "pbkdf2_sha256$870000$WuG79R3uwLeYzKiYngR44A$ZLM/EUrYcTTj4s6fMKTzHM+yvZMZ4sxWinVESMeTpI8=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.bahodirovab",
+      "first_name": "Bahor",
+      "last_name": "Bahodirova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Bahodirova Bahor",
+      "password": "pbkdf2_sha256$870000$eoPL3sr3x0hfoIuFGNUDqG$xY9FlxoUH8rMiO+8Ug4V+MjeZS724SufXETWXzlqRtg=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.bahodirovas",
+      "first_name": "Sarvinoz",
+      "last_name": "Bahodirova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Bahodirova Sarvinoz",
+      "password": "pbkdf2_sha256$870000$hpHdFwwn1t6Oy4mesYx105$nHBKNLkjDgHEBxh24LSnHes9cggZkb0EjT4/eaa3PzM=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.bahodirovb",
+      "first_name": "Bahodir",
+      "last_name": "Bahodirov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Bahodirov Bahodir",
+      "password": "pbkdf2_sha256$870000$v244IvzOV63YMDJV0SD0kO$n7xm4YnEtKMOaDVpXL3GWlvXXqGoutDWaUAlEcKz08Y=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.baxodirovf",
+      "first_name": "Feruz",
+      "last_name": "Baxodirov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Baxodirov Feruz",
+      "password": "pbkdf2_sha256$870000$f6Vo0okkQG4RWBCAg7nBws$+UwtUPdBWOOqzwMBe0dFgplimfg/DsA8aVkCloVt2c4=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.baxtiyorovab",
+      "first_name": "Bonu",
+      "last_name": "Baxtiyorova",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Baxtiyorova Bonu",
+      "password": "pbkdf2_sha256$870000$9D3ixexa1ebe5HciSWSY6h$dIYvtslvTwJDbtx1GPdspXCcRpMLtIz2xeOoutaTIP0=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.baxtiyorovj",
+      "first_name": "Javohir",
+      "last_name": "Baxtiyorov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Baxtiyorov Javohir",
+      "password": "pbkdf2_sha256$870000$eolKvA68qHJKrRs9nys90K$1HFBUV/oHEx010nvWgSGjoizz8A4Kb220qSK9VRC75w=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.baxtiyorovu",
+      "first_name": "Uchqunbek",
+      "last_name": "Baxtiyorov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Baxtiyorov Uchqunbek",
+      "password": "pbkdf2_sha256$870000$OEW0HbJdFg1coGrBW8vcbO$ZeyHtkGnL6Nt8YXkOCd51JxWNymaoG/ZdhjUGkPVix8=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.bekmurodovm",
+      "first_name": "Mehriddin",
+      "last_name": "Bekmurodov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Bekmurodov Mehriddin",
+      "password": "pbkdf2_sha256$870000$pxcoCbAYNQI36YJwZFiqGH$kynK5HyMvMKMkivbm4c/q2ANv7x0gQgHjhBcLWxIveE=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.berdimurodovn",
+      "first_name": "Nozim",
+      "last_name": "Berdimurodov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Berdimurodov Nozim",
+      "password": "pbkdf2_sha256$870000$gjOBgNMPUYX4DemHq9OgZ3$xlnqnk65JuZHG43R4KWJ6sLFZh2ypdfR8LQsEVJaCv4=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.bobojonovz",
+      "first_name": "Ziyodulla",
+      "last_name": "Bobojonov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Bobojonov Ziyodulla",
+      "password": "pbkdf2_sha256$870000$KxYI4QpMFUTkbVj7D0vzw1$BOmgbJWINMTIVp/TL+sNn3dm5uMQj1j8xT2Bsrj6/zU=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.bobojonovz2",
+      "first_name": "Ziyodulla",
+      "last_name": "Bobojonov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Bobojonov Ziyodulla",
+      "password": "pbkdf2_sha256$870000$XmqpJcn3xrEdp09i5SKINF$3uQ3PhJztxrzeBsL4mChAY6cEBugkSYUQuKDJZlkccc=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.bobonorovm",
+      "first_name": "Muhammadamin",
+      "last_name": "Bobonorov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Bobonorov Muhammadamin",
+      "password": "pbkdf2_sha256$870000$OfIRABYzoGola9nbuGYKYm$DmmBmhJoNRrRoKE0VbmYMUTSWMI6vsoQ9wqnePFaXjk=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.bonua",
+      "first_name": "Annazarova",
+      "last_name": "Bonu",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Bonu Annazarova",
+      "password": "pbkdf2_sha256$870000$MsqRoRpV5i9T6nPPBnpQvS$qPpjiDOZvaNF39FF4yohKICp5cxH6AO0ovWVv3DKxFo=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.boxodirovam",
+      "first_name": "Madina",
+      "last_name": "Boxodirova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Boxodirova Madina",
+      "password": "pbkdf2_sha256$870000$nxElYOmvtMEwLmMOzXEE6Y$fvd+NHfTf1/BlKxtmjmdVPM2EXFbX8VRcA7wxew+xFw=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.boynazarovj",
+      "first_name": "Jahongir",
+      "last_name": "Boynazarov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Boynazarov Jahongir",
+      "password": "pbkdf2_sha256$870000$4fRJ5AbJVJMVpWCM4uAlrO$JDUAEfCr+Bob/qG5zGrMJ4f/pRHLyuuWETaqZmohrEU=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.chorshanbiyevad",
+      "first_name": "Dilnoza",
+      "last_name": "Chorshanbiyeva",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Chorshanbiyeva Dilnoza",
+      "password": "pbkdf2_sha256$870000$Wc2MD41Az2KkpqGlHWceJ6$A6KTQQ4nRdK2FeM0a8f1pB0uIXZmPmGbnlQBHRZz91s=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.daminovb",
+      "first_name": "Baxtiyor",
+      "last_name": "Daminov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Daminov Baxtiyor",
+      "password": "pbkdf2_sha256$870000$RFTkqu3uxApGBVPcGN80rp$EeVLa3I5t/Sn117BQyl9Kn6w1PxYBeNX38MEcyk5U1M=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.dauletbaevan",
+      "first_name": "Nodira",
+      "last_name": "Dauletbaeva",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Dauletbaeva Nodira",
+      "password": "pbkdf2_sha256$870000$2Ez643iT86DiDtU7PXAF7f$2vhmIUgJoD183S7LZCxNsC6bIUz05JC3fkMRXdWG5u8=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.davlatmuratovq",
+      "first_name": "Qutlimurod",
+      "last_name": "Davlatmuratov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Davlatmuratov Qutlimurod",
+      "password": "pbkdf2_sha256$870000$uI95JWvsfrRqDXARUMqAXr$r/YGxKfxVRrqCA9wfJUUJJjXTTT7O6uym0I4lJDj9xg=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.davlatyarovan",
+      "first_name": "Nilufar",
+      "last_name": "Davlatyarova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Davlatyarova Nilufar",
+      "password": "pbkdf2_sha256$870000$jJlvK1eSUqbQ7DIcQ5q2Au$zVHPv+dMYqKIZNHRBYXUQB/KR+IUdJYRrC6/NBFvNgI=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.davronovad",
+      "first_name": "Dilzoda",
+      "last_name": "Davronova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Davronova Dilzoda",
+      "password": "pbkdf2_sha256$870000$fndCjjo0O0YUUJG2mhfHQt$ewETQPg00w3Bb2vx27s9hjmO5P4ZJTQaARnVULeB4kk=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.dilmurodovak",
+      "first_name": "Kumush",
+      "last_name": "Dilmurodova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Dilmurodova Kumush",
+      "password": "pbkdf2_sha256$870000$FKlqIGC2G884wcybWLW8g8$fD5N0U3UkQixhbs8Gy5DQk1DNxwRUrYgxHYAzqUzwVg=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.diyorbekx",
+      "first_name": "Xoliqulov",
+      "last_name": "Diyorbek",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Diyorbek Xoliqulov",
+      "password": "pbkdf2_sha256$870000$2vkCTR2kHxJfcAYoj8gVM9$2nf9Jw46RWf0A+wIE7JpvvohGrg5ffMkZl6xH/q+NC8=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.egamberdiyevan",
+      "first_name": "Nozaninbonu",
+      "last_name": "Egamberdiyeva",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Egamberdiyeva Nozaninbonu",
+      "password": "pbkdf2_sha256$870000$jyUCPWHUvbaxKxqIElDyAW$WTmudPYWbM+AKY1p8OB7TNFGDstLT1SUdliZtau+73k=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.elbekx",
+      "first_name": "Xudoyberdiyev",
+      "last_name": "Elbek",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Elbek Xudoyberdiyev",
+      "password": "pbkdf2_sha256$870000$lMUe07bsobd7NimsZhX3mB$L1/l6Ju6xspftsF+WkXCFQR7EHEg7nLQze9Du17hvWs=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.ergasheva",
+      "first_name": "Asilbek",
+      "last_name": "Ergashev",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Ergashev Asilbek",
+      "password": "pbkdf2_sha256$870000$9Ay2pxX5xhr0EixzJIT2qC$/tk2j3rVrtJ8rTGifUWN8Wl2ltM7+TbWtw16IlxX+F4=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.ergashevao",
+      "first_name": "Oysara",
+      "last_name": "Ergasheva",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Ergasheva Oysara",
+      "password": "pbkdf2_sha256$870000$X8XkO2VTxO3gBhD7Adky2M$YF0NGuYFhPyHOQkiIeTH5DUmzn43cHOdcrtjBEdGjRU=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.ergashovad",
+      "first_name": "Dildora",
+      "last_name": "Ergashova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Ergashova Dildora",
+      "password": "pbkdf2_sha256$870000$bY5vMbtcjSUwMNdElJR8DA$z+9fdX14ruGH8UI1gqkIofAt3JBwlzSA7bNAAYDYBpY=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.ergashovad2",
+      "first_name": "Dilafruz",
+      "last_name": "Ergashova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Ergashova Dilafruz",
+      "password": "pbkdf2_sha256$870000$cjk8hFY3TLQUJafNviOKUE$DVRqno6k3P4ybq97r2omz4csxlfgSpp6VlsEb+8dEIA=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.erkinjonovas",
+      "first_name": "Shukrona",
+      "last_name": "Erkinjonova",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Erkinjonova Shukrona",
+      "password": "pbkdf2_sha256$870000$HKSWBd1yLkbYe7gnaqSgaN$7c9M7wzImmMU/fVojJx0FVPUesHuPNekXtejZf8YCbI=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.erkinovj",
+      "first_name": "Javohir",
+      "last_name": "Erkinov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Erkinov Javohir",
+      "password": "pbkdf2_sha256$870000$1YVRBWVAGkmqqNrO5KeoQX$/jIz0U8FcLr4becKHvUPdct/1Lfyfub36Uv2/ThSSf8=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.erkulovag",
+      "first_name": "Gulsevar",
+      "last_name": "Erkulova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Erkulova Gulsevar",
+      "password": "pbkdf2_sha256$870000$JPiphrnw4u7tRRKiOaCiI1$Fnmh/+WJZWeaKEOJ6cVMRCgQ/gbfn/e0dPxZ5sX4TR4=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.esanovb",
+      "first_name": "Bunyod",
+      "last_name": "Esanov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Esanov Bunyod",
+      "password": "pbkdf2_sha256$870000$XLWp0A4q90o8QF83Q6iNTh$6SnjMTwckAxhJ5O2Rwmu1s4IY231eCa1cYpW+4Yjvvg=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.eshpulatovak",
+      "first_name": "Kamola",
+      "last_name": "Eshpulatova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Eshpulatova Kamola",
+      "password": "pbkdf2_sha256$870000$VjZfIwwPwzat0IrGhUyXYQ$aGIxI04xr9ul6zQ5Q8ME+Q5IYpnBiSluP27Tr2pyPLo=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.eshpulatovd",
+      "first_name": "Doniyor",
+      "last_name": "Eshpulatov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Eshpulatov Doniyor",
+      "password": "pbkdf2_sha256$870000$LuZWilPei1r59xrMIYV2HK$pAF/q7nFf6lFDSQJVonGprZbQILuN2kE5h/8xUwsayg=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.eshtemirovx",
+      "first_name": "Xumoyun",
+      "last_name": "Eshtemirov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Eshtemirov Xumoyun",
+      "password": "pbkdf2_sha256$870000$r3dciVimIkkHj138wHeVa0$b3lGUJqmr3zRVRvrhX6kDuIf31g27pJBIEZ6x9i2PQ4=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.farxodovm",
+      "first_name": "Muhammadali",
+      "last_name": "Farxodov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Farxodov Muhammadali",
+      "password": "pbkdf2_sha256$870000$EEms4GI1N7BzuTafBg5IR4$2YDzEN2l6kE20w5xCrc2hiuvhJzrSs4F8vcp2xJrV8s=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.fazilitdinovab",
+      "first_name": "Bahrixon",
+      "last_name": "Fazilitdinova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Fazilitdinova Bahrixon (Charos)",
+      "password": "pbkdf2_sha256$870000$0CPVucpPjQ7T3TfELK60Im$F66VjdojRPm6GgBjmnGqGedsYugFaFePoR863K8mVlc=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.fozilovs",
+      "first_name": "Shohijahon",
+      "last_name": "Fozilov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Fozilov Shohijahon",
+      "password": "pbkdf2_sha256$870000$MvUXaJnEl24K6So0n5sn7u$TCH/sEMPEbJHvo7tmnfYzwsQ7GYouULVrnWPKR1DcXY=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.gafforaliyevag",
+      "first_name": "Gulchiroy",
+      "last_name": "Gʻafforaliyeva",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Gʻafforaliyeva Gulchiroy",
+      "password": "pbkdf2_sha256$870000$GqfVvIAU936dW0AWKF4uaL$SmkpjEKFZ1/JXWAPXHwbVbhHSPkUt8AhLIVDpsv9IBY=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.ganiyevs",
+      "first_name": "Shaxboz",
+      "last_name": "Gʻaniyev",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Gʻaniyev Shaxboz",
+      "password": "pbkdf2_sha256$870000$xupVHloUuwmARSTfjBAbXH$Dp2z9Lkr9Zug2OGe8e03eWae1NK5iN/qLEX6hQ/fElQ=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.gapporjonovag",
+      "first_name": "Gulasal",
+      "last_name": "Gʻapporjonova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Gʻapporjonova Gulasal",
+      "password": "pbkdf2_sha256$870000$pzSMVPaYsEeaSR1cpZqzfr$CQ+XJ3TRAB7bKvCHqC2Cp1eZrKhfuQFhUl23lKO/q/g=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.gulinurs",
+      "first_name": "SHODMONQULOVA",
+      "last_name": "GULINUR",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|GULINUR SHODMONQULOVA",
+      "password": "pbkdf2_sha256$870000$0KCIHbco9jDJQYqnDoRbJn$lWQdjWfDG8bidzR1HTA+Fic4dTX5doH9kXWa6ZS6XFI=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.gulyoraxona",
+      "first_name": "Anvarjonova",
+      "last_name": "Gulyoraxon",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Gulyoraxon Anvarjonova",
+      "password": "pbkdf2_sha256$870000$OPAkfP4nbDkvg8C1ey2nMx$4uXhLzLSYRhPMj9BDzeb/I3kQiPrC5zfdOVAwff0Wwc=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.guzorovs",
+      "first_name": "Sarvar",
+      "last_name": "G’uzorov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|G’uzorov Sarvar",
+      "password": "pbkdf2_sha256$870000$BvQbUU1Sg1jK2EGCFjETSF$RIJB4YVx6kgbFsELGSSgcrJBIcvdlja1f40uNsbE9/o=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.hamidullayevo",
+      "first_name": "Ozodbek",
+      "last_name": "Hamidullayev",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Hamidullayev Ozodbek",
+      "password": "pbkdf2_sha256$870000$WOX9MA4u4VY44iHpXDrLS9$IjXH7FB4EnmfpUwFnwRL1TWpRNmmPOxCqs39LaoFGMA=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.hasanovm",
+      "first_name": "Maqsadbek",
+      "last_name": "Hasanov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Hasanov Maqsadbek",
+      "password": "pbkdf2_sha256$870000$U5ciVwjcw8PFwUQDawCY4T$1tUxezeUVEhbutZ/NjMYBAUc9EV98HI1LkAEiprURso=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.hasans",
+      "first_name": "Sultonaliyev",
+      "last_name": "Hasan",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Hasan Sultonaliyev",
+      "password": "pbkdf2_sha256$870000$nhPZPLPJKY5otHNzELsQDS$yVtIWJEw/4Cwze4sgkieiucBbXgXOIvgAK/53xGQVZc=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.hikmatovb",
+      "first_name": "Baxtiyor",
+      "last_name": "Hikmatov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Hikmatov Baxtiyor",
+      "password": "pbkdf2_sha256$870000$BR5IAlqVZGkHdNkQVGOma3$d13WUUtIja1AW6I9VFrrG2HC64IhnXCZv8fcGq8vKFQ=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.hojibekovam",
+      "first_name": "Moʻminaxon",
+      "last_name": "Hojibekova",
+      "middle_name": "Umarjonovna",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Hojibekova Moʻminaxon Umarjonovna",
+      "password": "pbkdf2_sha256$870000$lY2tdBnszoobqCizRjAj8W$TkckHakMh4S98JBfZc+9EbGiMIuaynW92KBg4v2WaCQ=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.hojiboyevr",
+      "first_name": "Ruslan",
+      "last_name": "Hojiboyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Hojiboyev Ruslan",
+      "password": "pbkdf2_sha256$870000$8zP2VZmGg9S6WuOtJXhgVr$SXPaBd4QoxXK5pY2/8Lk3WSEIIOTIZZqr9GNLo0mgHg=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.hojiyevs",
+      "first_name": "Sardor",
+      "last_name": "Hojiyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Hojiyev Sardor",
+      "password": "pbkdf2_sha256$870000$KYzIvYXdr4EnyuE0j8ia0j$zreIkXHMgS+SMOfay8IfheOh6WRIBpTA7tcrjgYmC3g=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.holmurotovag",
+      "first_name": "Гуласал",
+      "last_name": "Холмуротова",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Холмуротова Гуласал",
+      "password": "pbkdf2_sha256$870000$OrqNTGFqT24IOkSJ71HOGh$YJLj66UzhhjXSeW0QJnjPCyYoS+PlZ8X+4+n+CFRa0A=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.husanovs",
+      "first_name": "Shohjahon",
+      "last_name": "Husanov",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Husanov Shohjahon",
+      "password": "pbkdf2_sha256$870000$dKL1Lu9KeLbAJq3zbw6hoV$BZDt2Mwy03r1+fYCCNXDYJ4IH+ByQ4GSA6olT4pMHto=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.ibragimovah",
+      "first_name": "Hulkar",
+      "last_name": "Ibragimova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Ibragimova Hulkar",
+      "password": "pbkdf2_sha256$870000$sech8BiLuxwJVkROWYxaLe$P3takWsfnRR3yHR/wuFDpb5N1hu/U9wdh6jqj1HIBoU=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.ibragimovao",
+      "first_name": "O'g'ilshod",
+      "last_name": "Ibragimova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Ibragimova O'g'ilshod",
+      "password": "pbkdf2_sha256$870000$0AJ4Z1E9qzSUNvwA6LS1CF$yYD9ZnZT12BRp5wJ1wm/Cgydt7oR1chw/gPx00f9e80=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.ibragimovaz",
+      "first_name": "Zuhrajon",
+      "last_name": "Ibragimova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Ibragimova Zuhrajon",
+      "password": "pbkdf2_sha256$870000$0N2zVmInD8VlZspswEkNkT$dM9smSAzoMRaMzjoKN0iMCA/6OUMZUUfcETmMQmPy2k=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.ibrohimjonovag",
+      "first_name": "Gulixon",
+      "last_name": "Ibrohimjonova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Ibrohimjonova Gulixon",
+      "password": "pbkdf2_sha256$870000$uxngsizTZgMrJzUxzKyPDx$jAbLX1/YMbQDap3XTbFgV9Iaaaq0jwb1ujpmOF2XG1M=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.ibrohimovar",
+      "first_name": "Rayhona",
+      "last_name": "Ibrohimova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Ibrohimova Rayhona",
+      "password": "pbkdf2_sha256$870000$MGLghiBgfkorZTeuPJ5gEd$usX7yqASQtd1/XKg3/xC+rav1eCxcT4zoYAQaMUMsAg=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.ibrohimovs",
+      "first_name": "Shukurullo",
+      "last_name": "Ibrohimov",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Ibrohimov Shukurullo",
+      "password": "pbkdf2_sha256$870000$v0tdwRcc6Ka8eJYw0DPtET$vtQ5Wi+SbnMjZkzVUlc78X69Q9dIFiiaOnTLGD16YGM=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.ikromovai",
+      "first_name": "Iroda",
+      "last_name": "Ikromova",
+      "middle_name": "Ilyosovna",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Ikromova Iroda Ilyosovna",
+      "password": "pbkdf2_sha256$870000$Y8wcmdFvNXmjy8dzS3ySIa$8i7kqQB7i//7V2YeY7o5MPXCS/2MFFEEuQ6cqA5hrj4=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.ilashevs",
+      "first_name": "Shohruh",
+      "last_name": "Ilashev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Ilashev Shohruh",
+      "password": "pbkdf2_sha256$870000$ECVmBUS2iYKMJhqK5EvTvX$lswrCLakBXgJlqIyJnq9Kr+GxsDWxk+PBtvSmstXnqA=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.inatillayeva",
+      "first_name": "Abdulla",
+      "last_name": "Inatillayev",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Inatillayev Abdulla",
+      "password": "pbkdf2_sha256$870000$kbLQSUasJtRVGgJy39PrOh$0VgY1z5MYG60ds+4cO+SsGeg/D/PLxayLwWQgd4ljqo=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.inaxamovan",
+      "first_name": "Nozimaxon",
+      "last_name": "Inaxamova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Inaxamova Nozimaxon",
+      "password": "pbkdf2_sha256$870000$DBmNliYESEKKK5UzR8EwOF$PMKXsXt1mdV6BXlEWl6RpES32XuoBFdMIZoVuXzd9CA=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.inomiddina",
+      "first_name": "Abduraxmonov",
+      "last_name": "Inomiddin",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Inomiddin Abduraxmonov",
+      "password": "pbkdf2_sha256$870000$jJKnjtl99Vn0hl7frUYhVF$MvnkhA31tVdKvWPmym7SY3Y+bIMlTVifgMOxycSFv74=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.isayevr",
+      "first_name": "Ruslan",
+      "last_name": "Isayev",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Isayev Ruslan",
+      "password": "pbkdf2_sha256$870000$cUTBGZzOGzASkvwZgCF8Vu$2QQ+AAOa3ReKDwC38lM7SnUoXGy/E7sKNnTPaFzBvGg=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.ismailovae",
+      "first_name": "Ezoza",
+      "last_name": "Ismailova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Ismailova Ezoza",
+      "password": "pbkdf2_sha256$870000$9L0qm5yW5C50bmysqKKFQv$7nUy9/uPBycIfeSRyi8bEO6kpv/5KdWeHJXgq84p5bc=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.ismailovx",
+      "first_name": "Xojiakbar",
+      "last_name": "Ismailov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Ismailov Xojiakbar",
+      "password": "pbkdf2_sha256$870000$7OXLpd7ddKGXmoQC7NbIkw$CLiD+CtsaNsRYA0hLMy66VBbmdOL3DEVn+UeMxul7ZM=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.ismailovx2",
+      "first_name": "Xojiakbar",
+      "last_name": "Ismailov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Ismailov Xojiakbar",
+      "password": "pbkdf2_sha256$870000$GdpzTpACCAPyWzzkpCSN7T$pwTPLOXvrZK0Bo1y2fTqYSJbEw2972mvuAIGNoDzUn8=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.isroilovak",
+      "first_name": "Kumushoy",
+      "last_name": "Isroilova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Isroilova Kumushoy",
+      "password": "pbkdf2_sha256$870000$56Md18qqmYNNoc6FJd0lQY$7/7ZY6C4OzD5HxnYwcNJSlM9d+UEEHAwz/e4tNLHChw=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.isroilovi",
+      "first_name": "Ismoiljon",
+      "last_name": "Isroilov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Isroilov Ismoiljon",
+      "password": "pbkdf2_sha256$870000$pGhVjaAhgbV7hQHYS0Y4qi$lxomwjsdUBbTKm3lPkwzofmWc5PX0F3TwcDE1cI/dok=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.izatilloyeva",
+      "first_name": "Aslbek",
+      "last_name": "Izatilloyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Izatilloyev Aslbek",
+      "password": "pbkdf2_sha256$870000$gjPgdu7jKadqh4F7SxldWy$jtF817r5qAeUvpCoxcrTW2Fz73cKkGdl/U5rk2NABDU=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.izzatullayevaf",
+      "first_name": "Feruza",
+      "last_name": "Izzatullayeva",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Izzatullayeva Feruza",
+      "password": "pbkdf2_sha256$870000$u0gfhL1AjVaxvmq1DoHTlg$H/k+QHlK/rM4RrUBPqm0uY8G7biPLfGaDHNtqFie+vY=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.jahongirn",
+      "first_name": "Nizomov",
+      "last_name": "Jahongir",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Jahongir Nizomov",
+      "password": "pbkdf2_sha256$870000$8blrY8IiVHuXi5pzjf5UlX$PEPHeowjZGhYbnMzcjxD0/hdWgcfEyaH3caGCwlE93Y=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.jakbaraliyevam",
+      "first_name": "Muxtasar",
+      "last_name": "Jakbaraliyeva",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Jakbaraliyeva Muxtasar",
+      "password": "pbkdf2_sha256$870000$5FiUR5z3AKULGaAisalTmb$7/Dv/L3nilnjcJbI3xNqBkRBiCHNxPZYUtnu8YCAjh0=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.jaloliddinovu",
+      "first_name": "Ulug’bek",
+      "last_name": "Jaloliddinov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Jaloliddinov Ulug’bek",
+      "password": "pbkdf2_sha256$870000$2qaRhMRFudorSkTslKfbPD$zZoM67sTVkPfo0RRNDYMdzF7Lp2oA/guDZMUkQ7qcG0=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.jamoliddinovs",
+      "first_name": "Sirojiddin",
+      "last_name": "Jamoliddinov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Jamoliddinov Sirojiddin",
+      "password": "pbkdf2_sha256$870000$l5yg9JstIc8rDqI8yRqP1j$ZS1+7Tt4yylnuje2Pzp7pO32hmf/UzBeNwk1Va6KIQU=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.jamoloval",
+      "first_name": "Lola",
+      "last_name": "Jamolova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Jamolova Lola",
+      "password": "pbkdf2_sha256$870000$4Jl5eMaQyzyLBgHaIcTkTO$xqjs6RJ0IjFTL+7ik4XTOQKyffXzfmuVZHDgtKECZA8=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.joldasbaevad",
+      "first_name": "Dilbar",
+      "last_name": "Joldasbaeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Joldasbaeva Dilbar",
+      "password": "pbkdf2_sha256$870000$8kslOxLs0iHAC0uL6GmIpd$UNaxZWEl/s4IH5tHBiZ3k2us4ah+xMfMBCr4V+uzTg4=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.jorayeva",
+      "first_name": "Akobir",
+      "last_name": "Jo’rayev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Jo’rayev Akobir",
+      "password": "pbkdf2_sha256$870000$JVIQWUoUPh5TpKYyL9fvSt$n/JRawt7EpJR/5Mc2jzBeblGTpb0JhBAtPfilada+Hg=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.jorayevaj",
+      "first_name": "Jasmina",
+      "last_name": "Jo'rayeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Jo'rayeva Jasmina",
+      "password": "pbkdf2_sha256$870000$I9kNdw9yWMLAnstwZLEt2D$crzcHqGyHZjyaKNwlvzHHt/G9K1X0TwQ7MvNFzvX8Vk=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.jumaboyevaz",
+      "first_name": "Zarina",
+      "last_name": "Jumaboyeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Jumaboyeva Zarina",
+      "password": "pbkdf2_sha256$870000$e6NrWW8biQCnvJEkNNuB22$6flKFAZHjUx5k5r5mHSlEA9zpV5cJLc3yFo0NDc84mQ=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.jumanazarovar",
+      "first_name": "Rayhona",
+      "last_name": "Jumanazarova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Jumanazarova Rayhona",
+      "password": "pbkdf2_sha256$870000$h7jP2T05EvJRxWB8Q7RHFu$AaGYhUriac+YzmFFeHaTe3x9GZ5n0sCy91bRy46bOOU=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.kalmurodovax",
+      "first_name": "Xurliman",
+      "last_name": "Kalmurodova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Kalmurodova Xurliman",
+      "password": "pbkdf2_sha256$870000$x34xwk04sAgYjiEyoFyiNc$E9aTJ+kFc/eVqg3KgYkcw0bxuYMQ5mkLi/EhArGsg6k=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.kamolovas",
+      "first_name": "Shahodat",
+      "last_name": "Kamolova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Kamolova Shahodat",
+      "password": "pbkdf2_sha256$870000$E1wAUgaLHbkKcRdPyxiqna$5Ead1M9RyL198ybYwFau/EmiP6tFyHLXNhKsevMVK0A=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.kamolovq",
+      "first_name": "Quvvatbek",
+      "last_name": "Kamolov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Kamolov Quvvatbek",
+      "password": "pbkdf2_sha256$870000$hkFpJUgbOEoFBEk3INsVfq$dtZQD1Jz69MZw06In5tw258jll3xxHezvxUMuviBZm0=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.karimovae",
+      "first_name": "Elianura",
+      "last_name": "Karimova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Karimova Elianura",
+      "password": "pbkdf2_sha256$870000$uFMkfEtRQv5r92ngaBVXnL$vX/Q4/COIgg1JIe+BPN39P+PLpjhd0TwhTgoA7KuBFM=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.koblashovaz",
+      "first_name": "Zayfuna",
+      "last_name": "Koblashova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Koblashova Zayfuna",
+      "password": "pbkdf2_sha256$870000$uTRE1H8PsEz3pcVAA5xsJq$sateDKW1zu/TARewHHtQy2MUqhtabHkr4hj9DSOam+4=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.kuyliboyevg",
+      "first_name": "G'ayratjon",
+      "last_name": "Kuyliboyev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Kuyliboyev G'ayratjon",
+      "password": "pbkdf2_sha256$870000$9qCLi9Hb77ndde0uxOYasL$JdbpctxK2jAXBlB759iWmlmsa4omj1jYp2FV2aunDqI=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.lapasovaa",
+      "first_name": "Anora",
+      "last_name": "Lapasova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Lapasova Anora",
+      "password": "pbkdf2_sha256$870000$v0eqBSpb9BfbWcJW5YPb40$HenHEBDp/vvDJ/JZ6HlOvCPeWlxutEp2VcfYAc41GUw=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.latifovm",
+      "first_name": "Muhammadsodiq",
+      "last_name": "Latifov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Latifov Muhammadsodiq",
+      "password": "pbkdf2_sha256$870000$zex6YALgNeRQgYMiTZ27bx$+YbMgFFf/e+Vtlfi2yn0DyBboXIEN4F9UPMtFg3o2mg=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.laylo",
+      "first_name": "",
+      "last_name": "Laylo",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Laylo",
+      "password": "pbkdf2_sha256$870000$hI58I2NmMhba1bVOo4TfHh$tnmfW90Mbg4AJXUHczBgzYxbG2dABrMWfqapkYGmjZQ=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.lazizbeka",
+      "first_name": "Azimjanov",
+      "last_name": "Lazizbek",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Lazizbek Azimjanov",
+      "password": "pbkdf2_sha256$870000$PUzhazpN3l6zPmif6NJ0DW$1rrfSYkyWhbrAyQ6IV6HBV3NTTg4cP2Qtb/p+kzkhc8=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.lazizbekm",
+      "first_name": "Mahmudov",
+      "last_name": "Lazizbek",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Lazizbek Mahmudov",
+      "password": "pbkdf2_sha256$870000$muC83UZnyeStAcVRqYFZWW$0Og+FXm6mle2Qmzw+k/93C/WFxKNQwU3+NP0ajGpbNQ=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.malikovaf",
+      "first_name": "Farangiz",
+      "last_name": "Malikova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Malikova Farangiz",
+      "password": "pbkdf2_sha256$870000$mKCJmZhuLPx8jKqwhdsGIf$YrFrg/xiZ4g9P4dJ6FKc8pRLX1sEP8kMdc8bRDfilPg=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.mamajonova",
+      "first_name": "A'zamjon",
+      "last_name": "Mamajonov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Mamajonov A'zamjon",
+      "password": "pbkdf2_sha256$870000$nu0SkYTvmSsVgYl6QPR61n$gi6Cj5jHvMSIilJUhXaNP7xVvybJTZd3xEv1rO4kSRc=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.maqsudovas",
+      "first_name": "Sevinch",
+      "last_name": "Maqsudova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Maqsudova Sevinch",
+      "password": "pbkdf2_sha256$870000$nDsNed1ajI8wJr7DBhszRn$OXnjjEIMF+2AsJlTqMu5Ps2MVbf9jP63IUx03t0fJWA=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.mardanovam",
+      "first_name": "Mahliyo",
+      "last_name": "Mardanova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Mardanova Mahliyo",
+      "password": "pbkdf2_sha256$870000$ORl94Vg2C0jfLwN3nFUjfU$InxKqqJSCMEzrwqf5JX8Ow5PNJs1ZQSHr1yI35NrKRQ=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.maxamatdinova",
+      "first_name": "Arislanbek",
+      "last_name": "Maxamatdinov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Maxamatdinov Arislanbek",
+      "password": "pbkdf2_sha256$870000$qeAc4fj5a6aaAGm5kVfuaQ$EYYC5nl5JOp4dhdeRyNfau4p8YaRrgCUe+Wa4/MR4Ic=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.maxkamovai",
+      "first_name": "Iroda",
+      "last_name": "Maxkamova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Maxkamova Iroda",
+      "password": "pbkdf2_sha256$870000$ix6IefG6h8bHkajDSddyJK$t83rxNSM+RjW39yoZWA2NWTM27JW7RhenJq06yDuTYU=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.mengboyevam",
+      "first_name": "Malika",
+      "last_name": "Mengboyeva",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Mengboyeva Malika",
+      "password": "pbkdf2_sha256$870000$EXC0PKyflS67DsNs1WByiw$nFTeHaFi2Ffeb+nuDFNuFc9WaGbWvDSRBRw+1rLuJtY=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.miraxmatovm",
+      "first_name": "Miraziz",
+      "last_name": "Miraxmatov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Miraxmatov Miraziz",
+      "password": "pbkdf2_sha256$870000$KSDiORLC9BO45aNoJM7Cco$EAob7m7Iq6lmHmDg3wo+dy5XKj3nsUBmK5TRyh9RRe8=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.mirkomilovam",
+      "first_name": "Marjona",
+      "last_name": "Mirkomilova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Mirkomilova Marjona",
+      "password": "pbkdf2_sha256$870000$oF2TkQ7IR2jOqByZnaadno$2mlwqpUdtTAR3b/CZm5KhK56/T8nqExv4wt9VCGmmsU=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.mirzaqulovm",
+      "first_name": "Mirzabek",
+      "last_name": "Mirzaqulov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Mirzaqulov Mirzabek",
+      "password": "pbkdf2_sha256$870000$iyph2EOXqkrbc9RDpmZWFd$Fqyc0UWYH+TWG0cgELXWqjfv2aozilsKT3abuRcbTDk=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.mirzayevai",
+      "first_name": "Iroda",
+      "last_name": "Mirzayeva",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Mirzayeva Iroda",
+      "password": "pbkdf2_sha256$870000$UykhDIQU7ClDUVmNm3AuNu$BwmgCeLz1fZGrbTCSD/n+L9BvmrnjruyWJX3f6z4L+o=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.mominovas",
+      "first_name": "Sevinch",
+      "last_name": "Mõminova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Mõminova Sevinch",
+      "password": "pbkdf2_sha256$870000$vmEhZI2Nq0Ec0p4Dn853Di$TEM3pydDjzefHojc9SGFlUXeyqs5ThR5yY3JejsqZH8=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.moyliyevn",
+      "first_name": "Nurislom",
+      "last_name": "Moyliyev",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Moyliyev Nurislom",
+      "password": "pbkdf2_sha256$870000$D6zHf6JC4ljjxBuPaeuHIW$G5wWuFmMiiPjOgy+CeDUGvCgmmZAF5sc9IidfNEwqNY=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.muborakb",
+      "first_name": "Bazarova",
+      "last_name": "Muborak",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Muborak Bazarova",
+      "password": "pbkdf2_sha256$870000$M995ZWoHNeZU2mNNwSjbPb$+TqgErrPrT/R6LMU3WjcQW1tDQn/8p4uC9YosILq4wA=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.muhamatyusupovm",
+      "first_name": "MUHAMMADAZIZ",
+      "last_name": "MUHAMATYUSUPOV",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|MUHAMATYUSUPOV MUHAMMADAZIZ",
+      "password": "pbkdf2_sha256$870000$o8Q6JZS5EH3wVDfnMaZUAP$SmsN8BOncWVWORrXFk8BQA8c9RqVnvTb99g0d6oUqrs=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.muhammadbilolr",
+      "first_name": "Ravshanov",
+      "last_name": "Muhammadbilol",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Muhammadbilol Ravshanov",
+      "password": "pbkdf2_sha256$870000$g1oYVm1JRpC2t3ZzD7NXid$hQmvtWYZdsJECuCx7r9z2isbbxLHwWZBhHhjE68wupc=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.muhammadiyeva",
+      "first_name": "Akbarjon",
+      "last_name": "Muhammadiyev",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Muhammadiyev Akbarjon",
+      "password": "pbkdf2_sha256$870000$VHYJ0cVpDVZUWUJIzAevjB$+4mQMJ0YuzPT+CfXmXL+aRLtI9VKHfX14v1Z0EXSWMs=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.muhiddinovs",
+      "first_name": "Shohjahon",
+      "last_name": "Muhiddinov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Muhiddinov Shohjahon",
+      "password": "pbkdf2_sha256$870000$N0jaZgUzMnaLFKSUYB4vnZ$MRb68sN0+/NGQTK9l3OFsxi9sciMRp59YycKUX+IHg0=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.muminovaz",
+      "first_name": "Zebiniso",
+      "last_name": "Muminova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Muminova Zebiniso",
+      "password": "pbkdf2_sha256$870000$7Og6S17vONZyzIWCSYXoI7$/UTrXn0Q+uZ/KRLaFC/XE3zvJIgJLWENw0xp6eEid4U=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.munirae",
+      "first_name": "Egamberdiyeva",
+      "last_name": "Munira",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Munira Egamberdiyeva",
+      "password": "pbkdf2_sha256$870000$FiPZkwRuwJoO6YUqzrCIQs$UrWBCuOdSGVJ1aPZ8Si1jVL3CP6jHZVLr3GY0g2b5m4=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.murodovaf",
+      "first_name": "Fotima",
+      "last_name": "Murodova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Murodova Fotima",
+      "password": "pbkdf2_sha256$870000$cTgu2Tjgb1Fkf3u3v8bABv$q7pa65ieCkfApZSCeMTOPPOk4G7stm9+juF3Pndzd08=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.murodovau",
+      "first_name": "Umida",
+      "last_name": "Murodova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Murodova Umida",
+      "password": "pbkdf2_sha256$870000$NMwAAyRf7iyg7txTAtoG38$5hZ4ki/DtJFiTLMYStMzUF9sx/EFcmuSSvsjV+wuKuE=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.murtazayevas",
+      "first_name": "Sevinch",
+      "last_name": "Murtazayeva",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Murtazayeva Sevinch",
+      "password": "pbkdf2_sha256$870000$HLK180ohkkhg9EJu03mXCq$jviubQRFcGvMznOH4FvrZfiznNksdpI3tn5xXfb8x6Q=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.murtazoyevs",
+      "first_name": "Sarvar",
+      "last_name": "Murtazoyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Murtazoyev Sarvar",
+      "password": "pbkdf2_sha256$870000$9zCy0uXGAF3TCx0E4oNXwF$aWAw//dJIeysf1VjSyuhf+dyPmi+LUFasIqxzJb7pBc=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.mustafoqulovam",
+      "first_name": "Marjona",
+      "last_name": "Mustafoqulova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Mustafoqulova Marjona",
+      "password": "pbkdf2_sha256$870000$epPABUih3UK77Wuevir13p$ycjVAAxVIsaGuLwd2AU+iNbigJjSx4cV6Qia54B+uaM=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.mustafoqulovam2",
+      "first_name": "Marjona",
+      "last_name": "Mustafoqulova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Mustafoqulova Marjona",
+      "password": "pbkdf2_sha256$870000$RFfLiD7hRcMHIh5W1vcdAH$vH2XTMA44ZAS+zNnB5kdGyNKq+FTKsE2WqdxgUCuIco=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.mustafoqulovu",
+      "first_name": "Umurzoq",
+      "last_name": "Mustafoqulov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Mustafoqulov Umurzoq",
+      "password": "pbkdf2_sha256$870000$0MJGVimzAFGcLD3QkuUWD4$5LgDuMNCiQjy3hBltykMGDdF2uXEcdSQ21EBi/ER1lQ=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.mustaqovaf",
+      "first_name": "Feruza",
+      "last_name": "Mustaqova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Mustaqova Feruza",
+      "password": "pbkdf2_sha256$870000$crhQNYuan1zJCAlM9ZmZRF$4r4M29f9D+LTwWsUyd8ydXvSsqFmRzf1Wn7BVVxrKMg=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.muxiddinovq",
+      "first_name": "Qamariddin",
+      "last_name": "Muxiddinov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Muxiddinov Qamariddin",
+      "password": "pbkdf2_sha256$870000$n7aXOdDaJpaUNrP6AJc2T1$HAbZKnJJxThf764gCs4DtFoenUb8KfbOoJ85Iiu0RUU=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.muxtoraliyevm",
+      "first_name": "Mirjahon",
+      "last_name": "Muxtoraliyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Muxtoraliyev Mirjahon",
+      "password": "pbkdf2_sha256$870000$orOcdeD1Fo6w534MSNZ5wq$sxA/VHzMndtGwPGp6/P0WFW7OeurVl43Xyado5lTwgA=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.muxtorovad",
+      "first_name": "Dilnoza",
+      "last_name": "Muxtorova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Muxtorova Dilnoza",
+      "password": "pbkdf2_sha256$870000$VsBQisD6YxvBjPpZCN9FhJ$CIYLFl4SM682y1zNtJX4yM0gb7p/RVJ4rriYbZ3p7rk=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.muxtorovam",
+      "first_name": "Mohigul",
+      "last_name": "Muxtorova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Muxtorova Mohigul",
+      "password": "pbkdf2_sha256$870000$JRGTpfff0yqsFn2pOkPndO$lwI5pNrtMKms1cy90a2cVkGeOR0FaoB0vuDQkmivWBc=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.namozovas",
+      "first_name": "Sevinch",
+      "last_name": "Namozova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Namozova Sevinch",
+      "password": "pbkdf2_sha256$870000$3fjjjudQp7UBzKkNbw7rXo$cfJ2N5PjR2AvAQa++/gxUrk2wxXBbBHmuVBfSuOV/Ik=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.narimanovam",
+      "first_name": "Madina",
+      "last_name": "Narimanova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Narimanova Madina",
+      "password": "pbkdf2_sha256$870000$e9ZKsLJtYkPttj69fPhKBK$rXJTGn8nqwRsfKIG/lQ71C/e4w61LDErBABcKFzMolU=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.narimonovd",
+      "first_name": "Diyorbek",
+      "last_name": "Narimonov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Narimonov Diyorbek",
+      "password": "pbkdf2_sha256$870000$lOTWWBgcpJBAdee6erxOEV$nlkQl5feLnolncpw+UhMfsLWJTncA71xqXhZYlTk0Ag=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.narimqulovak",
+      "first_name": "Kamola",
+      "last_name": "Narimqulova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Narimqulova Kamola",
+      "password": "pbkdf2_sha256$870000$weGGxVNvsffEY21MRmpQxY$4kXosAeuhkMxPxWVM+XHlXxAxBN9lIlaX09R3fYxK9U=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.nasriddinovah",
+      "first_name": "Husnidabonu",
+      "last_name": "Nasriddinova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Nasriddinova Husnidabonu",
+      "password": "pbkdf2_sha256$870000$Vvaz4sIYtr50a88TaqWund$uUciMicm5kOM3fPUQ1UtgR+UQkIwy3WOsYuWjOo0pUo=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.nematovam",
+      "first_name": "Muxlisa",
+      "last_name": "Nematova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Nematova Muxlisa",
+      "password": "pbkdf2_sha256$870000$h5dIpCK7EW9dLDXJuiKs0Q$2FRHlJdMUhzgSSe8ElGziL/0uWkD/mFom+cHrL4fvIY=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.norimonovs",
+      "first_name": "Sultonboy",
+      "last_name": "Norimonov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Norimonov Sultonboy",
+      "password": "pbkdf2_sha256$870000$M1ixbg1feqMyvZLquvROdt$KZpB/nFd6toGh4Q4qovtMGGCcAqfSxpUp0mHOBoVmHs=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.norsafarovm",
+      "first_name": "Muhammad",
+      "last_name": "Norsafarov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Norsafarov Muhammad",
+      "password": "pbkdf2_sha256$870000$enlFgn2WpRSpTcZbl1iayA$DyLKFIVUk/NdAp/ygu3rm+jfrderw+KO5f9dO1y2Pvc=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.nosirovn",
+      "first_name": "Nozimjon",
+      "last_name": "Nosirov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Nosirov Nozimjon",
+      "password": "pbkdf2_sha256$870000$3AMlb8YA7Q1y5jfHac1GkH$i0b808s72/u/28/i+zB/+f/wRlLa6JXU1BLriJdPrmU=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.nuridillayevn",
+      "first_name": "Nursulton",
+      "last_name": "Nuridillayev",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Nuridillayev Nursulton",
+      "password": "pbkdf2_sha256$870000$ljDj8sdzrIss3wcWYdj0mi$wdaNmCTOfO5sFzdKS5aJa9VmTOR+8xmFjxpomWF6Wwc=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.nurullayevn",
+      "first_name": "Nurmatbek",
+      "last_name": "Nurullayev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Nurullayev Nurmatbek",
+      "password": "pbkdf2_sha256$870000$9PoKJPM8xCCoLYcss9CVGI$8lsVW/7ZwDDKC1TkgsiXNiwRylkINukVc6RS4bErPqQ=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.odambayevq",
+      "first_name": "Quvanchbek",
+      "last_name": "Odambayev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Odambayev Quvanchbek",
+      "password": "pbkdf2_sha256$870000$wwH2CEc4lDDZ0qCP8WNPc5$JoEqoawmyt4oWMjA8vWqtcuiLICWhEt6HQfp4fpLEc8=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.oktamboyevf",
+      "first_name": "Fayzullaxo’ja",
+      "last_name": "O’ktamboyev",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|O’ktamboyev Fayzullaxo’ja",
+      "password": "pbkdf2_sha256$870000$cKnJOIgOOokQVdgC8OzcDQ$rKCunNHUHu2b+EkVvi6DUeb1vIzgnvrNeeCqV+++iyk=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.oktamovs",
+      "first_name": "Saidjon",
+      "last_name": "O’ktamov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|O’ktamov Saidjon",
+      "password": "pbkdf2_sha256$870000$VESN1VICFLM48FZlqwSbRr$Nj0MYdqZfKyxv+twz3g09fnUOpOWlF208EeUy4vEMj8=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.olimovag",
+      "first_name": "Go’zal",
+      "last_name": "Olimova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Olimova Go’zal",
+      "password": "pbkdf2_sha256$870000$ZLOjEb5kEahHyvhgTeZA4A$UOYryUGwCXjk049MWBrvH/qNncWdPHbcLS9mKa3yaNw=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.olimovar",
+      "first_name": "Ruxshona",
+      "last_name": "Olimova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Olimova Ruxshona",
+      "password": "pbkdf2_sha256$870000$nQ1jvDLWzU2Z8drdESRHcw$pLCc2rU9oFpzvu6Zd/MX1V7iyAXHzzG7uG+bL9iHUp0=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.olimovax",
+      "first_name": "Xosiyatxon",
+      "last_name": "Olimova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Olimova Xosiyatxon",
+      "password": "pbkdf2_sha256$870000$GTIC5SLRnPGkyHGBxaNZWZ$4o9I/6aV2lDCysgQmKfiTrz+VP7OR5XNloZmR68iEaI=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.olimovm",
+      "first_name": "Manusherjon",
+      "last_name": "Olimov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Olimov Manusherjon",
+      "password": "pbkdf2_sha256$870000$uSO3qzcoW2GymqFZSTwEin$c/9G55CkC6XMdXTh2Ce6bwAaBTWlYarTpU17KryVikA=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.olloyorovas",
+      "first_name": "Sarvinoz",
+      "last_name": "Olloyorova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Olloyorova Sarvinoz",
+      "password": "pbkdf2_sha256$870000$NapO6xaSgzxNuTMUEnyOf4$clIV7bwigraHPjm0bsK7/LVxrcnwEBM1e7JVYtLF8uo=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.orastas",
+      "first_name": "Sharifova",
+      "last_name": "Orasta",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Orasta Sharifova",
+      "password": "pbkdf2_sha256$870000$yd3Uyo3ySKqBueL4xn0USa$+W3Kf592VGBJmDrzaH3ZRiZSODtvCWEJI+nEvry8alk=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.orazbaevd",
+      "first_name": "Dawletbek",
+      "last_name": "Orazbaev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Orazbaev Dawletbek",
+      "password": "pbkdf2_sha256$870000$LVAlvPdpUSuHGat33DV7wb$5aA3z4Hk/KSc2ETVDnlMQdTymHxj5GxB29C6ZtdwuNM=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.orifjonovm",
+      "first_name": "Muhammadsiddiq",
+      "last_name": "Orifjonov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Orifjonov Muhammadsiddiq",
+      "password": "pbkdf2_sha256$870000$k3FJ634NUo2PKkV2V8zu2M$kmDsaX6TuF41KQ/1Hm1I0dxuN46qjP/llXwVCbVW9J0=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.orifovas",
+      "first_name": "Salima",
+      "last_name": "Orifova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Orifova Salima",
+      "password": "pbkdf2_sha256$870000$zjEYKflfJ3nYzDwfkYnBqg$tITQQdiQMaZb2g7QwT6DrC+KH7LElB+epsjk0tonel8=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.ostanayevao",
+      "first_name": "Odinaxon",
+      "last_name": "Ostanayeva",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Ostanayeva Odinaxon",
+      "password": "pbkdf2_sha256$870000$5lcxCPfwlZsEXHytI8yALF$SX08lqpV1m8Y0rGaZE8L7/C6r47+e5oTo3tt98XcrE8=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.otajonovad",
+      "first_name": "Dilnoza",
+      "last_name": "Otajonova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Otajonova Dilnoza",
+      "password": "pbkdf2_sha256$870000$OR97iWfa9TdEK7teWjXj0F$mY3Kr4qby+9WHN9RozYUaclfZtL4zAV4Bkf4S8S1vfI=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.otaxonovac",
+      "first_name": "Charosxon",
+      "last_name": "Otaxonova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Otaxonova Charosxon",
+      "password": "pbkdf2_sha256$870000$4BP4KDzz430QVP3CuY7R4f$HJGU3PCjFiw+F8ZxCW8NPPT3zg7WCZKAYGvHnvvmcbo=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.otaxonovs",
+      "first_name": "Shaxzodxon",
+      "last_name": "Otaxonov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Otaxonov Shaxzodxon",
+      "password": "pbkdf2_sha256$870000$IHltb3dYND6Y9LSsd0s8nf$Ldb1+KPevjDZXGz0wzSV0BzLWVxjwnkEeI7MhWH5VZs=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.ozodan",
+      "first_name": "Normurodova",
+      "last_name": "Ozoda",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Ozoda Normurodova",
+      "password": "pbkdf2_sha256$870000$V7bTD4jnITh8s9Dq7Yk01N$svUK9E/1U+d7oe7ZDWS84uIhq02JhiGUp/SNDiLWHlY=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.paraxatovas",
+      "first_name": "Selvina",
+      "last_name": "Paraxatova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Paraxatova Selvina",
+      "password": "pbkdf2_sha256$870000$I6KsfwLmDl9sSwmnYpki66$RRtuwGHF1kmBdkkaQRA0j5MMAVblZix+nuLzM7EMtsE=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.polatova",
+      "first_name": "Abdullo",
+      "last_name": "Polatov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Polatov Abdullo",
+      "password": "pbkdf2_sha256$870000$nBY7YbrTX8hTM1UW9HwPHA$LwK5GwrkbXN3ownCtNkte3I4rCzuLQ+2EYpw64KBm3M=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.polatovaa",
+      "first_name": "Anoraxon",
+      "last_name": "Po'latova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Po'latova Anoraxon",
+      "password": "pbkdf2_sha256$870000$mZaQBvlLGtJB40r9mqEoCF$+/012aZgbR252rrUAiAKzg6iwFzQ5TVDY4mKcoFvTRs=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.polvonovb",
+      "first_name": "Bekmurod",
+      "last_name": "Polvonov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Polvonov Bekmurod",
+      "password": "pbkdf2_sha256$870000$qrXrl6hU0595PtxegYYAzz$MtbImGbHZjxtoXewvEi/urQHoLTE9LlfVaWQhsh5TeE=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.qahhorova",
+      "first_name": "Akobir",
+      "last_name": "Qahhorov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Qahhorov Akobir",
+      "password": "pbkdf2_sha256$870000$KujgozoajjJTg50e4WuvPc$9s8X7bWjCCyhHy5zYsjzoh4kjyOka/R7WnllkassDnQ=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.qahramonovas",
+      "first_name": "Sarvinoz",
+      "last_name": "Qahramonova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Qahramonova Sarvinoz",
+      "password": "pbkdf2_sha256$870000$CyWZDJqcpcb1LPkBmcNeGf$fiK6U7AYh50q+skC0r1ZWjMgC1FqrEekq02oiser6/k=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.qahramonovs",
+      "first_name": "Sherxon",
+      "last_name": "Qahramonov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Qahramonov Sherxon",
+      "password": "pbkdf2_sha256$870000$GT8jrCF1UmrWiUaro60LuQ$ntddi9f4C0Ivdm68HMoB2CA0CEwJ7QH7j1IDxqajE+Y=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.qambaraliyevar",
+      "first_name": "Ruxshona",
+      "last_name": "Qambaraliyeva",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Qambaraliyeva Ruxshona",
+      "password": "pbkdf2_sha256$870000$7pGfwdCb4RxJRkxe2gTBJ7$Fu2ahalR5EG6Hg8qyGnxby0pDWZVWqoKmWbKI/MYb5I=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.qilicheva",
+      "first_name": "Asilbek",
+      "last_name": "Qilichev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Qilichev Asilbek",
+      "password": "pbkdf2_sha256$870000$oNRhtfojmnjWLr7GfqnRGn$j6HCjZnqFYV9UcUpUvy7N31drfq24AoJnlfwxZgl5A8=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.qiyomovt",
+      "first_name": "TEMURBEK",
+      "last_name": "QIYOMOV",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|QIYOMOV TEMURBEK",
+      "password": "pbkdf2_sha256$870000$lmT8Tqdo5aOVAVpUPVU4sE$bhUtmSU+rKTf1ht0H6Ep8V1zHHKs7tuG4pPFNFEvATA=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.qoldashevan",
+      "first_name": "Nodirabegim",
+      "last_name": "Qòldasheva",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Qòldasheva Nodirabegim",
+      "password": "pbkdf2_sha256$870000$z5wZngHbFg9FxCSQVquHXq$XtXyxXdrECYSmqNEv47Tmus6UJ/yupYKVyE+eDXsCHE=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.qozibayevas",
+      "first_name": "Saboxon",
+      "last_name": "Qo'zibayeva",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Qo'zibayeva Saboxon",
+      "password": "pbkdf2_sha256$870000$zTp8SkFHEs4px57gpUnjJz$gcx2U+s6VCJwzODG/UTOxXfnpGN3hf+l12tRMLQaHhE=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.qoziyeva",
+      "first_name": "Akobir",
+      "last_name": "Qoʻziyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Qoʻziyev Akobir",
+      "password": "pbkdf2_sha256$870000$BreQFxW9jXBf7iWLBxg1iG$Db6tdh7Jk6Z+LNAIGXXlYs6YtdQmGF/VpwtHx+0jq1g=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.qulboyevas",
+      "first_name": "Sevinch",
+      "last_name": "Qulboyeva",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Qulboyeva Sevinch",
+      "password": "pbkdf2_sha256$870000$mYEy9Gn0j9TRECU3SXr0mC$tkuBXDrLxhwmESed6hZlO7q/wof4tQ8GqnJ1FY3E/fA=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.quramboyevt",
+      "first_name": "Toʻrabek",
+      "last_name": "Quramboyev",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Quramboyev Toʻrabek",
+      "password": "pbkdf2_sha256$870000$KMsuZJ3KKXSRecFQm1ArU1$T6OPJsNneNluKtXHCxpu4amdtf4eSyLNxSfgs5heLHA=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.quranbayevb",
+      "first_name": "Boburbek",
+      "last_name": "Quranbayev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Quranbayev Boburbek",
+      "password": "pbkdf2_sha256$870000$e2yMMDnJgoeLb3dM37KvGZ$WZ9+QoeMEMJ60rHeLBipktxpyMpXhy+l6GVfwxmrbck=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.qurbonboyevah",
+      "first_name": "Hulkar",
+      "last_name": "Qurbonboyeva",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Qurbonboyeva Hulkar",
+      "password": "pbkdf2_sha256$870000$SCyI185HBBt2dDGjp2IKsT$k5wk3QEW6ozUnat/aWzLIwvPoyINLcIVECeZz8mfgBU=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.qurbonovag",
+      "first_name": "Gulsevar",
+      "last_name": "Qurbonova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Qurbonova Gulsevar",
+      "password": "pbkdf2_sha256$870000$6Um2Q7quGJmOwMWSS77eqh$m6anXkrTa5HmJpxCOi+0+Fq2UMre+qb+llr2VmJxRqs=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.quvondiqovas",
+      "first_name": "Sarvinoz",
+      "last_name": "Quvondiqova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Quvondiqova Sarvinoz",
+      "password": "pbkdf2_sha256$870000$WhPXVt25Od3zJeIuSXMtZ7$uAawkcfA3yeSdGka5EAI9dMOmAaRpWfRZg/ObrQqzpc=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.radjaboliyeva",
+      "first_name": "Amirjon",
+      "last_name": "Radjaboliyev",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Radjaboliyev Amirjon",
+      "password": "pbkdf2_sha256$870000$PV9jATl9w20z7LDsPsnYLb$27eKzPdWu0SMdZ8yJkijgRJ+rd3KBBreo7Lg/UgRLVY=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.rahmonova",
+      "first_name": "Alisherjon",
+      "last_name": "Rahmonov",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Rahmonov Alisherjon",
+      "password": "pbkdf2_sha256$870000$LBHElo8UnmTjAEcb3OujWP$w0NunEDHtjDXofO4dy+llj0MzYjfLZJ9GIkuIL9O9+8=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.rajabovr",
+      "first_name": "Ruslanbek",
+      "last_name": "Rajabov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Rajabov Ruslanbek",
+      "password": "pbkdf2_sha256$870000$E5otEnPbkfbHMPacMRHvrP$z/ZYkEmqeUo4lMcdveOEI9pwvx2Hs3wJKvM4EWMxY4g=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.ramazonovar",
+      "first_name": "Rayxona",
+      "last_name": "Ramazonova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Ramazonova Rayxona",
+      "password": "pbkdf2_sha256$870000$J8fCR7jtezcQO8udUYJcQM$n7SQ6rFU0h2F84xK8uJMxrsCLfnGTWyyKJbObfK5jvA=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.ranof",
+      "first_name": "Fayzullayeva",
+      "last_name": "Ra'no",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Ra'no Fayzullayeva",
+      "password": "pbkdf2_sha256$870000$OPQRm1ij01msFzb4NyOw8k$rKThnyH6Y+jb4CooMFSi6kBI4xSbXKtmMpYDJrtt5fA=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.rashidova",
+      "first_name": "Amirbek",
+      "last_name": "Rashidov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Rashidov Amirbek",
+      "password": "pbkdf2_sha256$870000$NyHcyd17rqhYJ8P9SgaZJV$Hh31IaZMsZPxPBp2s+8U9L9ELOy7tPRiXkBziK8k/1c=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.raximovb",
+      "first_name": "Bekzod",
+      "last_name": "Raximov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Raximov Bekzod",
+      "password": "pbkdf2_sha256$870000$hxjMcdsskVbL1MGJ94LYzO$donSjZ7CfES0YkDabeoX3pnEHP+hI5HhttebyXBJI84=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.raxmonova",
+      "first_name": "Abduraxmon",
+      "last_name": "Raxmonov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Raxmonov Abduraxmon",
+      "password": "pbkdf2_sha256$870000$Iy3C1pkR1pkCdWVq2x9xOk$tp8AA2Bmz8251M5Ak/m0H6asK0u3cwCZWjd4n9ItyMM=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.razzaqberdiyeva",
+      "first_name": "A’zamjon",
+      "last_name": "Razzaqberdiyev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Razzaqberdiyev A’zamjon",
+      "password": "pbkdf2_sha256$870000$OKxHepKjnK81vxQ1CZnLOI$9Uo4t+teDW2dB+ZF7cB/lbWUn9uIG1HaCsCHPYX3IYg=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.risqulovad",
+      "first_name": "Diyora",
+      "last_name": "Risqulova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Risqulova Diyora",
+      "password": "pbkdf2_sha256$870000$QsmL2rqTYGq72KfVcepg4P$5a6EBhDSKHM53vDG84Ek6lLMz43TVg4fwvTtPDBmH38=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.roziboyevar",
+      "first_name": "Ro’zixon",
+      "last_name": "Ro’ziboyeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Ro’ziboyeva Ro’zixon",
+      "password": "pbkdf2_sha256$870000$nkwc6XiDz8FUM6kQ666Kmr$lUhzEArFcQFXX0WHnl6aFPNe4M4krgZ6jdgNVg27RUQ=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.rozimboyevj",
+      "first_name": "Jalolbek",
+      "last_name": "Ro’zimboyev",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Ro’zimboyev Jalolbek",
+      "password": "pbkdf2_sha256$870000$nCu0wVSiXijr1DVW6207Nb$KpklKemgsaQhmyLYY9w9CdHl0GYm52q2IEBXMmY++ZM=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.rozimurodovb",
+      "first_name": "Behroʼzbek",
+      "last_name": "Roʼzimurodov",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Roʼzimurodov Behroʼzbek",
+      "password": "pbkdf2_sha256$870000$GNpyUtLCsYe9cSk3U86rGV$2iQFo3e/7cIPouiJSWev273sCVxlU8o9a4sYzt8CEwU=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.roziyevs",
+      "first_name": "Sunnatillo",
+      "last_name": "Ro’ziyev",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Ro’ziyev Sunnatillo",
+      "password": "pbkdf2_sha256$870000$GhtH8md8GkHl3Zks0BDmfj$cgy3BbtY7JsKOHLwyhWCg6L34InKGPT6nSxmByobXQQ=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.ruqiyaxons",
+      "first_name": "Shavkatillayeva",
+      "last_name": "Ruqiyaxon",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Ruqiyaxon Shavkatillayeva",
+      "password": "pbkdf2_sha256$870000$DDeNvl2sCHj3ZzAs7AzKl5$cS4V7bbVM4dIIz5vsrl0jRe9HDQ43o/tcnu1Oz9fd8A=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.rustamjonovb",
+      "first_name": "Bexruz",
+      "last_name": "Rustamjonov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Rustamjonov Bexruz",
+      "password": "pbkdf2_sha256$870000$UFsR8jAoaas1Z9XNUbDNYL$xh5CpjJaKB1tm42Q7MWdIopFF7GPgRQTdUcHhlBpf5o=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.rustamovam",
+      "first_name": "Muxlisa",
+      "last_name": "Rustamova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Rustamova Muxlisa",
+      "password": "pbkdf2_sha256$870000$pmuHGdWqZzS0u6k7LfCZlv$kHyD8W2PTyYMIkHF+tislI9growkgQWD6ilGVLUT5fQ=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.rustamovas",
+      "first_name": "Sarvinoz",
+      "last_name": "Rustamova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Rustamova Sarvinoz",
+      "password": "pbkdf2_sha256$870000$PcCGtgAztx2HYJJNmTSHf2$SKxn2MGW5mp5Zo05JCwUJAP2shqmAmnDqIVTG2Ghvk8=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.rustamovb",
+      "first_name": "Baxrom",
+      "last_name": "Rustamov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Rustamov Baxrom",
+      "password": "pbkdf2_sha256$870000$m9AQPQN0zyN2R1L84b2hIy$GFSoEmh7WApWItv7QsX5FRiUjJnm6HVj4VLNa1fsLeU=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.ruxshonaxonh",
+      "first_name": "Hakimova",
+      "last_name": "Ruxshonaxon",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Ruxshonaxon Hakimova",
+      "password": "pbkdf2_sha256$870000$L4faUhkGAdnlf6hDEyYASt$xn10Xj+9ZomsIf/uC3Jfw5Eu0ioNLiMBGVz0yxmxKLM=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.ruziqulova",
+      "first_name": "Asilbek",
+      "last_name": "Ruziqulov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Ruziqulov Asilbek",
+      "password": "pbkdf2_sha256$870000$7J2ETlpSCtcKqMmipzCetI$RIzF2oS5yNja19IiYilyUTCrcKpWjmXSIT+ht25PkgA=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.sadikbaevab",
+      "first_name": "Bibinaz",
+      "last_name": "Sadikbaeva",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Sadikbaeva Bibinaz",
+      "password": "pbkdf2_sha256$870000$qBo671VsrGS6ixsM9OWyzv$LlpzB9ERftBpUO21mCj/Xi/5AQOMn55gUKfyiF/th7Q=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.sadullayevax",
+      "first_name": "Xurshida",
+      "last_name": "Saʼdullayeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Saʼdullayeva Xurshida",
+      "password": "pbkdf2_sha256$870000$GOfuTLPvycG3XAm6bj3Ns3$O3ZYWmkZdSj9iOxKPo+oze03fybqXOos0lIdyqvt4UQ=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.saidmurodovn",
+      "first_name": "Normo'min",
+      "last_name": "Saidmurodov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Saidmurodov Normo'min",
+      "password": "pbkdf2_sha256$870000$RM2y4WBwvS8MxGpj4DNKHX$ZGcMdPY/w+w8HbtyBc8E8tweIamFFkJRMRBi1PGEuSQ=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.salayevaf",
+      "first_name": "Farzona",
+      "last_name": "Salayeva",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Salayeva Farzona",
+      "password": "pbkdf2_sha256$870000$BWs2eCORe2dXCx4cE4hBXP$nCznbl7iugqD/TJs4kty35a74O83BHDrNqqCyCggfqs=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.salimovas",
+      "first_name": "Sevinch",
+      "last_name": "Salimova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Salimova Sevinch",
+      "password": "pbkdf2_sha256$870000$y3QVMV3TxUlwpEvhsDabhU$slljCyXyIwknKrL6WOKLXbO0TIDwHnUetS9/lhS1NuE=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.samandara",
+      "first_name": "Aliqulov",
+      "last_name": "Samandar",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО2|Samandar Aliqulov",
+      "password": "pbkdf2_sha256$870000$jBoS9nrG0mfxsYvgomZFHE$Q3uCS/f5aaGgnb8NJwJvZSt9xrN3soXsVo+cpsqqa30=",
+      "groups": [
+        "Русский · МО2"
+      ]
+    },
+    {
+      "login": "s.samatovam",
+      "first_name": "Muslima",
+      "last_name": "Samatova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Samatova Muslima",
+      "password": "pbkdf2_sha256$870000$bXILOIFzafqFtRU86rbnNe$56eEbNxv4QoZy4oATdikrlVg9e6z5AhlWdhgicawYT4=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.samatovax",
+      "first_name": "Xushnoza",
+      "last_name": "Samatova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Samatova Xushnoza",
+      "password": "pbkdf2_sha256$870000$HcMRylhQpq0fC9pKS1MSpE$hBO3EF707eSwQSV1MK8MQqt3FIwwaRFQaT01svbI+S8=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.sardorbeks",
+      "first_name": "Sapoyev",
+      "last_name": "Sardorbek",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Sardorbek Sapoyev",
+      "password": "pbkdf2_sha256$870000$fZFuKRIrOt8gSycTfU9ycN$gkaPUfRky/Dbn8h2TpAZnT1c92hcSGn4No/PmKxHBDk=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.sarvinoza",
+      "first_name": "Аллаёрова",
+      "last_name": "Сарвиноз",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Сарвиноз Аллаёрова",
+      "password": "pbkdf2_sha256$870000$3UETKtSrVJrhXUQnwpCBOv$8UKaY5gsHoyBv1eoyeeFLiTfQDRSyjCcGNLm2jhz3y8=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.sayfiddinovb",
+      "first_name": "Bobur",
+      "last_name": "Sayfiddinov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Sayfiddinov Bobur",
+      "password": "pbkdf2_sha256$870000$5k5imoXyiIRnadveKac7rW$S8MWCZnqyQjtAN1HlckxhAzzGc+3XXSX8XCCGGwbRrg=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.sayfullayevaz",
+      "first_name": "Zuhra",
+      "last_name": "Sayfullayeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Sayfullayeva Zuhra",
+      "password": "pbkdf2_sha256$870000$fwM5bFDs4vxDkZSSrwnLvo$dVt5gckDpWzCP+1am6nTEQGGoWZzOTw1TeN1E6PjZj4=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.seydabullaevaa",
+      "first_name": "Ayzada",
+      "last_name": "Seydabullaeva",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Seydabullaeva Ayzada",
+      "password": "pbkdf2_sha256$870000$Q3zt4DetsTuFsGLMrtlGnN$o/UWQpzcaFelmECajVdv5cG7Vij8xrrkY2PlxppYOSY=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.shamshetdinovax",
+      "first_name": "Xurliman",
+      "last_name": "Shamshetdinova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Shamshetdinova Xurliman",
+      "password": "pbkdf2_sha256$870000$8PE1eFonui7ZC9rtGdmp6U$omw+ZoPrz7RrOqQxQGQFPqtF/CSUl9S90SMSA61Blqc=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.shamsiddinovj",
+      "first_name": "Javlonbek",
+      "last_name": "Shamsiddinov",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Shamsiddinov Javlonbek",
+      "password": "pbkdf2_sha256$870000$tuHMxfSHeBkH3RbyoFBGOZ$70iC81wUnBKrLA9H2wzUL48H+6sc6PV4Q4S2oCtbYwY=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.shamsitdinovam",
+      "first_name": "Marjona",
+      "last_name": "Shamsitdinova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Shamsitdinova Marjona",
+      "password": "pbkdf2_sha256$870000$CpI2Ok3N0vvRNqa4VgTs5h$qonkeEgkfro7vBPdL8WUuISNBBYtDrmGq44osLrdFoU=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.shapaxatovan",
+      "first_name": "Naimabonu",
+      "last_name": "Shapaxatova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Shapaxatova Naimabonu",
+      "password": "pbkdf2_sha256$870000$1PCqKkmrsK6wNQm809Lw3w$QsEZeXjZY+vE8U7qZt5Wav8vDEAjra2pQFcar8l0VhI=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.shaxruzm",
+      "first_name": "Muzaffarov",
+      "last_name": "Shaxruz",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Shaxruz Muzaffarov",
+      "password": "pbkdf2_sha256$870000$GeooY8ibq5fnvcQtuBrPBa$gUYyHB4GmNgnzPB9xbKzpxbJ2gwZyE4r8U2O3FGLFhM=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.shaxruzm2",
+      "first_name": "Muzaffarov",
+      "last_name": "Shaxruz",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Shaxruz Muzaffarov",
+      "password": "pbkdf2_sha256$870000$t4R8cmXmuv3AKJjfyGFIlt$w68o6DbZkOr1E9Wqa/+NQgBhjEtXoiTCN5Qb1t5/o0o=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.shaykulovak",
+      "first_name": "Kamola",
+      "last_name": "Shaykulova",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Shaykulova Kamola",
+      "password": "pbkdf2_sha256$870000$0PTFp0t8EBG6oHWIHp9dPp$pB5Rf4Yb4YqsuYEeFl2X7u1NFYAb+atgmgglJ3fFXdI=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.sherovs",
+      "first_name": "Sherzodbek",
+      "last_name": "Sherov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Sherov Sherzodbek",
+      "password": "pbkdf2_sha256$870000$lFuLhStV4QllLWT1Dm1lWT$+45n2ttmNaT7MTKiheVg+ynF6OvPTznIh4U4f/8zW4I=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.shopolatovad",
+      "first_name": "Dildora",
+      "last_name": "Shopo’latova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Shopo’latova Dildora",
+      "password": "pbkdf2_sha256$870000$4f95HZJa15F3kiAwAGzQIU$zlzGEYb+MIAhnZPw28H0KgsbHZF2G8OAiO1hzl6qrE0=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.shoxruxmirzoq",
+      "first_name": "Quvandiqov",
+      "last_name": "Shoxruxmirzo",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Shoxruxmirzo Quvandiqov",
+      "password": "pbkdf2_sha256$870000$Bi95RyeTa4w3Ai9SFZAsz6$pDr6/iuDaSl9SGSlrEjzmer50U3pQR9cTZFqTu6GnSw=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.shukurllayevr",
+      "first_name": "Ramziddin",
+      "last_name": "Shukurllayev",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Shukurllayev Ramziddin",
+      "password": "pbkdf2_sha256$870000$3VhPdKDbT9rkxwOyd7Rpk0$VtiPerDC1JsClzzZ5uS7LdGGrbJPSazFhQSt3fD+U0M=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.siddiqovaa",
+      "first_name": "Ayjan",
+      "last_name": "Siddiqova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Siddiqova Ayjan",
+      "password": "pbkdf2_sha256$870000$xg9a0RSXPoiz8vxZdexKI4$IwPvmMHGUPssO8zQHu+D3cIbitzYY5HZggJcWovqqtI=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.sirojbekb",
+      "first_name": "Babanazarov",
+      "last_name": "Sirojbek",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Sirojbek Babanazarov",
+      "password": "pbkdf2_sha256$870000$8qsFYhf5Cx8hBtW5saytTt$d6KixHSQmRh1d3Q/X/FxfJNjrUN3UYRtXk97Pn74M7Y=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.sirojiddinz",
+      "first_name": "Zivaddinov",
+      "last_name": "Sirojiddin",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Sirojiddin Zivaddinov",
+      "password": "pbkdf2_sha256$870000$gOlpA2yPjuildrA0rbxOlB$LwZ1tnOaUc58LTlTD3OZKY5xlmDn1NK1wNeYs/EiJBo=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.sobirjonovb",
+      "first_name": "Baxtiyor",
+      "last_name": "Sobirjonov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Sobirjonov Baxtiyor",
+      "password": "pbkdf2_sha256$870000$FZvH7UeNhojD0bsjTJmPm1$5lAIBUV/ED/c3IgYTaLzRbpMLOSSbqiGD16tTkq/LfE=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.sobirovan",
+      "first_name": "Nozanin",
+      "last_name": "Sobirova",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Sobirova Nozanin",
+      "password": "pbkdf2_sha256$870000$6Tdki80dAazfxrYTBDoFVj$HEoE+3ZX9p94rbcDNut1KBiQ+rvIeCMD0Gv5og9u92Y=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.sodullayevah",
+      "first_name": "Hadicha",
+      "last_name": "Sodullayeva",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Sodullayeva Hadicha",
+      "password": "pbkdf2_sha256$870000$V2YP0CtGT71nbvnzqFLd9U$ZPmqTagwuCh6buKDZ3UN9H2v3jDwc9G6xC1bUTBBZL0=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.soliyevaf",
+      "first_name": "Farzona",
+      "last_name": "Soliyeva",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Soliyeva Farzona",
+      "password": "pbkdf2_sha256$870000$pkHCg04Q14fuzE3G6c4VEh$oaNIwQrzKWkJrPN/0qvjOPshhHbCe36CTrEmOaFfmRI=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.soliyevm",
+      "first_name": "Mirsaid",
+      "last_name": "Soliyev",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО6|Soliyev Mirsaid",
+      "password": "pbkdf2_sha256$870000$FsPrDYkI9TxXsH9qQamezy$PznL8EdWPrlbgNbNZJSs5IzTDpNSF2S5osGiUFLDH7g=",
+      "groups": [
+        "Русский · МЭО6"
+      ]
+    },
+    {
+      "login": "s.sotimboyevt",
+      "first_name": "Temurbek",
+      "last_name": "Sotimboyev",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Sotimboyev Temurbek",
+      "password": "pbkdf2_sha256$870000$x1De4XspKakA07cqdXT7zL$gXMMVilJSJvW+gpfbc2am9veaQpWrORQFVSzwCUqpQo=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.sotvoldiyevl",
+      "first_name": "Latifjon",
+      "last_name": "Sotvoldiyev",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Sotvoldiyev Latifjon",
+      "password": "pbkdf2_sha256$870000$o4icLqDBsfUnXcCvmdIAFj$HmB60hfRNh9hvdqJsbASH6vXi7vENE2WS1dEjHhlu6A=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.subxonovam",
+      "first_name": "maftuna",
+      "last_name": "subxonova",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|subxonova maftuna",
+      "password": "pbkdf2_sha256$870000$uua4F1gwr46NEtQVmHOFZG$0WEDzC+ezxocRZVcflRhcs1Mq1+fHICmYlL8wFQzKLA=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.suyunboyevam",
+      "first_name": "Maftuna",
+      "last_name": "Suyunboyeva",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Suyunboyeva Maftuna",
+      "password": "pbkdf2_sha256$870000$WIkAV6y9X3AkHcZQtOCVBk$1uzXbRM7pGZiPph2Vj2ofwreZATF7/B7LpvKEVuu2zw=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.suyunovq",
+      "first_name": "Quvonchbek",
+      "last_name": "Suyunov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Suyunov Quvonchbek",
+      "password": "pbkdf2_sha256$870000$R4iE0h5FBm8CqCzy04UKDn$9ukaR6nouU7ZdmhmAk9dF/Z36f8piB3KqEuppKBEAdE=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.talipovad",
+      "first_name": "Dilnura",
+      "last_name": "Talipova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Talipova Dilnura",
+      "password": "pbkdf2_sha256$870000$fuw3uSmJcmvcevDY9Fmjsn$EKsCvcW8xYN3aCYubASO+QQjK+EQr5V3trj9EF9cxr8=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.tilovmurodovaf",
+      "first_name": "Farzona",
+      "last_name": "Tilovmurodova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Tilovmurodova Farzona",
+      "password": "pbkdf2_sha256$870000$LrrWhvK6Pd3jp9qQHUEJae$LF/1CXoqmGoHL3mIUzDbTWlDv7INeV4PTCFTG6IEk0A=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.togaymurodovo",
+      "first_name": "Ogʻabek",
+      "last_name": "Togʻaymurodov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Togʻaymurodov Ogʻabek",
+      "password": "pbkdf2_sha256$870000$UEfP3gfgAxsKDmgQ6EEUs1$R+TktrnP5XvshXNH/+40DPvI4nBF6AerrcsOPhIu/zg=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.tojialiyevs",
+      "first_name": "Sohibjon",
+      "last_name": "Tojialiyev",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Tojialiyev Sohibjon",
+      "password": "pbkdf2_sha256$870000$GdlRXZeHnlrJxjdPCt1sL7$7lYpzvctHNMrBi1OVHW73xD3ZZtKx9ADLIb8EQqjYic=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.tolanboyevag",
+      "first_name": "Gavhar",
+      "last_name": "To'lanboyeva",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|To'lanboyeva Gavhar",
+      "password": "pbkdf2_sha256$870000$WZewf51Cm9IyMQZsb6nNJu$TX4svzPTU6whADSYNemUZdZWttSvct7COk2H0JwNcWI=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.tolibjonove",
+      "first_name": "Elbekjon",
+      "last_name": "Tolibjonov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Tolibjonov Elbekjon",
+      "password": "pbkdf2_sha256$870000$EjAvvylssXNLUoGs6o9zwC$50/pdslxt9yOyIEUJgnSYLDpgsJm/5NtYcpE282EkWQ=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.tolibovu",
+      "first_name": "Ulug'bek",
+      "last_name": "Tolibov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Tolibov Ulug'bek",
+      "password": "pbkdf2_sha256$870000$aNGBk6Xjoth5GtAbDVVjon$NvtRIze5lbgofXAdEG6GqJ7wwLttd4Wrrze/wJLBPDs=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.torayevs",
+      "first_name": "Sardor",
+      "last_name": "Toʻrayev",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Toʻrayev Sardor",
+      "password": "pbkdf2_sha256$870000$H0qsFJYvagOxooHjR01tse$yyOARybe8F2428+oDkdTvBiEtwOAB5uGuQbQ1dZcVns=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.toxtasinovan",
+      "first_name": "Nigora",
+      "last_name": "To’xtasinova",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|To’xtasinova Nigora",
+      "password": "pbkdf2_sha256$870000$uVnKNV2pusEQ5Ak6u8W5lD$LP/7wBQm90R920bH6zO99QrMeuAZ2nJLBKJX/JFIbrQ=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.toychiboyeve",
+      "first_name": "Elbek",
+      "last_name": "To'ychiboyev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|To'ychiboyev Elbek",
+      "password": "pbkdf2_sha256$870000$5Y3jTsTPd1XgEToSFi85r1$xild07lb63JzPTDh7qKdfmty+QmIaa2RY2ibiT25l+4=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.toychiyevm",
+      "first_name": "Mirzohid",
+      "last_name": "To'ychiyev",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|To'ychiyev Mirzohid",
+      "password": "pbkdf2_sha256$870000$KlZfL653Y19AucRTdktdWF$VKKaK9l5pEXAFH/yP+ExGRQq1tyFGMubGeyy7gwWdE8=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.tozhimurodovh",
+      "first_name": "Хусниддин",
+      "last_name": "Тожимуродов",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО8|Тожимуродов Хусниддин",
+      "password": "pbkdf2_sha256$870000$2UKVe4QYmYA25jubcNLeRn$4NEszOoxlFbsqe2vDQJMHomzjf/q3vVZ6W/2LRQPtu0=",
+      "groups": [
+        "Русский · МЭО8"
+      ]
+    },
+    {
+      "login": "s.turobovb",
+      "first_name": "Boburmirzo",
+      "last_name": "Turobov",
+      "middle_name": "",
+      "faculty": "МЭО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО5|Turobov Boburmirzo",
+      "password": "pbkdf2_sha256$870000$q8ULxfjqwf8ke2xkECjQtz$vuFyo6FWcR34KLZlUYV4gt5zHYCFQir5XWVoId1CgNk=",
+      "groups": [
+        "Русский · МЭО5"
+      ]
+    },
+    {
+      "login": "s.tursunboyevab",
+      "first_name": "Bahor",
+      "last_name": "Tursunboyeva",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Tursunboyeva Bahor",
+      "password": "pbkdf2_sha256$870000$zMSqx0ZdaAODodmlcPTIJt$ybfN6sMIH1rVlGJ4zr9k62Ivq0Zpbl26YR0bI+O0g9k=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.tuxtamishevd",
+      "first_name": "Diyorbek",
+      "last_name": "Tuxtamishev",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО3|Tuxtamishev Diyorbek",
+      "password": "pbkdf2_sha256$870000$saqSff5BfIABupqqxIz6dl$qMd5Q/X/W3QNDLt1X4v8RMSZq+FLhkaMnOam6+Lr2IE=",
+      "groups": [
+        "Русский · МЭО3"
+      ]
+    },
+    {
+      "login": "s.tuychiyevo",
+      "first_name": "Oqiljon",
+      "last_name": "Tuychiyev",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Tuychiyev Oqiljon",
+      "password": "pbkdf2_sha256$870000$ZYDrgugAVl8mGSBQ2Ks4CC$T6Yi2CYDOuS8xWRp3/9cDShTT99YbKy5QCPznbF+2EY=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.ubaydullayeval",
+      "first_name": "Lola",
+      "last_name": "Ubaydullayeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Ubaydullayeva Lola",
+      "password": "pbkdf2_sha256$870000$yYLpRa2Zn4LxlaVOad5LY0$t4OT9ViWxcHXRKKvxhWcXetp0/h79oJnEWClorFSWKo=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.ulugbekovam",
+      "first_name": "Mohina",
+      "last_name": "Ulugʻbekova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Ulugʻbekova Mohina",
+      "password": "pbkdf2_sha256$870000$YZDCwcQKiwV9GCRuRtzYKL$U4LfK7J+Y3uintjvXZDLQbBovAgZBYOSQkKi8GQwrJE=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.umids",
+      "first_name": "Safarov",
+      "last_name": "Umid",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Umid Safarov",
+      "password": "pbkdf2_sha256$870000$dgJiaqyey19PpU6l6EHaRx$sqB/CZhMPDWYB06D4xBR/lwYxjsVeJ4e+z7VJxa4uv4=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.umirbekovd",
+      "first_name": "Dostonbek",
+      "last_name": "Umirbekov",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Umirbekov Dostonbek",
+      "password": "pbkdf2_sha256$870000$st4ikGkxrSzQxuyWK8MRbE$+pszmXJQNy6F8dE9G3f+GZR0Va+njsXtVFHxi7Z7Nro=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.urinbadalovam",
+      "first_name": "Mashxura",
+      "last_name": "Urinbadalova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Urinbadalova Mashxura",
+      "password": "pbkdf2_sha256$870000$D2uUEOApYzDT2tYzABFbph$Ob3uBr3QPs8yetRKIiheR88LnCHFhw78R6vIzizl8no=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    },
+    {
+      "login": "s.usmonjonovaz",
+      "first_name": "Zinnura",
+      "last_name": "Usmonjonova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Usmonjonova Zinnura",
+      "password": "pbkdf2_sha256$870000$vUWOC9eRhbONLs5hmzRRhN$0rfxLUliQ7ZuH5bKjM0InUBxUt7Mh+S0TNvhd8OD69c=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.xabibullayevam",
+      "first_name": "Marjona",
+      "last_name": "Xabibullayeva",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Xabibullayeva Marjona",
+      "password": "pbkdf2_sha256$870000$KppFIYOhni5HCM6UwKPZR4$QxNIbpx2gVdMyDaGWGlYVYufMjOboeSGfCTgm8UyzO4=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.xakimovaj",
+      "first_name": "Jasmina",
+      "last_name": "Xakimova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Xakimova Jasmina",
+      "password": "pbkdf2_sha256$870000$TZRMao6Oy3LMr8sdT6iyPF$4ah/bjIK6NiNAwv3wUpe/guiDb6nDhwYxwP9M8XbwtE=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.xamidjonovj",
+      "first_name": "Jamshidbek",
+      "last_name": "Xamidjonov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Xamidjonov Jamshidbek",
+      "password": "pbkdf2_sha256$870000$ERngojnAw6ekWfMoySPR6i$pmhwuAZ3qCtnHhZzGPeT+sjCujhjM1yFW1RcIqWMKNY=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.xamroyevas",
+      "first_name": "Shabnam",
+      "last_name": "Xamroyeva",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Xamroyeva Shabnam",
+      "password": "pbkdf2_sha256$870000$nWHGNoWv1dkfJFp9pPNKCo$ypPLdGa74pPPQpjfYE4PyOc418eutS2Xd+IBVJNgVQI=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.xojaqulovab",
+      "first_name": "Bahora",
+      "last_name": "Xo’jaqulova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Xo’jaqulova Bahora",
+      "password": "pbkdf2_sha256$870000$6TWxXN8vqlMuCl2xgq96Yi$p1jCdWTwZgkO5ceTdGajUqtuZ3hlnaTJv20VA5AZU9U=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.xolmuminovq",
+      "first_name": "Quvonchbek",
+      "last_name": "Xolmuminov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Xolmuminov Quvonchbek",
+      "password": "pbkdf2_sha256$870000$hsB8HOXwuo1vzTUkmMPhey$bXyjapGpUvBJfD7GH9VD9nBWICHI7tnTUfKSLPBZVNg=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.xolmurodovaf",
+      "first_name": "Fayoza",
+      "last_name": "Xolmurodova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Xolmurodova Fayoza",
+      "password": "pbkdf2_sha256$870000$v6gG7aWnL9S6t4hJ1tx0bY$dhRRGjYsbjN2+GtLPc3dB9mXKQS6//spI+WpJuOT4do=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.xolmurodovar",
+      "first_name": "Ra'no",
+      "last_name": "Xolmurodova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МП1|Xolmurodova Ra'no",
+      "password": "pbkdf2_sha256$870000$TpOlrPJt9seZ5mIJ1mQB07$uS2xnNfYIUk2Tiei2XgjGIZ07XNDziVfdv/Gm6i0t4Y=",
+      "groups": [
+        "Русский · МП1"
+      ]
+    },
+    {
+      "login": "s.xonnazarovam",
+      "first_name": "Maftuna",
+      "last_name": "Xonnazarova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Xonnazarova Maftuna",
+      "password": "pbkdf2_sha256$870000$wd8TZHD9Zf4O1PCitv4ydL$aF7MmlGy3/IhJLUIhrHYrzf3u81lJh0+Ps05nJmysrc=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.xudaybergenovam",
+      "first_name": "Miyasar",
+      "last_name": "Xudaybergenova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Xudaybergenova Miyasar",
+      "password": "pbkdf2_sha256$870000$9szA3S67EKDu9rsTO3wBSv$FdeMvtjyLxi8PpzC0TvLiCl6pAMRUGtJBEfr3UKZaQM=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.xudoyberdiyevs",
+      "first_name": "Sarvarbek",
+      "last_name": "Xudoyberdiyev",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Xudoyberdiyev Sarvarbek",
+      "password": "pbkdf2_sha256$870000$wwdVrCJtR3VA4eK7v6inxl$ls0fNsfX0uDt9Lg5i7mderWQLqwiduftgPBaiig1YyI=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.xurozove",
+      "first_name": "Elbek",
+      "last_name": "Xurozov",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО1|Xurozov Elbek",
+      "password": "pbkdf2_sha256$870000$nYi4UVoR060z71wjtIuPrA$Fwa2ZL0CwVD3tFZo838IEkO7RS0DZElxc9Fn+WwReWk=",
+      "groups": [
+        "Русский · МЭО1"
+      ]
+    },
+    {
+      "login": "s.xurramovaa",
+      "first_name": "Aziza",
+      "last_name": "Xurramova",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Xurramova Aziza",
+      "password": "pbkdf2_sha256$870000$yDKIBxX8MgDmYl47PRiPh3$s7t47lSn14BsEIPyMvAqwKU3hNSQDEAQf5tZYNoTUrc=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.yoldoshboyevs",
+      "first_name": "Samandar",
+      "last_name": "Yoldoshboyev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Yoldoshboyev Samandar",
+      "password": "pbkdf2_sha256$870000$8CM4YZWkeNVWKGZAMqQ2f7$fOYGMvUa9oKuVtCsQwDoBnkjMkLiFN7YBK3O079mJf4=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.yoldoshovf",
+      "first_name": "Firdavs",
+      "last_name": "Yo'ldoshov",
+      "middle_name": "",
+      "faculty": "МЭО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО7|Yo'ldoshov Firdavs",
+      "password": "pbkdf2_sha256$870000$D0m5Wo5lb54uCdct3i3xIm$atS4UcPEQLr4FsrrUxxYi3zSRxvyfFQWauhiha7cTb4=",
+      "groups": [
+        "Русский · МЭО7"
+      ]
+    },
+    {
+      "login": "s.yuldasheva",
+      "first_name": "Abduqodir",
+      "last_name": "Yuldashev",
+      "middle_name": "",
+      "faculty": "МЭО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО4|Yuldashev Abduqodir",
+      "password": "pbkdf2_sha256$870000$A7ZxFNka5yBzgbqZ3eBLGe$+HhFMXwoXbQQz+g8Wu88iUPn+rtgNQFOsrbVirG3ctc=",
+      "groups": [
+        "Русский · МЭО4"
+      ]
+    },
+    {
+      "login": "s.yuldashevam",
+      "first_name": "Marjona",
+      "last_name": "Yuldasheva",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО4|Yuldasheva Marjona",
+      "password": "pbkdf2_sha256$870000$QBCiLnvcpPSRmgoyfVhA9K$y+8Xf0BDc8Rs4/Q01lHRsZlrgZyMRMyHb9WiX918I2U=",
+      "groups": [
+        "Русский · МО4"
+      ]
+    },
+    {
+      "login": "s.yusupovu",
+      "first_name": "Umarbek",
+      "last_name": "Yusupov",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|Аралаш|Yusupov Umarbek",
+      "password": "pbkdf2_sha256$870000$rgM3LIpC0Hr5Al6xQMdACB$zAhPKwSPDRFtnHhRc5rwTcKwyLDTSrTub/oWMpiSEAo=",
+      "groups": [
+        "Русский · Аралаш"
+      ]
+    },
+    {
+      "login": "s.zaripovaf",
+      "first_name": "Feruzaxon",
+      "last_name": "Zaripova",
+      "middle_name": "",
+      "faculty": "МО 3 поток",
+      "phone": "",
+      "notes": "ru_roster|МО5|Zaripova Feruzaxon",
+      "password": "pbkdf2_sha256$870000$6TQZH3kaDTlPrtoJ0TOgei$AWER6ND9H76KTQFe9yMzwmycfwFx+UA5hdaBiIHzg7s=",
+      "groups": [
+        "Русский · МО5"
+      ]
+    },
+    {
+      "login": "s.zayniddinovam",
+      "first_name": "Munisa",
+      "last_name": "Zayniddinova",
+      "middle_name": "",
+      "faculty": "МО 4 поток",
+      "phone": "",
+      "notes": "ru_roster|МО6|Zayniddinova Munisa",
+      "password": "pbkdf2_sha256$870000$MAzEB85oQpa3EbY4MnthsZ$+6u9hV/jhp28FAzoAlQS6bmMlBK0btB2WBVk3TqVyqQ=",
+      "groups": [
+        "Русский · МО6"
+      ]
+    },
+    {
+      "login": "s.ziyatovad",
+      "first_name": "Dilorom",
+      "last_name": "Ziyatova",
+      "middle_name": "",
+      "faculty": "МО 2 поток",
+      "phone": "",
+      "notes": "ru_roster|МО3|Ziyatova Dilorom",
+      "password": "pbkdf2_sha256$870000$k6YMJlIpVbgtMyze6RsAKz$nfrJBLQospdFTGjfkvQZUl+sG6TRkqgCWtG4dXvYM6k=",
+      "groups": [
+        "Русский · МО3"
+      ]
+    },
+    {
+      "login": "s.ziyodullayevn",
+      "first_name": "Nurlan",
+      "last_name": "Ziyodullayev",
+      "middle_name": "",
+      "faculty": "МЭО 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МЭО2|Ziyodullayev Nurlan",
+      "password": "pbkdf2_sha256$870000$N6WXOKiKmwSFAeSRoYtSYe$DLv2uPmi+5r83SIVwSoowpgL8HMez1lXgKAz6pSBWxU=",
+      "groups": [
+        "Русский · МЭО2"
+      ]
+    },
+    {
+      "login": "s.zoxidovao",
+      "first_name": "Omina",
+      "last_name": "Zoxidova",
+      "middle_name": "",
+      "faculty": "МО&МП 1 поток",
+      "phone": "",
+      "notes": "ru_roster|МО1|Zoxidova Omina",
+      "password": "pbkdf2_sha256$870000$5tWYDI45Y09l5cGIGORr3A$j8XVaJzl5ecHRepCMHMxMdS/wCV8PLP0trj/8mtn1F0=",
+      "groups": [
+        "Русский · МО1"
+      ]
+    }
+  ]
+}

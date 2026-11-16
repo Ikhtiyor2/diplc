@@ -1,0 +1,30 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Домашние задания" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Домашние задания" %}</h1>
+    <p class="muted">{% t "Файлы от преподавателя и сдача работ учениками." %}</p>
+  </div>
+  {% if user.is_admin or user.is_teaching_staff %}<a class="btn" href="{% url 'web:homework-create' %}">{% icon 'upload' 18 %} {% t "Загрузить ДЗ" %}</a>{% endif %}
+</div>
+<div class="stack" style="margin-top:16px">
+  {% for item in assignments %}
+  <a class="card pad row" href="{% url 'web:homework-detail' item.pk %}">
+    <div>
+      <strong>{{ item.title }}</strong>
+      <div class="small muted">
+        {{ item.group.name }}
+        {% if item.deadline %} · {% t "до" %} {{ item.deadline|date:"d.m.Y H:i" }}{% endif %}
+        · {% t "файлов:" %} {{ item.files.count }}
+      </div>
+    </div>
+    {% if user.is_student %}
+      {% if item.id in submissions %}<span class="badge teal">{% t "Сдано" %}</span>{% else %}<span class="badge">{% t "Сдать работу" %}</span>{% endif %}
+    {% endif %}
+  </a>
+  {% empty %}<div class="card empty">{% t "Заданий нет. Загрузите PDF или фото урока." %}</div>
+  {% endfor %}
+</div>
+{% endblock %}

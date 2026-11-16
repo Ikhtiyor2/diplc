@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load icons static %}
+
+{% block title %}{% t "DiplomacyLC — языковой центр" %}{% endblock %}
+
+{% block body %}
+<div class="hero">
+  <div class="hero-nav">
+    <a class="brand" href="/">
+      {% include "includes/logo.html" %}
+      <span><strong>DiplomacyLC</strong><span>{% t "языковой центр" %}</span></span>
+    </a>
+    <div class="gap">
+      {% language_switch %}
+      <button class="icon-btn" type="button" data-theme-toggle>{% icon 'moon' %}</button>
+      <a class="btn-secondary" href="{% url 'web:login' %}">{% t "Войти" %}</a>
+    </div>
+  </div>
+  <div class="hero-stage">
+    <div>
+      <p class="badge teal">{% t "Языковой центр" %}</p>
+      <h1 class="display">{% t "Кабинет, который светится вместе с занятием." %}</h1>
+      <p class="lead">{% t "Домашние задания, посещаемость и группы — спокойно, как голос. Ярко, когда нужно действовать." %}</p>
+      <div class="gap" style="margin-top:28px">
+        <a class="btn" href="{% url 'web:login' %}">{% t "Войти" %} {% icon 'arrow-right' %}</a>
+      </div>
+    </div>
+    <div class="hero-orb">
+      {% include "includes/logo.html" with size="lg" %}
+    </div>
+  </div>
+  <div class="bento">
+    <article class="card">
+      <span class="badge">{% t "Преподаватель" %}</span>
+      <h3>{% t "Группы, ДЗ и посещаемость" %}</h3>
+      <p class="muted">{% t "QR на занятии, файлы домашки и проверка работ. ФИО, фото и пароль — в профиле." %}</p>
+    </article>
+    <article class="card">
+      <span class="badge">{% t "Ученик" %}</span>
+      <h3>{% t "Логин выдаёт центр" %}</h3>
+      <p class="muted">{% t "Вас заранее зачисляют в язык и группу. При первом входе — новый пароль, ФИО, факультет и курс." %}</p>
+    </article>
+    <article class="card">
+      <span class="badge">{% t "Администратор" %}</span>
+      <h3>{% t "Люди и доступы" %}</h3>
+      <p class="muted">{% t "Создаёт аккаунты, назначает группу преподавателя и смотрит журнал действий." %}</p>
+    </article>
+  </div>
+</div>
+{% endblock %}

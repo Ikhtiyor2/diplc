@@ -1,0 +1,118 @@
+<article class="card pad q-take" data-qstart="{{ number }}">
+  {% if question.payload.intro %}
+    <p class="q-group-intro">{{ question.payload.intro }}</p>
+  {% endif %}
+
+  {% if question.is_notes %}
+    <div class="q-group-prompt"><strong>
+      {% if number == end %}Questions {{ number }}
+      {% else %}Questions {{ number }}–{{ end }}{% endif %}
+    </strong>{{ question.question_text|linebreaksbr }}</div>
+    <div class="notes-block">
+      {% if question.payload.title %}<div class="nb-title">{{ question.payload.title }}</div>{% endif %}
+      {{ notes_html }}
+    </div>
+
+  {% elif question.type == 'tfng' and question.gaps %}
+    <div class="q-group-prompt"><strong>
+      {% if number == end %}Question {{ number }}{% else %}Questions {{ number }}–{{ end }}{% endif %}
+    </strong>
+    {% if question.question_text %}{{ question.question_text|linebreaksbr }}{% endif %}
+    </div>
+    {% for row in question.gaps %}
+      <div class="tfng-item">
+        <p class="tfng-stmt"><span class="q-num" id="qnav-{{ number|add:forloop.counter0 }}">{{ number|add:forloop.counter0 }}.</span> {{ row.stmt }}</p>
+        <div class="tfng-options">
+          {% for value, label in exam.tfng %}
+            <label class="choice"><input type="radio" name="q_{{ question.id }}_{{ forloop.parentloop.counter0 }}" value="{{ value }}" data-qnav="{{ number|add:forloop.parentloop.counter0 }}" data-qidx="{{ forloop.parentloop.counter0 }}"> {{ label }}</label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+  {% elif question.type == 'ynng' and question.gaps %}
+    <div class="q-group-prompt"><strong>
+      {% if number == end %}Question {{ number }}{% else %}Questions {{ number }}–{{ end }}{% endif %}
+    </strong>
+    {% if question.question_text %}{{ question.question_text|linebreaksbr }}{% endif %}
+    </div>
+    {% for row in question.gaps %}
+      <div class="tfng-item">
+        <p class="tfng-stmt"><span class="q-num" id="qnav-{{ number|add:forloop.counter0 }}">{{ number|add:forloop.counter0 }}.</span> {{ row.stmt }}</p>
+        <div class="tfng-options">
+          {% for value, label in exam.ynng %}
+            <label class="choice"><input type="radio" name="q_{{ question.id }}_{{ forloop.parentloop.counter0 }}" value="{{ value }}" data-qnav="{{ number|add:forloop.parentloop.counter0 }}" data-qidx="{{ forloop.parentloop.counter0 }}"> {{ label }}</label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+  {% elif question.type == 'single' and question.payload.items %}
+    <div class="q-group-prompt"><strong>
+      {% if number == end %}Question {{ number }}{% else %}Questions {{ number }}–{{ end }}{% endif %}
+    </strong>
+    {% if question.question_text %}{{ question.question_text|linebreaksbr }}{% endif %}
+    </div>
+    {% for row in question.payload.items %}
+      <div class="q-item">
+        <p><span class="q-num" id="qnav-{{ number|add:forloop.counter0 }}">{{ number|add:forloop.counter0 }}.</span> {{ row.stem }}</p>
+        {% for option in row.options %}
+          <label class="choice"><input type="radio" name="q_{{ question.id }}_{{ forloop.parentloop.counter0 }}" value="{{ option }}" data-qnav="{{ number|add:forloop.parentloop.counter0 }}" data-qidx="{{ forloop.parentloop.counter0 }}"> {{ option }}</label>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+  {% else %}
+    <p><strong>Q{{ number }}{% if end and end != number %}–{{ end }}{% endif %}.</strong> {{ question.question_text }}</p>
+
+    {% if question.type == 'single' %}
+      {% for option in question.payload.options %}
+        <label class="choice"><input type="radio" name="q_{{ question.id }}" value="{{ option }}" data-qnav="{{ number }}"> {{ option }}</label>
+      {% endfor %}
+
+    {% elif question.type == 'multiple' %}
+      {% for option in question.payload.options %}
+        <label class="choice"><input type="checkbox" name="q_{{ question.id }}" value="{{ option }}" data-qnav="{{ number }}"> {{ option }}</label>
+      {% endfor %}
+
+    {% elif question.type == 'tfng' %}
+      <div class="gap">
+        {% for value, label in exam.tfng %}
+          <label class="choice"><input type="radio" name="q_{{ question.id }}" value="{{ value }}" data-qnav="{{ number }}"> {{ label }}</label>
+        {% endfor %}
+      </div>
+
+    {% elif question.type == 'ynng' %}
+      <div class="gap">
+        {% for value, label in exam.ynng %}
+          <label class="choice"><input type="radio" name="q_{{ question.id }}" value="{{ value }}" data-qnav="{{ number }}"> {{ label }}</label>
+        {% endfor %}
+      </div>
+
+    {% elif question.gaps %}
+      {% for row in question.gaps %}
+        <label class="field">{{ row.prompt }}
+          <input class="input" name="q_{{ question.id }}_{{ forloop.counter0 }}" id="qnav-{{ number|add:forloop.counter0 }}" data-qnav="{{ number|add:forloop.counter0 }}" placeholder="Answer">
+        </label>
+      {% endfor %}
+
+    {% elif question.type == 'fill_blank' or question.type == 'short' %}
+      <input class="input" name="q_{{ question.id }}" id="qnav-{{ number }}" data-qnav="{{ number }}" placeholder="Answer">
+
+    {% elif question.type == 'text' %}
+      <textarea class="input" name="q_{{ question.id }}" rows="5" id="qnav-{{ number }}" data-qnav="{{ number }}"></textarea>
+
+    {% elif question.type == 'match' or question.type == 'heading' %}
+      {% for left in question.payload.left %}
+        <label class="field">{{ left }}
+          <select class="input" name="q_{{ question.id }}_{{ left }}" id="qnav-{{ number|add:forloop.counter0 }}" data-qnav="{{ number|add:forloop.counter0 }}">
+            <option value="">—</option>
+            {% for right in question.payload.right %}
+              <option value="{{ right }}">{{ right }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+</article>

@@ -1,0 +1,52 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{{ test.title }}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <span class="badge teal">{{ test.format_label }}</span>
+    <h1 class="display" style="font-size:40px;margin:8px 0 0">{{ test.title }}</h1>
+    <p class="muted">{{ test.group.name }} · {{ test.questions.count }} {% t "вопросов" %}{% if test.time_limit_minutes %} · {{ test.time_limit_minutes }} {% t "мин" %}{% endif %}</p>
+  </div>
+  <div class="gap">
+    {% if user.is_student and not attempt %}
+      <a class="btn" href="{% url 'web:test-take' test.pk %}">{% t "Начать тест" %}</a>
+    {% endif %}
+  </div>
+</div>
+{% if test.instructions %}<p>{{ test.instructions }}</p>{% endif %}
+<p>{{ test.description }}</p>
+{% if attempt %}
+  <article class="card pad"><span class="badge teal">{% t "Ваш результат:" %} {% if attempt.score != None %}{{ attempt.score }}{% else %}{% t "на проверке" %}{% endif %}</span></article>
+{% endif %}
+
+{% if not user.is_student %}
+  {% for section in test.sections.all %}
+    <article class="card pad" style="margin-top:16px">
+      <div class="row">
+        <h2 class="display" style="margin:0;font-size:24px">{{ section.title }}</h2>
+        <span class="badge">{{ section.get_kind_display }}</span>
+      </div>
+      {% if section.kind == 'passage' %}<div class="reading muted">{{ section.body|truncatewords:40 }}</div>{% endif %}
+      {% if section.audio %}<audio controls src="{{ section.audio.url }}"></audio>{% endif %}
+      {% for question in section.questions.all %}
+        <div class="row"><span>Q{{ forloop.counter }}. {{ question.question_text|truncatechars:90 }}</span><span class="badge">{{ question.get_type_display }}</span></div>
+      {% empty %}<p class="muted">{% t "Вопросов в секции нет." %}</p>{% endfor %}
+    </article>
+  {% endfor %}
+  <article class="card" style="margin-top:16px">
+    <div class="pad row"><h2 class="display" style="margin:0;font-size:24px">{% t "Результаты" %}</h2></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Статус" %}</th><th>{% t "Балл" %}</th></tr></thead>
+        <tbody>
+          {% for item in attempts %}
+          <tr><td>{{ item.student.full_name }}</td><td>{{ item.get_status_display }}</td><td>{{ item.score|default:"—" }}</td></tr>
+          {% empty %}<tr><td colspan="3">{% t "Пока никто не прошёл." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </article>
+{% endif %}
+{% endblock %}

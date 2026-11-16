@@ -1,0 +1,103 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{{ title|t }}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{{ title|t }}</h1>
+<form method="post" class="card pad stack" style="max-width:720px" id="lecture-stream-form">
+  {% csrf_token %}
+  {% if form.non_field_errors %}<div class="badge danger">{{ form.non_field_errors.0|t }}</div>{% endif %}
+  <div class="form-grid">
+    {% for field in form %}
+      {% if field.name == "groups" %}
+      <div class="field full" id="stream-groups-panel" hidden>
+        <div class="row" style="margin-bottom:4px;align-items:center">
+          <span>{{ field.label }}{% if field.field.required %} ·{% endif %}</span>
+          <label class="row gap" style="font-weight:500;cursor:pointer;margin:0">
+            <input type="checkbox" id="show-all-stream-groups">
+            <span class="small">{% t "Показать все группы" %}</span>
+          </label>
+        </div>
+        {% if field.help_text %}<span class="small muted" style="font-weight:500">{{ field.help_text|t }}</span>{% endif %}
+        {% if field.field.queryset %}
+        <div class="check-grid">{{ field }}</div>
+        <p class="muted small" id="stream-groups-empty" hidden>{% t "У выбранного ведущего пока нет своих групп. Включите «Показать все группы», чтобы добавить другие." %}</p>
+        {% else %}
+        <p class="muted small" style="margin:8px 0 0">{% t "Сначала создайте группы в разделе «Группы»." %}</p>
+        {% endif %}
+        {% if field.errors %}<span class="small" style="color:var(--danger);font-weight:600">{{ field.errors.0|t }}</span>{% endif %}
+      </div>
+      {% else %}
+      <div class="field {% if field.name == 'name' or field.name == 'schedule' %}full{% endif %}">
+        <span>{{ field.label }}{% if field.field.required %} ·{% endif %}</span>
+        {{ field }}
+        {% if field.help_text %}<span class="small muted" style="font-weight:500">{{ field.help_text|t }}</span>{% endif %}
+        {% if field.errors %}<span class="small" style="color:var(--danger);font-weight:600">{{ field.errors.0|t }}</span>{% endif %}
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <button class="btn" type="submit">{% t "Сохранить" %}</button>
+</form>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  const lectorSelect = document.getElementById("id_lector");
+  const groupList = document.getElementById("id_groups");
+  const panel = document.getElementById("stream-groups-panel");
+  const showAllToggle = document.getElementById("show-all-stream-groups");
+  const emptyHint = document.getElementById("stream-groups-empty");
+
+  function groupItems() {
+    return groupList ? [...groupList.querySelectorAll(":scope > div")] : [];
+  }
+
+  function sortGroupsByLector(preferred) {
+    if (!groupList || !preferred) return;
+    const items = groupItems();
+    items.sort((a, b) => {
+      const teacherA = a.querySelector('input[name="groups"]')?.dataset.teacher || "";
+      const teacherB = b.querySelector('input[name="groups"]')?.dataset.teacher || "";
+      const rankA = teacherA === preferred ? 0 : 1;
+      const rankB = teacherB === preferred ? 0 : 1;
+      if (rankA !== rankB) return rankA - rankB;
+      return a.textContent.trim().localeCompare(b.textContent.trim(), "ru");
+    });
+    items.forEach((item) => groupList.appendChild(item));
+  }
+
+  function applyGroupFilter() {
+    const preferred = lectorSelect?.value || "";
+    if (!panel) return;
+    if (!preferred) {
+      panel.hidden = true;
+      return;
+    }
+    panel.hidden = false;
+    const showAll = Boolean(showAllToggle?.checked);
+    let leaderVisible = 0;
+    groupItems().forEach((item) => {
+      const input = item.querySelector('input[name="groups"]');
+      const teacherId = input?.dataset.teacher || "";
+      const isLeader = teacherId === preferred;
+      const visible = showAll || isLeader;
+      item.hidden = !visible;
+      item.classList.toggle("stream-group-leader", isLeader);
+      if (visible && isLeader) leaderVisible += 1;
+      if (!visible && input) input.checked = false;
+    });
+    sortGroupsByLector(preferred);
+    if (emptyHint) {
+      emptyHint.hidden = showAll || leaderVisible > 0;
+    }
+  }
+
+  lectorSelect?.addEventListener("change", () => {
+    if (showAllToggle) showAllToggle.checked = false;
+    applyGroupFilter();
+  });
+  showAllToggle?.addEventListener("change", applyGroupFilter);
+  applyGroupFilter();
+</script>
+{% endblock %}
+

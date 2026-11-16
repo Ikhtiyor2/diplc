@@ -1,0 +1,83 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{{ group.name }}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <p class="muted small">{{ group.language }} · {{ group.level }} · {{ group.room }}{% if group.teacher %} · {{ group.teacher.full_name }}{% endif %}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{{ group.name }}</h1>
+    {% if group.schedule %}<p class="muted small" style="margin:8px 0 0">{% t "Занятия" %}: {{ group.schedule }}{% if group.teacher %} · {{ group.teacher.full_name }}{% endif %}</p>{% endif %}
+    {% include "groups/_lecture_streams.html" with group=group %}
+  </div>
+  <div class="gap">
+    <a class="btn-secondary" href="{% url 'web:group-journal' group.pk %}">{% t "Журнал группы" %}</a>
+    {% if user.is_admin or user.is_teaching_staff %}
+    <a class="btn" href="{% url 'web:group-attendance' group.pk %}">{% t "Посещаемость" %}</a>
+    {% endif %}
+    {% if user.is_admin %}<a class="btn-ghost" href="{% url 'web:group-edit' group.pk %}">{% t "Изменить" %}</a>{% endif %}
+  </div>
+</div>
+<section class="kpis" style="margin:18px 0">
+  <article class="card kpi"><span class="label">{% t "Ученики" %}</span><span class="value">{{ kpis.students }}</span></article>
+  <article class="card kpi"><span class="label">{% t "Посещаемость" %}</span><span class="value">{{ kpis.attendance|default:"—" }}%</span></article>
+  <article class="card kpi"><span class="label">{% t "Средний балл" %}</span><span class="value">{{ kpis.average|default:"—" }}</span></article>
+</section>
+<div class="grid-2">
+  <article class="card">
+    <div class="pad row"><h2 class="display" style="margin:0;font-size:28px">{% t "Ученики" %}</h2></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>{% t "Имя" %}</th><th>{% t "Балл" %}</th><th>{% t "Посещаемость" %}</th><th>{% t "ДЗ" %}</th><th></th></tr></thead>
+        <tbody>
+          {% for row in student_rows %}
+          <tr>
+            <td><a href="{% url 'web:student-analytics' row.student.pk %}">{{ row.student.full_name }}</a>{% if row.risk %} <span class="badge warn">{% t "риск" %}</span>{% endif %}</td>
+            <td>{% if row.average != None %}{{ row.average }}{% else %}—{% endif %}</td>
+            <td>{% if row.attendance != None %}{{ row.attendance }}%{% else %}—{% endif %}</td>
+            <td>{{ row.progress.done }}/{{ row.progress.total }}</td>
+            <td>
+              <a class="btn-ghost btn-sm" href="{% url 'web:student-analytics' row.student.pk %}">{% t "Успеваемость" %}</a>
+              {% if user.is_admin %}
+              <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="action" value="remove"><input type="hidden" name="student_id" value="{{ row.student.pk }}"><button class="btn-ghost btn-sm" type="submit">{% t "Убрать" %}</button></form>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if user.is_admin %}
+    <form method="post" class="pad gap">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="enroll">
+      <select class="input" name="student_id">
+        {% for person in available %}
+          <option value="{{ person.pk }}">{{ person.full_name }} · {{ person.login }}{% for item in person.enrollments.all %} · {{ item.group.name }}{% endfor %}</option>
+        {% empty %}
+          <option value="">{% t "Нет свободных учеников" %}</option>
+        {% endfor %}
+      </select>
+      <button class="btn" type="submit">{% t "Добавить в группу" %}</button>
+    </form>
+    {% endif %}
+  </article>
+  <div class="stack">
+    <article class="card pad">
+      <div class="row">
+        <h2 class="display" style="font-size:28px;margin:0">{% t "Домашние задания" %}</h2>
+        {% if user.is_admin or user.is_teaching_staff %}
+          <a class="btn-secondary btn-sm" href="{% url 'web:homework-create' %}?group={{ group.pk }}">{% icon 'upload' 14 %} {% t "Задать ДЗ" %}</a>
+        {% endif %}
+      </div>
+      {% for item in assignments %}
+      <a class="row" href="{% url 'web:homework-detail' item.pk %}">
+        <span>{{ item.title }}</span>
+        <span class="small {% if item.deadline_tone == 'late' %}mark-late{% elif item.deadline_tone == 'soon' %}mark-soon{% else %}muted{% endif %}">
+          {% if item.deadline %}{% t "до" %} {{ item.deadline|date:"d.m.Y H:i" }}{% else %}{% t "Без срока" %}{% endif %}
+        </span>
+      </a>
+      {% empty %}<p class="muted">{% t "Пока нет." %}</p>{% endfor %}
+    </article>
+  </div>
+</div>
+{% endblock %}

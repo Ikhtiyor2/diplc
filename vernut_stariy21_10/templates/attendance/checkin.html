@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load icons %}
+{% block title %}{% t "Посещаемость" %}{% endblock %}
+{% block body %}
+<div class="hero" style="min-height:100vh;display:grid;place-items:center">
+  <div class="card pad" style="width:min(440px, 92vw);text-align:center">
+    {% if status == 'ok' %}
+      <span class="badge ok">{% t "Готово" %}</span>
+      <h1 class="display" style="font-size:36px;margin:16px 0 8px">{% t "Вы на занятии" %}</h1>
+      <p class="muted">{{ session.group.name }} · {{ session.lesson_date|date:"d.m.Y" }}</p>
+      <p>{% t "Преподаватель видит, что вы отметились." %}</p>
+      <a class="btn" href="{% url 'web:dashboard' %}" style="margin-top:18px">{% t "В кабинет" %}</a>
+    {% elif status == 'closed' %}
+      <span class="badge warn">{% t "Сбор закрыт" %}</span>
+      <h1 class="display" style="font-size:32px;margin:16px 0 8px">{% t "Уже нельзя отметиться" %}</h1>
+      <p class="muted">{% t "Попросите преподавателя открыть посещаемость ещё раз." %}</p>
+    {% elif status == 'not_student' %}
+      <span class="badge warn">{% t "Нужен аккаунт ученика" %}</span>
+      <h1 class="display" style="font-size:32px;margin:16px 0 8px">{% t "Войдите как ученик" %}</h1>
+      <p class="muted">{% t "Эта ссылка отмечает присутствие ученика группы." %}</p>
+      <a class="btn" href="{% url 'web:dashboard' %}" style="margin-top:18px">{% t "В кабинет" %}</a>
+    {% else %}
+      <span class="badge danger">{% t "Нет в группе" %}</span>
+      <h1 class="display" style="font-size:32px;margin:16px 0 8px">{% t "Вас нет в этой группе" %}</h1>
+      <p class="muted">{{ session.group.name }}. {% t "Напишите преподавателю, если это ошибка." %}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

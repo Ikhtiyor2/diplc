@@ -1,0 +1,38 @@
+{% extends "app.html" %}
+{% load icons %}
+
+{% block title %}{% t "Мой кабинет" %}{% endblock %}
+
+{% block content %}
+<p class="muted small">{% t "Ученик" %}</p>
+<h1 class="display" style="font-size:40px;margin:0 0 18px;letter-spacing:-0.05em">{% t "Привет" %}{% if user.first_name %}, {{ user.first_name }}{% endif %}</h1>
+<section class="kpis">
+  {% for card in cards %}
+  <a class="card kpi" {% if card.href %}href="{% url card.href %}"{% endif %}>
+    <span class="label">{{ card.label|t }}</span>
+    <span class="value">{{ card.value }}</span>
+    <span class="small muted">{{ card.hint|t }}</span>
+  </a>
+  {% endfor %}
+</section>
+<div class="grid-2" style="margin-top:16px">
+  <article class="card pad">
+    <div class="row"><h2 class="display" style="margin:0;font-size:28px">{% t "Домашние задания" %}</h2><a href="{% url 'web:homework' %}">{% t "Все" %}</a></div>
+    {% for item in homework %}
+      <a class="row" href="{% url 'web:homework-detail' item.pk %}">
+        <span><strong>{{ item.title }}</strong><div class="small muted">{{ item.group.name }}{% if item.deadline %} · {% t "до" %} {{ item.deadline|date:"d.m H:i" }}{% endif %}</div></span>
+        {% icon 'chevron' %}
+      </a>
+    {% empty %}<div class="empty">{% t "Пока нет заданий." %}</div>{% endfor %}
+  </article>
+  <article class="card pad">
+    <div class="row"><h2 class="display" style="margin:0;font-size:28px">{% t "Мои группы" %}</h2><a href="{% url 'web:groups' %}">{% t "Все" %}</a></div>
+    {% for group in groups %}
+      <a class="row" href="{% url 'web:group-detail' group.pk %}">
+        <span><strong>{{ group.name }}</strong><div class="small muted">{{ group.language }} · {{ group.schedule }}</div></span>
+        {% icon 'chevron' %}
+      </a>
+    {% empty %}<p class="muted">{% t "Группа ещё не назначена." %}</p>{% endfor %}
+  </article>
+</div>
+{% endblock %}

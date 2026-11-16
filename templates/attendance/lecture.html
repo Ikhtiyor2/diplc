@@ -1,0 +1,261 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Посещаемость лекции" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <p class="muted small">{% t "Лектор" %}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Посещаемость лекции" %}</h1>
+    <p class="muted">{% t "Сначала выберите группу. В списке будут только её ученики." %}</p>
+  </div>
+  <div class="gap">
+    {% if user.is_admin %}
+    <a class="btn-secondary" href="{% url 'web:lecture-streams' %}">{% t "Потоки лекций" %}</a>
+    {% endif %}
+  </div>
+</div>
+
+<form method="get" class="card pad gap" style="margin:16px 0;flex-wrap:wrap">
+  <label class="field">{% t "Поток" %}
+    <select class="input" name="stream" onchange="this.form.submit()">
+      <option value="">{% t "Выберите поток" %}</option>
+      {% for item in streams %}
+      <option value="{{ item.pk }}" {% if stream and stream.pk == item.pk %}selected{% endif %}>{{ item.name }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  {% if stream %}
+  <label class="field">{% t "Дата лекции" %}
+    <input class="input" type="date" name="date" value="{{ lesson_date }}">
+  </label>
+  <button class="btn-secondary" type="submit">{% t "Показать" %}</button>
+  {% if selected_group %}<input type="hidden" name="group" value="{{ selected_group.pk }}">{% elif show_all %}<input type="hidden" name="group" value="all">{% endif %}
+  {% endif %}
+</form>
+
+{% if stream and lesson_date %}
+{% if stream_groups|length > 1 %}
+<nav class="group-switch" aria-label="{% t "Группа" %}">
+  {% for item in stream_groups %}
+  <a class="group-chip {% if selected_group and selected_group.pk == item.pk %}is-current{% endif %}" href="?stream={{ stream.pk }}&date={{ lesson_date }}&group={{ item.pk }}">
+    <strong>{{ item.name }}</strong>
+    <span class="small muted">{{ item.student_count }} {% t "учеников" %}</span>
+  </a>
+  {% endfor %}
+  <a class="group-chip {% if show_all %}is-current{% endif %}" href="?stream={{ stream.pk }}&date={{ lesson_date }}&group=all">
+    <strong>{% t "Все группы" %}</strong>
+    <span class="small muted">{% t "общий список" %}</span>
+  </a>
+</nav>
+{% endif %}
+{% if not show_roster %}
+<div class="card empty">{% t "Выберите группу — в списке будут только её ученики." %}</div>
+{% else %}
+<div class="lesson-board lesson-board-lecture">
+  <aside class="card lesson-rail">
+    <div class="pad">
+      <h2 class="display" style="margin:0;font-size:22px">{% t "Даты лекций" %}</h2>
+      <p class="small muted" style="margin:6px 0 0">{{ stream.name }}</p>
+    </div>
+    <div class="day-list">
+      {% for day in lesson_days %}
+      <a class="day-link {% if day.date|date:'Y-m-d' == lesson_date %}is-current{% endif %}" href="?stream={{ stream.pk }}&date={{ day.date|date:'Y-m-d' }}{% if selected_group %}&group={{ selected_group.pk }}{% elif show_all %}&group=all{% endif %}">
+        <strong>{{ day.date|date:"d.m.Y" }}</strong>
+        <span class="day-meta">
+          {% if day.topic %}{{ day.topic }} · {% endif %}
+          {% if day.present or day.absent %}
+            <span class="dot ok"></span>{{ day.present }}
+            <span class="dot danger"></span>{{ day.absent }}
+          {% else %}
+            {% t "Нет отметок" %}
+          {% endif %}
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+    <form method="post" class="pad stack day-move">
+      {% csrf_token %}
+      <input type="hidden" name="stream_id" value="{{ stream.pk }}">
+      <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+      {% if selected_group %}<input type="hidden" name="group_id" value="{{ selected_group.pk }}">{% elif show_all %}<input type="hidden" name="group_id" value="all">{% endif %}
+      <input type="hidden" name="action" value="move">
+      <label class="field">{% t "Новая дата" %}
+        <input class="input" type="date" name="new_date" value="{{ lesson_date }}" required>
+      </label>
+      <button class="btn-secondary btn-sm" type="submit">{% t "Перенести лекцию" %}</button>
+      <p class="small muted" style="margin:0">{% t "Отметки останутся на учениках и переедут вместе с датой." %}</p>
+    </form>
+  </aside>
+
+  <div class="stack lesson-main">
+    <article class="card pad context-strip">
+      <div>
+        <p class="small muted" style="margin:0">{% t "Сейчас открыто" %}</p>
+        <strong class="display" style="font-size:28px">{{ lesson_on|date:"d.m.Y" }}</strong>
+        <p class="small muted" style="margin:4px 0 0">{% if selected_group %}{{ selected_group.name }} · {% endif %}{{ stream.name }}{% if topic %} · {{ topic }}{% endif %}</p>
+      </div>
+      <div class="mark-stats" id="mark-stats">
+        <span class="stat ok" data-stat="present"><b>{{ present_count }}</b> {% t "присут." %}</span>
+        <span class="stat danger" data-stat="absent"><b>{{ absent_marked }}</b> {% t "отсут." %}</span>
+        <span class="stat" data-stat="open"><b>{{ open_marked }}</b> {% t "не отмечен" %}</span>
+      </div>
+    </article>
+
+    {% if checkin and checkin.is_open %}
+    <article class="card pad checkin-panel">
+      <div class="checkin-qr">
+        <div id="qr-box" data-url="{{ checkin_url }}"></div>
+        <span class="badge ok">{% t "Сбор открыт" %}</span>
+      </div>
+      <div class="stack" style="min-width:0">
+        <h2 class="display" style="font-size:24px;margin:0">{% t "Отметиться на лекции" %}</h2>
+        <p class="muted">{% t "Ученик сканирует код или открывает ссылку, входит в кабинет — и попадает в список присутствующих." %}</p>
+        <label class="field">{% t "Ссылка для чата" %}
+          <div class="copy-row">
+            <input class="input" id="checkin-link" value="{{ checkin_url }}" readonly>
+            <button class="btn" type="button" id="copy-link">{% icon 'file' 16 %} {% t "Копировать" %}</button>
+          </div>
+        </label>
+        <p class="small muted">{% t "Код лекции:" %} <strong class="mono">{{ checkin.token }}</strong></p>
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="stream_id" value="{{ stream.pk }}">
+          <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+          {% if selected_group %}<input type="hidden" name="group_id" value="{{ selected_group.pk }}">{% elif show_all %}<input type="hidden" name="group_id" value="all">{% endif %}
+          <button class="btn-secondary" type="submit" name="action" value="close">{% t "Закрыть сбор" %}</button>
+        </form>
+      </div>
+    </article>
+    <div id="live-checkins"
+         hx-get="{% url 'web:lecture-attendance-live' %}?stream={{ stream.pk }}&date={{ lesson_date }}{% if selected_group %}&group={{ selected_group.pk }}{% endif %}"
+         hx-trigger="load, every 3s"
+         hx-swap="innerHTML">
+      {% include "groups/_checkins.html" with checkins=checkins present_count=present_count student_count=student_count %}
+    </div>
+    {% else %}
+    <article class="card pad">
+      <p class="muted">{% t "Сбор по QR сейчас закрыт. Откройте снова, чтобы показать код и ссылку." %}</p>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="stream_id" value="{{ stream.pk }}">
+        <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+        {% if selected_group %}<input type="hidden" name="group_id" value="{{ selected_group.pk }}">{% elif show_all %}<input type="hidden" name="group_id" value="all">{% endif %}
+        <button class="btn" type="submit" name="action" value="open">{% icon 'target' 18 %} {% t "Открыть посещаемость" %}</button>
+      </form>
+    </article>
+    {% endif %}
+
+    <form method="post" id="lecture-form" class="card mark-sheet">
+      {% csrf_token %}
+      <input type="hidden" name="stream_id" value="{{ stream.pk }}">
+      <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+      {% if selected_group %}<input type="hidden" name="group_id" value="{{ selected_group.pk }}">{% elif show_all %}<input type="hidden" name="group_id" value="all">{% endif %}
+      <input type="hidden" name="action" value="save">
+      <div class="pad">
+        <label class="field">{% t "Тема" %} <span class="small muted">({% t "необязательно" %})</span>
+          <input class="input" type="text" name="topic" value="{{ topic }}" placeholder="{% t "Лекция" %}">
+        </label>
+      </div>
+      {% if rows %}
+      <div class="gap pad" style="padding-top:0">
+        <button class="btn-secondary btn-sm" type="button" data-mark-all="present">{% t "Все присутствовали" %}</button>
+        <button class="btn-secondary btn-sm" type="button" data-mark-all="absent">{% t "Все отсутствовали" %}</button>
+        <button class="btn-ghost btn-sm" type="button" data-mark-all="clear">{% t "Снять все отметки" %}</button>
+      </div>
+      {% endif %}
+      {% for block in grouped_rows %}
+      <section class="mark-group">
+        <div class="mark-group-head">
+          <h3>{{ block.name }}</h3>
+          <div class="gap">
+            <button class="btn-ghost btn-sm" type="button" data-mark-scope="present">{% t "Группа присутствовала" %}</button>
+            <button class="btn-ghost btn-sm" type="button" data-mark-scope="absent">{% t "Группа отсутствовала" %}</button>
+          </div>
+        </div>
+        {% for row in block.rows %}
+        <div class="mark-row {% if row.status == 'present' %}is-present{% elif row.status == 'absent' %}is-absent{% else %}is-open{% endif %}">
+          <div class="mark-who">
+            <strong>{{ row.student.full_name }}</strong>
+            <span class="small mark-state">
+              {% if row.status == 'present' %}{% t "Присутствовал" %}{% elif row.status == 'absent' %}{% t "Отсутствовал" %}{% else %}{% t "Не отмечен" %}{% endif %}
+            </span>
+          </div>
+          {% include "includes/mark_choices.html" with student_id=row.student.id status=row.status %}
+        </div>
+        {% endfor %}
+      </section>
+      {% empty %}
+      <p class="pad muted">{% t "В группах потока пока нет учеников." %}</p>
+      {% endfor %}
+      {% if rows %}
+      <div class="pad mark-save">
+        <button class="btn" type="submit">{% t "Сохранить посещаемость" %}</button>
+      </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endif %}
+{% else %}
+<div class="card empty">{% t "Сначала выберите поток лекций." %}</div>
+{% endif %}
+{% endblock %}
+
+{% block page_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  const box = document.getElementById("qr-box");
+  if (box && window.QRCode) {
+    new QRCode(box, { text: box.dataset.url, width: 220, height: 220, correctLevel: QRCode.CorrectLevel.M });
+  }
+  const copyBtn = document.getElementById("copy-link");
+  const linkInput = document.getElementById("checkin-link");
+  copyBtn?.addEventListener("click", async () => {
+    linkInput.select();
+    try {
+      await navigator.clipboard.writeText(linkInput.value);
+    } catch (err) {
+      document.execCommand("copy");
+    }
+    copyBtn.textContent = "{% js_t "Скопировано" %}";
+    setTimeout(() => { copyBtn.innerHTML = "{% js_t "Копировать" %}"; }, 1600);
+  });
+  const form = document.getElementById("lecture-form");
+  const stateLabel = {
+    present: "{% js_t "Присутствовал" %}",
+    absent: "{% js_t "Отсутствовал" %}",
+    clear: "{% js_t "Не отмечен" %}",
+  };
+  const paintMarks = (root) => {
+    if (!root) return;
+    root.querySelectorAll(".mark-row").forEach((row) => {
+      const picked = row.querySelector('input[type="radio"]:checked');
+      const value = picked ? picked.value : "clear";
+      row.classList.remove("is-present", "is-absent", "is-open");
+      row.classList.add(value === "present" ? "is-present" : value === "absent" ? "is-absent" : "is-open");
+      const state = row.querySelector(".mark-state");
+      if (state) state.textContent = stateLabel[value] || stateLabel.clear;
+    });
+    const stats = document.getElementById("mark-stats");
+    if (!stats) return;
+    const set = (name, count) => {
+      const node = stats.querySelector(`[data-stat="${name}"] b`);
+      if (node) node.textContent = String(count);
+    };
+    set("present", root.querySelectorAll(".mark-row.is-present").length);
+    set("absent", root.querySelectorAll(".mark-row.is-absent").length);
+    set("open", root.querySelectorAll(".mark-row.is-open").length);
+  };
+  const markIn = (root, status) => {
+    root?.querySelectorAll(`input[type="radio"][value="${status}"]`).forEach((input) => { input.checked = true; });
+    paintMarks(form);
+  };
+  document.querySelectorAll("[data-mark-all]").forEach((btn) => {
+    btn.addEventListener("click", () => markIn(form, btn.dataset.markAll));
+  });
+  document.querySelectorAll("[data-mark-scope]").forEach((btn) => {
+    btn.addEventListener("click", () => markIn(btn.closest(".mark-group"), btn.dataset.markScope));
+  });
+  form?.addEventListener("change", () => paintMarks(form));
+</script>
+{% endblock %}

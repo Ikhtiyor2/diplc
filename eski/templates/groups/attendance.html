@@ -1,0 +1,103 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Посещаемость" %} · {{ group.name }}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <p class="muted small">{{ group.name }}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Посещаемость" %}</h1>
+    <p class="muted">{% t "Покажите QR на экране или скопируйте ссылку в чат — ученики отметится сами." %}</p>
+  </div>
+  <a class="btn-secondary" href="{% url 'web:export-attendance' group.pk %}">{% t "Экспорт в Excel" %}</a>
+</div>
+
+<form method="get" class="gap" style="margin:16px 0">
+  <label class="field">{% t "Дата занятия" %} <input class="input" type="date" name="date" value="{{ lesson_date }}"></label>
+  <button class="btn-secondary" type="submit">{% t "Показать" %}</button>
+</form>
+
+{% if session and session.is_open %}
+<article class="card pad checkin-panel">
+  <div class="checkin-qr">
+    <div id="qr-box" data-url="{{ checkin_url }}"></div>
+    <span class="badge ok">{% t "Сбор открыт" %}</span>
+  </div>
+  <div class="stack" style="min-width:0">
+    <h2 class="display" style="font-size:28px;margin:0">{% t "Отметиться на занятии" %}</h2>
+    <p class="muted">{% t "Ученик сканирует код или открывает ссылку, входит в кабинет — и сразу попадает в список присутствующих." %}</p>
+    <label class="field">{% t "Ссылка для чата" %}
+      <div class="copy-row">
+        <input class="input" id="checkin-link" value="{{ checkin_url }}" readonly>
+        <button class="btn" type="button" id="copy-link">{% icon 'file' 16 %} {% t "Копировать" %}</button>
+      </div>
+    </label>
+    <p class="small muted">{% t "Код занятия:" %} <strong class="mono">{{ session.token }}</strong></p>
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn-secondary" type="submit" name="action" value="close">{% t "Закрыть сбор" %}</button>
+    </form>
+  </div>
+</article>
+<div id="live-checkins"
+     hx-get="{% url 'web:group-attendance-live' group.pk %}?date={{ lesson_date }}"
+     hx-trigger="load, every 3s"
+     hx-swap="innerHTML">
+  {% include "groups/_checkins.html" %}
+</div>
+{% else %}
+<article class="card pad" style="margin-bottom:16px">
+  <p class="muted">{% t "Сбор по QR сейчас закрыт. Откройте снова, чтобы показать код и ссылку." %}</p>
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+    <button class="btn" type="submit" name="action" value="open">{% icon 'target' 18 %} {% t "Открыть посещаемость" %}</button>
+  </form>
+</article>
+{% endif %}
+
+<form method="post" class="card">
+  {% csrf_token %}
+  <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+  <div class="pad row">
+    <h2 class="display" style="margin:0;font-size:24px">{% t "Список группы" %}</h2>
+    <span class="small muted">{% t "Можно отметить вручную" %}</span>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Присутствовал" %}</th><th>{% t "Отсутствовал" %}</th></tr></thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>{{ row.student.full_name }}</td>
+          <td><label><input type="radio" name="status_{{ row.student.id }}" value="present" {% if row.status == 'present' %}checked{% endif %}> {% t "Присутствовал" %}</label></td>
+          <td><label><input type="radio" name="status_{{ row.student.id }}" value="absent" {% if row.status == 'absent' %}checked{% endif %}> {% t "Отсутствовал" %}</label></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="pad"><button class="btn" type="submit" name="action" value="save">{% t "Сохранить посещаемость" %}</button></div>
+</form>
+{% endblock %}
+
+{% block page_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  const box = document.getElementById("qr-box");
+  if (box && window.QRCode) {
+    new QRCode(box, { text: box.dataset.url, width: 220, height: 220, correctLevel: QRCode.CorrectLevel.M });
+  }
+  const btn = document.getElementById("copy-link");
+  const input = document.getElementById("checkin-link");
+  btn?.addEventListener("click", async () => {
+    input.select();
+    try {
+      await navigator.clipboard.writeText(input.value);
+    } catch (err) {
+      document.execCommand("copy");
+    }
+    btn.textContent = "{% js_t "Скопировано" %}";
+    setTimeout(() => { btn.innerHTML = "{% js_t "Копировать" %}"; }, 1600);
+  });
+</script>
+{% endblock %}

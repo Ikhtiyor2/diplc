@@ -1,0 +1,77 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Посещаемость лекции" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <p class="muted small">{% t "Лектор" %}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Посещаемость лекции" %}</h1>
+    <p class="muted">{% t "Отметьте всех учеников сразу — лекция общая для всех групп." %}</p>
+  </div>
+  <div class="gap">
+    <span class="badge teal">{{ present_count }} / {{ student_count }}</span>
+  </div>
+</div>
+
+<form method="get" class="gap" style="margin:16px 0">
+  <label class="field">{% t "Дата занятия" %} <input class="input" type="date" name="date" value="{{ lesson_date }}"></label>
+  <button class="btn-secondary" type="submit">{% t "Показать" %}</button>
+</form>
+
+<form method="post" id="lecture-form">
+  {% csrf_token %}
+  <input type="hidden" name="lesson_date" value="{{ lesson_date }}">
+  <div class="gap" style="margin-bottom:14px">
+    <button class="btn-secondary" type="button" data-mark-all="present">{% t "Все присутствовали" %}</button>
+    <button class="btn-secondary" type="button" data-mark-all="absent">{% t "Все отсутствовали" %}</button>
+  </div>
+  {% for block in blocks %}
+  <article class="card" style="margin-bottom:16px">
+    <div class="pad row">
+      <div>
+        <h2 class="display" style="margin:0;font-size:24px">{{ block.group.name }}</h2>
+        <p class="small muted" style="margin:4px 0 0">{% if block.group.teacher %}{{ block.group.teacher.full_name }}{% else %}{% t "Без преподавателя" %}{% endif %} · {{ block.group.language }}</p>
+      </div>
+      <button class="btn-ghost btn-sm" type="button" data-mark-group="{{ block.group.pk }}" data-status="present">{% t "Группа присутствовала" %}</button>
+    </div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Присутствовал" %}</th><th>{% t "Отсутствовал" %}</th></tr></thead>
+        <tbody>
+          {% for row in block.rows %}
+          <tr>
+            <td>{{ row.student.full_name }}</td>
+            <td><label><input type="radio" name="status_{{ block.group.pk }}_{{ row.student.id }}" value="present" {% if row.status == 'present' %}checked{% endif %}> {% t "Присутствовал" %}</label></td>
+            <td><label><input type="radio" name="status_{{ block.group.pk }}_{{ row.student.id }}" value="absent" {% if row.status == 'absent' %}checked{% endif %}> {% t "Отсутствовал" %}</label></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </article>
+  {% empty %}
+  <div class="card empty">{% t "Пока нет групп с учениками." %}</div>
+  {% endfor %}
+  {% if blocks %}
+  <div class="pad" style="padding-left:0"><button class="btn" type="submit">{% t "Сохранить посещаемость" %}</button></div>
+  {% endif %}
+</form>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  const form = document.getElementById("lecture-form");
+  const mark = (status, groupId) => {
+    const selector = groupId
+      ? `input[type="radio"][name^="status_${groupId}_"][value="${status}"]`
+      : `input[type="radio"][value="${status}"]`;
+    form?.querySelectorAll(selector).forEach((input) => { input.checked = true; });
+  };
+  document.querySelectorAll("[data-mark-all]").forEach((btn) => {
+    btn.addEventListener("click", () => mark(btn.dataset.markAll));
+  });
+  document.querySelectorAll("[data-mark-group]").forEach((btn) => {
+    btn.addEventListener("click", () => mark(btn.dataset.status, btn.dataset.markGroup));
+  });
+</script>
+{% endblock %}

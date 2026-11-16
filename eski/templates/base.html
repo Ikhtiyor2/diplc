@@ -1,0 +1,27 @@
+{% load static icons %}
+<!DOCTYPE html>
+<html lang="{% current_ui_language %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}DiplomacyLC{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob a"></span>
+    <span class="aurora-blob b"></span>
+    <span class="aurora-blob c"></span>
+  </div>
+  <a class="skip" href="#content">{% t "К содержимому" %}</a>
+  {% block body %}{% endblock %}
+  {% include "includes/messages.html" %}
+  <script src="{% static 'js/app.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

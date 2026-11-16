@@ -1,0 +1,118 @@
+{% extends "app.html" %}
+{% load icons %}
+
+{% block title %}{% t "Обзор — DiplomacyLC" %}{% endblock %}
+
+{% block content %}
+<div class="row" style="margin-bottom:18px">
+  <div>
+    <p class="muted small">{% if user.is_primary_admin %}{% t "Главный администратор" %}{% else %}{% t "Администратор" %}{% endif %}</p>
+    <h1 class="display" style="font-size:40px;margin:0;letter-spacing:-0.05em">{% t "Центр сегодня" %}</h1>
+  </div>
+  <div class="gap">
+    {% if user.is_primary_admin %}
+    <a class="btn-secondary" href="{% url 'web:admin-create' %}">{% icon 'plus' %} {% t "Админ" %}</a>
+    {% endif %}
+    <a class="btn-secondary" href="{% url 'web:lector-create' %}">{% icon 'plus' %} {% t "Лектор" %}</a>
+    <a class="btn-secondary" href="{% url 'web:teacher-create' %}">{% icon 'plus' %} {% t "Преподаватель" %}</a>
+    <a class="btn" href="{% url 'web:student-create' %}">{% icon 'plus' %} {% t "Ученик" %}</a>
+  </div>
+</div>
+<section class="kpis">
+  {% for kpi in kpis %}
+  <article class="card kpi">
+    <span class="label">{{ kpi.label|t }}</span>
+    <span class="value">{{ kpi.value }}</span>
+    <span class="small muted">{{ kpi.hint|t }}</span>
+  </article>
+  {% endfor %}
+</section>
+<div class="grid-2" style="margin-top:16px">
+  <article class="card pad">
+    <div class="row"><h2 class="display" style="margin:0;font-size:28px">{% t "Посещаемость по месяцам" %}</h2></div>
+    <canvas id="attChart" height="120"></canvas>
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="margin:0 0 12px;font-size:28px">{% t "Лучшие и проблемные" %}</h2>
+    <p class="small muted">{% t "По среднему баллу" %}</p>
+    {% for group in best_groups %}
+      <div class="row"><strong>{{ group.name }}</strong><span class="badge ok">{{ group.average }}</span></div>
+    {% empty %}<p class="muted">{% t "Пока нет данных." %}</p>{% endfor %}
+    <hr style="border:0;border-top:1px solid var(--line)">
+    {% for group in risk_groups %}
+      <div class="row"><strong>{{ group.name }}</strong><span class="badge warn">{{ group.average }}</span></div>
+    {% endfor %}
+  </article>
+</div>
+<article class="card" style="margin-top:16px">
+  <div class="pad row"><h2 class="display" style="margin:0;font-size:28px">{% t "Успеваемость по группам" %}</h2></div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Группа" %}</th><th>{% t "Язык" %}</th><th>{% t "Ученики" %}</th><th>{% t "Посещаемость" %}</th><th>{% t "Средний балл" %}</th></tr></thead>
+      <tbody>
+        {% for row in group_performance %}
+        <tr>
+          <td><a href="{% url 'web:group-detail' row.id %}"><strong>{{ row.name }}</strong></a></td>
+          <td>{{ row.language }}</td>
+          <td>{{ row.students }}</td>
+          <td>{{ row.attendance }}%</td>
+          <td>{{ row.average }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% if user.is_primary_admin %}
+<article class="card" style="margin-top:16px">
+  <div class="pad row">
+    <h2 class="display" style="margin:0;font-size:28px">{% t "Что сделали администраторы" %}</h2>
+    <a href="{% url 'web:audit' %}">{% t "Весь журнал" %}</a>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Время" %}</th><th>{% t "Кто" %}</th><th>{% t "Действие" %}</th><th>{% t "Детали" %}</th></tr></thead>
+      <tbody>
+        {% for item in staff_audit %}
+        <tr class="review-row checking">
+          <td>{{ item.created_at|date:"d.m.Y H:i" }}</td>
+          <td>{{ item.actor.full_name|default:item.actor.login }}</td>
+          <td>{{ item.action|t }}</td>
+          <td class="small">
+            {% if item.metadata.fields %}
+              {% for key, value in item.metadata.fields.items %}
+                <div><span class="muted">{{ key }}:</span> {{ value }}</div>
+              {% endfor %}
+            {% else %}
+              <span class="mono muted">{{ item.path }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">{% t "Второстепенные админы ещё ничего не делали." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endif %}
+{% endblock %}
+
+{% block page_js %}
+{{ attendance_by_month|json_script:"att-data" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+  const rows = JSON.parse(document.getElementById('att-data').textContent);
+  const ctx = document.getElementById('attChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: rows.map(r => r.label),
+        datasets: [{ label: '{% js_t "Посещаемость %" %}', data: rows.map(r => r.value), borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,.16)', fill: true, tension: .45 }]
+      },
+      options: { plugins: { legend: { display: false } }, scales: { y: { min: 0, max: 100 } } }
+    });
+  }
+</script>
+{% endblock %}

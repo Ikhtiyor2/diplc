@@ -1,0 +1,15 @@
+{% extends "app.html" %}
+{% block title %}{% t "Новое упражнение" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:40px">{% t "Упражнение" %}</h1>
+<form method="post" enctype="multipart/form-data" class="card pad stack" style="max-width:840px">
+  {% csrf_token %}
+  <div class="form-grid">
+    {% for field in form %}
+      <label class="field {% if field.name == 'prompt' or field.name == 'title' or field.name == 'content_json' %}full{% endif %}">{{ field.label }} {{ field }}</label>
+    {% endfor %}
+  </div>
+  <p class="small muted">{% t "Примеры JSON для vocabulary, matching и sentence_builder — в подсказке поля содержимого." %}</p>
+  <button class="btn" type="submit">{% t "Сохранить" %}</button>
+</form>
+{% endblock %}

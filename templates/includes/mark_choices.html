@@ -1,0 +1,14 @@
+<div class="mark-choices">
+  <label class="mark-choice is-present">
+    <input type="radio" name="status_{{ student_id }}" value="present" {% if status == "present" %}checked{% endif %}>
+    <span>{% t "Присутствовал" %}</span>
+  </label>
+  <label class="mark-choice is-absent">
+    <input type="radio" name="status_{{ student_id }}" value="absent" {% if status == "absent" %}checked{% endif %}>
+    <span>{% t "Отсутствовал" %}</span>
+  </label>
+  <label class="mark-choice is-open">
+    <input type="radio" name="status_{{ student_id }}" value="clear" {% if not status %}checked{% endif %}>
+    <span>{% t "Не отмечен" %}</span>
+  </label>
+</div>

@@ -1,0 +1,39 @@
+{% extends "app.html" %}
+{% block title %}{% t "Профиль" %}{% endblock %}
+{% block content %}
+<h1 class="display" style="font-size:28px;margin:0 0 18px">{% t "Профиль" %}</h1>
+<div class="grid-2">
+  <form method="post" enctype="multipart/form-data" class="card pad stack">
+    {% csrf_token %}
+    <div class="gap">
+      {% include "includes/avatar.html" with person=user size="avatar-lg" %}
+      <div>
+        <strong>{{ user.full_name }}</strong>
+        <div class="small muted">{{ user.login }} · {{ user.role_label }}</div>
+      </div>
+    </div>
+    {% if form.non_field_errors %}<div class="badge danger">{{ form.non_field_errors.0|t }}</div>{% endif %}
+    <label class="field">{% t "Фамилия" %} {{ form.last_name }}</label>
+    <label class="field">{% t "Имя" %} {{ form.first_name }}</label>
+    <label class="field">{% t "Отчество" %} {{ form.middle_name }}</label>
+    <label class="field">{% t "Телефон" %} {{ form.phone }}</label>
+    <label class="field">{% t "Фото" %} {{ form.avatar }}</label>
+    <button class="btn" type="submit">{% t "Сохранить" %}</button>
+  </form>
+  <article class="card pad">
+    <h2>Telegram</h2>
+    {% if user.telegram_id %}
+      <p class="badge ok">{% t "Аккаунт привязан" %}{% if user.telegram_username %} · @{{ user.telegram_username }}{% endif %}</p>
+    {% elif link %}
+      <p>{% t "Отправьте боту" %} <strong>@{{ telegram_bot_username }}</strong> {% t "этот код:" %}</p>
+      <p class="display" style="font-size:32px;margin:8px 0">{{ link.code }}</p>
+      <a class="btn" href="https://t.me/{{ telegram_bot_username }}?start={{ link.code }}">{% t "Открыть Telegram" %}</a>
+    {% endif %}
+    <a class="btn-secondary" href="?new_code=1" style="margin-top:12px">{% t "Новый код" %}</a>
+    <h3 style="margin-top:24px">{% t "Уведомления" %}</h3>
+    {% for item in notifications %}
+      <div class="row"><span>{{ item.title }}</span><span class="small muted">{{ item.created_at|date:"d.m H:i" }}</span></div>
+    {% empty %}<p class="muted">{% t "Пока пусто." %}</p>{% endfor %}
+  </article>
+</div>
+{% endblock %}

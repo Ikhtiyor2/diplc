@@ -1,0 +1,23 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+  function aulaTheme() {
+    const s = getComputedStyle(document.body);
+    return {
+      ink: s.getPropertyValue("--ink").trim() || "#f4f2ff",
+      muted: s.getPropertyValue("--muted").trim() || "#aaa6b8",
+      line: s.getPropertyValue("--line").trim() || "rgba(180,170,220,.14)",
+    };
+  }
+  function aulaAxis(max = 100) {
+    const t = aulaTheme();
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: t.ink, boxWidth: 12 } } },
+      scales: {
+        x: { ticks: { color: t.muted, maxRotation: 45, minRotation: 0 }, grid: { color: t.line } },
+        y: { min: 0, max, ticks: { color: t.muted }, grid: { color: t.line } },
+      },
+    };
+  }
+</script>

@@ -1,0 +1,33 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Потоки лекций" %}{% endblock %}
+{% block content %}
+<div class="row" style="margin-bottom:16px">
+  <div>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Потоки лекций" %}</h1>
+    <p class="muted">{% t "Объединение групп для общей лекции, расписание и темы занятий." %}</p>
+  </div>
+  {% if user.is_admin %}
+  <a class="btn" href="{% url 'web:lecture-stream-create' %}">{% t "Новый поток" %}</a>
+  {% endif %}
+</div>
+{% for stream in streams %}
+<article class="card" style="margin-bottom:12px">
+  <div class="pad row">
+    <div>
+      <a href="{% url 'web:lecture-stream-detail' stream.pk %}"><h2 class="display" style="margin:0;font-size:24px">{{ stream.name }}</h2></a>
+      <p class="small muted" style="margin:4px 0 0">{% if stream.schedule %}{{ stream.schedule }}{% if stream.room %} · {{ stream.room }}{% endif %} · {% endif %}{% t "Лектор" %}: {{ stream.lector.full_name }}</p>
+      <p class="small muted">{% for g in stream.groups.all %}{{ g.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}</p>
+    </div>
+    <div class="gap">
+      <a class="btn-secondary btn-sm" href="{% url 'web:lecture-attendance' %}?stream={{ stream.pk }}">{% t "Посещаемость" %}</a>
+      {% if user.is_admin %}
+      <a class="btn-ghost btn-sm" href="{% url 'web:lecture-stream-edit' stream.pk %}">{% t "Изменить" %}</a>
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% empty %}
+<div class="card empty">{% t "Потоков пока нет." %}{% if user.is_admin %} <a href="{% url 'web:lecture-stream-create' %}">{% t "Создать" %}</a>{% endif %}</div>
+{% endfor %}
+{% endblock %}

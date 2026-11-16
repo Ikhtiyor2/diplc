@@ -1,0 +1,105 @@
+{% extends "app.html" %}
+{% block title %}{% t "Успеваемость" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Успеваемость" %}</h1>
+    <p class="muted">{% t "Графики по группе и карточка каждого ученика: баллы, посещаемость, сданные ДЗ." %}</p>
+  </div>
+</div>
+{% if rows %}
+<div class="chart-grid">
+  <article class="card pad">
+    <h2 class="display" style="font-size:24px;margin:0 0 12px">{% t "Баллы и посещаемость" %}</h2>
+    <div class="chart-box"><canvas id="classScoreChart"></canvas></div>
+  </article>
+  <article class="card pad">
+    <h2 class="display" style="font-size:24px;margin:0 0 12px">{% t "Домашние задания" %}</h2>
+    <div class="chart-box"><canvas id="classHwChart"></canvas></div>
+  </article>
+</div>
+{% endif %}
+<article class="card" style="margin-top:16px">
+  <div class="table-wrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th>{% t "Ученик" %}</th>
+          <th>{% t "Группа" %}</th>
+          <th>{% t "Средний балл" %}</th>
+          <th>{% t "Посещаемость" %}</th>
+          <th>{% t "Сдано ДЗ" %}</th>
+          <th>{% t "Не сдано" %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>
+            <a href="{% url 'web:student-analytics' row.student.pk %}"><strong>{{ row.student.full_name }}</strong></a>
+            {% if row.risk %}<div class="small"><span class="badge warn">{% for reason in row.risk_reasons %}{{ reason }}{% if not forloop.last %}, {% endif %}{% endfor %}</span></div>{% endif %}
+          </td>
+          <td>{% for item in row.groups %}{{ item.group.name }}{% if not forloop.last %}<br>{% endif %}{% empty %}—{% endfor %}</td>
+          <td>
+            <div class="meter-cell">
+              <span>{% if row.average != None %}{{ row.average }}{% else %}—{% endif %}</span>
+              <div class="progress glow"><span style="width:{% if row.average != None %}{{ row.average }}{% else %}0{% endif %}%"></span></div>
+            </div>
+          </td>
+          <td>
+            <div class="meter-cell">
+              <span>{% if row.attendance != None %}{{ row.attendance }}%{% else %}—{% endif %}</span>
+              <div class="progress glow"><span style="width:{% if row.attendance != None %}{{ row.attendance }}{% else %}0{% endif %}%"></span></div>
+            </div>
+          </td>
+          <td>{{ row.progress.done }}/{{ row.progress.total }}</td>
+          <td>{{ row.progress.pending }}</td>
+          <td><a class="btn-ghost btn-sm" href="{% url 'web:student-analytics' row.student.pk %}">{% t "Карточка" %}</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7">{% t "Нет учеников для статистики." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}
+{% block page_js %}
+{% if rows %}
+{{ class_charts|json_script:"class-charts" }}
+{% include "includes/charts.html" %}
+<script>
+  const data = JSON.parse(document.getElementById("class-charts").textContent);
+  const scoreCtx = document.getElementById("classScoreChart");
+  if (scoreCtx && data.labels.length) {
+    new Chart(scoreCtx, {
+      type: "bar",
+      data: {
+        labels: data.labels,
+        datasets: [
+          { label: "{% js_t "Средний балл" %}", data: data.averages, backgroundColor: "rgba(167,139,250,.85)", borderRadius: 8 },
+          { label: "{% js_t "Посещаемость" %}", data: data.attendance, backgroundColor: "rgba(125,211,252,.75)", borderRadius: 8 },
+        ],
+      },
+      options: aulaAxis(100),
+    });
+  }
+  const hwCtx = document.getElementById("classHwChart");
+  if (hwCtx) {
+    new Chart(hwCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["{% js_t "Сдано" %}", "{% js_t "Не сдано" %}", "{% js_t "На доработке" %}"],
+        datasets: [{
+          data: [data.homework.done, data.homework.pending, data.homework.returned],
+          backgroundColor: ["rgba(134,212,164,.9)", "rgba(167,139,250,.75)", "rgba(240,192,121,.85)"],
+          borderWidth: 0,
+        }],
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: aulaTheme().ink } } } },
+    });
+  }
+</script>
+{% endif %}
+{% endblock %}

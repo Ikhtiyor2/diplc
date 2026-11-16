@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load icons static %}
+
+{% block title %}{% t "DiplomacyLC — языковой центр" %}{% endblock %}
+
+{% block body %}
+<div class="market">
+  <header class="site-nav">
+    <a class="brand" href="/">
+      {% include "includes/logo.html" %}
+      <span><strong>DiplomacyLC</strong><span>{% t "языковой центр" %}</span></span>
+    </a>
+    <div class="gap">
+      {% language_switch %}
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="{% t "Тема" %}">{% icon 'moon' %}</button>
+      <a class="btn" href="{% url 'web:login' %}">{% t "Войти" %}</a>
+    </div>
+  </header>
+
+  <section class="siri-hero">
+    <h1 class="siri-word"><span>DiplomacyLC</span></h1>
+  </section>
+
+  <section class="hero-copy">
+    <p data-rise>{% t "Уроки проходят онлайн. Выходите на занятие и сразу работаете с преподавателем." %}</p>
+    <p data-rise>{% t "Тесты и экзамены сдаются в платформе. Результат остаётся в кабинете." %}</p>
+    <p data-rise>{% t "Домашнее задание загружается сюда. Преподаватель проверяет работу и ставит оценку." %}</p>
+    <div class="hero-actions" data-rise>
+      <a class="btn" href="{% url 'web:login' %}">{% t "Войти" %} {% icon 'arrow-right' %}</a>
+    </div>
+  </section>
+
+  <section class="band" data-rise>
+    <div class="band-inner">
+      <h2>{% t "Многолетний стаж." %}</h2>
+      <p>{% t "У каждого преподавателя годы практики и сертификат по языку, который он ведёт." %}</p>
+      <div class="cert-row">
+        <span class="cert-pill">{% icon 'award' 16 %} HSK C1</span>
+        <span class="cert-pill">{% icon 'award' 16 %} IELTS 8</span>
+        <span class="cert-pill">{% icon 'award' 16 %} TOPIK 5</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scenario tone-0">
+    <div class="scenario-inner">
+      <div class="scenario-intro" data-rise>
+        <h2>{% t "На уроке." %}</h2>
+        <aside class="intro-aside">
+          <span class="tile-icon">{% icon 'headphones' 22 %}</span>
+          <p>{% t "Занятие идёт онлайн и вживую. Группа выходит к преподавателю, отмечает присутствие и разбирает тему вместе." %}</p>
+        </aside>
+      </div>
+      <div class="scenario-stage">
+        <article class="scenario-card has-shot" data-rise>
+          <h3><span class="quote-mark">"</span> <em>{% t "Выходим на урок" %}</em> <span class="quote-mark">"</span></h3>
+          <p>{% t "Урок идёт онлайн с преподавателем. В кабинете остаётся посещаемость и то, что задали." %}</p>
+          <div class="shot-frame">
+            <img class="shot" src="{% static 'img/landing/lesson.jpg' %}" alt="{% t "Онлайн-урок" %}">
+          </div>
+        </article>
+        <div class="scenario-tiles">
+          <article class="scenario-tile" data-rise>
+            <span class="tile-icon">{% icon 'check' 22 %}</span>
+            <h3><em>{% t "Отмечаем присутствие" %}</em></h3>
+            <p>{% t "Преподаватель видит, кто на уроке." %}</p>
+          </article>
+          <article class="scenario-tile tile-dark" data-rise>
+            <span class="tile-icon">{% icon 'message' 22 %}</span>
+            <h3><em>{% t "Разбираем тему вместе" %}</em></h3>
+            <p>{% t "Говорите, слушаете и сразу поправляете ошибки." %}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scenario tone-1">
+    <div class="scenario-inner">
+      <div class="scenario-intro" data-rise>
+        <h2>{% t "На экзамене." %}</h2>
+        <aside class="intro-aside">
+          <span class="tile-icon">{% icon 'clock' 22 %}</span>
+          <p>{% t "Тесты и экзамены открываются в платформе. Ученик проходит их сам, балл сохраняется в кабинете." %}</p>
+        </aside>
+      </div>
+      <div class="scenario-stage">
+        <article class="scenario-card has-shot" data-rise>
+          <h3><span class="quote-mark">"</span> <em>{% t "Откройте тест" %}</em> <span class="quote-mark">"</span></h3>
+          <p>{% t "Вопросы, таймер и ответы — на одной странице." %}</p>
+          <div class="shot-frame">
+            <img class="shot" src="{% static 'img/landing/exam.jpg' %}" alt="{% t "Экзамен" %}">
+          </div>
+        </article>
+        <div class="scenario-tiles">
+          <article class="scenario-tile tile-dark" data-rise>
+            <span class="tile-icon">{% icon 'headphones' 22 %}</span>
+            <h3><em>{% t "Сдайте экзамен" %}</em></h3>
+            <p>{% t "Формат как на настоящем экзамене: секции, аудио и текст." %}</p>
+          </article>
+          <article class="scenario-tile" data-rise>
+            <span class="tile-icon">{% icon 'chart' 22 %}</span>
+            <h3><em>{% t "Посмотрите балл" %}</em></h3>
+            <p>{% t "Результат сразу виден ученику и преподавателю." %}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scenario tone-2">
+    <div class="scenario-inner">
+      <div class="scenario-intro" data-rise>
+        <h2>{% t "После занятия." %}</h2>
+        <aside class="intro-aside">
+          <span class="tile-icon">{% icon 'file' 22 %}</span>
+          <p>{% t "Домашнее задание загружает преподаватель. Ученик сдаёт файлы, работу проверяют и комментируют." %}</p>
+        </aside>
+      </div>
+      <div class="scenario-stage">
+        <article class="scenario-card has-shot" data-rise>
+          <h3><span class="quote-mark">"</span> <em>{% t "Загрузите задание" %}</em> <span class="quote-mark">"</span></h3>
+          <p>{% t "Файлы, срок и группа — в одной карточке домашки." %}</p>
+          <div class="shot-frame">
+            <img class="shot" src="{% static 'img/landing/homework.jpg' %}" alt="{% t "Домашнее задание" %}">
+          </div>
+        </article>
+        <div class="scenario-tiles">
+          <article class="scenario-tile" data-rise>
+            <span class="tile-icon">{% icon 'upload' 22 %}</span>
+            <h3><em>{% t "Сдайте работу" %}</em></h3>
+            <p>{% t "Ученик прикрепляет файл до дедлайна." %}</p>
+          </article>
+          <article class="scenario-tile tile-dark" data-rise>
+            <span class="tile-icon">{% icon 'pen' 22 %}</span>
+            <h3><em>{% t "Проверьте и оцените" %}</em></h3>
+            <p>{% t "Преподаватель открывает сдачу, пишет комментарий и ставит балл." %}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="examples">
+    <div class="examples-inner">
+      <div data-rise>
+        <h2>{% t "Сертификаты по языку." %}</h2>
+        <p class="lead">{% t "Сертификат совпадает с языком, который преподаватель ведёт. Ниже — примеры уровня." %}</p>
+      </div>
+      <div class="shot-frame certs-frame" data-rise>
+        <img class="shot" src="{% static 'img/landing/certs.jpg' %}" alt="{% t "Сертификаты преподавателей" %}">
+      </div>
+      <div class="example-grid">
+        <article class="example-card" data-rise>
+          <span class="tile-icon">{% icon 'award' 22 %}</span>
+          <h3>HSK <span class="gradient-text">C1</span></h3>
+          <p>{% t "Китайский" %}</p>
+        </article>
+        <article class="example-card" data-rise>
+          <span class="tile-icon">{% icon 'award' 22 %}</span>
+          <h3>IELTS <span class="gradient-text">8</span></h3>
+          <p>{% t "Английский" %}</p>
+        </article>
+        <article class="example-card" data-rise>
+          <span class="tile-icon">{% icon 'award' 22 %}</span>
+          <h3>TOPIK <span class="gradient-text">5</span></h3>
+          <p>{% t "Корейский" %}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">DiplomacyLC · {% t "языковой центр" %}</div>
+  </footer>
+</div>
+{% endblock %}

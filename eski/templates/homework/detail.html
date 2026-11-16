@@ -1,0 +1,97 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{{ assignment.title }}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <p class="muted small">{{ assignment.group.name }}{% if assignment.deadline %} · {% t "сдать до" %} {{ assignment.deadline|date:"d.m.Y H:i" }}{% endif %}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{{ assignment.title }}</h1>
+  </div>
+        {% if user.is_admin or user.is_teaching_staff %}
+    <a class="btn-secondary" href="{% url 'web:homework-edit' assignment.pk %}">{% icon 'upload' 16 %} {% t "Файлы задания" %}</a>
+  {% endif %}
+</div>
+
+<article class="card pad" style="margin-top:16px">
+  {% if assignment.description %}<p>{{ assignment.description|linebreaks }}</p>{% endif %}
+  <h2 class="display" style="font-size:22px;margin:12px 0">{% t "Материалы" %}</h2>
+  <div class="file-list">
+    {% for file in assignment.files.all %}
+      <a class="file-chip" href="{{ file.file.url }}" target="_blank" download>{% icon 'download' 16 %} {{ file.original_name }}</a>
+    {% empty %}
+      <p class="muted">{% t "Файлы ещё не загружены." %}</p>
+    {% endfor %}
+  </div>
+</article>
+
+{% if user.is_student %}
+  {% if submission and submission.status == 'graded' %}
+    <article class="card pad" style="margin-top:16px">
+      <span class="badge ok">{% t "Оценка" %} {{ submission.score }}</span>
+      <p>{% if submission.feedback %}{{ submission.feedback }}{% else %}{% t "Комментарий не оставлен." %}{% endif %}</p>
+    </article>
+  {% elif submission and submission.status == 'submitted' %}
+    <p class="badge warn" style="margin-top:16px">{% t "Работа на проверке" %}</p>
+    {% if submission.files.all %}
+      <div class="file-list" style="margin-top:12px">
+        {% for file in submission.files.all %}
+          {% if file.public_url %}
+          <a class="file-chip" href="{{ file.public_url }}" target="_blank">{{ file.original_name }}</a>
+          {% else %}
+          <span class="file-chip muted">{{ file.original_name }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% else %}
+    {% if submission and submission.status == 'returned' %}<p class="badge danger">{% t "Вернули на доработку:" %} {{ submission.feedback }}</p>{% endif %}
+    <form method="post" action="{% url 'web:homework-submit' assignment.pk %}" enctype="multipart/form-data" class="card pad stack" style="margin-top:16px">
+      {% csrf_token %}
+      {% for item in assignment.items.all %}
+        <label class="field">{{ item.prompt }}<textarea class="input" name="item_{{ item.id }}" rows="3"></textarea></label>
+      {% endfor %}
+      <label class="field">{% t "Комментарий к работе" %} <span class="muted small">{% t "(необязательно)" %}</span>
+        <textarea class="input" name="answer" rows="4" placeholder="{% t "Можно коротко написать, что сделали." %}">{{ submission.answer|default:"" }}</textarea>
+      </label>
+      <label class="dropzone" for="student-files">
+        {% icon 'upload' 28 %}
+        <strong>{% t "Загрузите выполненную работу" %}</strong>
+        <span class="small muted">{% t "Фото тетради, PDF, Word — можно несколько файлов" %}</span>
+        <input id="student-files" class="dropzone-input" type="file" name="files" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.gif,.zip">
+      </label>
+      <button class="btn" type="submit">{% t "Отправить на проверку" %}</button>
+    </form>
+  {% endif %}
+{% else %}
+  {% include "homework/_submissions.html" %}
+{% endif %}
+{% endblock %}
+
+{% block page_js %}
+<script>
+  const input = document.getElementById("student-files");
+  if (input) {
+    const zone = input.closest(".dropzone");
+    const hint = zone?.querySelector(".small.muted");
+    const original = hint?.textContent;
+    const names = () => {
+      if (!hint) return;
+      const files = [...(input.files || [])];
+      hint.textContent = files.length ? files.map((file) => file.name).join(", ") : original;
+    };
+    input.addEventListener("change", names);
+    ["dragenter", "dragover"].forEach((eventName) => {
+      zone?.addEventListener(eventName, (event) => { event.preventDefault(); zone.classList.add("over"); });
+    });
+    ["dragleave", "drop"].forEach((eventName) => {
+      zone?.addEventListener(eventName, (event) => { event.preventDefault(); zone.classList.remove("over"); });
+    });
+    zone?.addEventListener("drop", (event) => {
+      const transfer = new DataTransfer();
+      [...(event.dataTransfer?.files || [])].forEach((file) => transfer.items.add(file));
+      input.files = transfer.files;
+      names();
+    });
+  }
+</script>
+{% endblock %}

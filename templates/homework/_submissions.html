@@ -1,0 +1,23 @@
+<article class="card" id="review-board" style="margin-top:16px" hx-get="{% url 'web:homework-detail' assignment.pk %}" hx-trigger="every 8s" hx-select="#review-board" hx-swap="outerHTML">
+  {% include "homework/_review_legend.html" %}
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>{% t "Ученик" %}</th><th>{% t "Статус" %}</th><th>{% t "Оценка" %}</th><th></th></tr></thead>
+      <tbody>
+        {% for item in submissions %}
+        <tr class="review-row {{ item.review_state }}">
+          <td>{{ item.student.full_name }}</td>
+          <td>{% include "homework/_review_badge.html" %}</td>
+          <td>{{ item.score|default:"—" }}</td>
+          <td>
+            <a href="{% url 'web:submission-review' item.pk %}">
+              {% if item.review_state == "done" %}{% t "Открыть" %}{% elif item.review_state == "checking" and item.reviewing_by_id != user.pk %}{% t "Смотреть" %}{% else %}{% t "Проверить" %}{% endif %}
+            </a>
+          </td>
+        </tr>
+        {% empty %}<tr><td colspan="4">{% t "Пока никто не сдал." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>

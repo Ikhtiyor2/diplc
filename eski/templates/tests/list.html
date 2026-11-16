@@ -1,0 +1,20 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Тесты" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <h1 class="display" style="font-size:40px;margin:0">{% t "Тесты" %}</h1>
+</div>
+<div class="stack" style="margin-top:16px">
+  {% for item in tests %}
+  <a class="card pad row" href="{% url 'web:test-detail' item.pk %}">
+    <div>
+      <strong>{{ item.title }}</strong>
+      <div class="small muted">{{ item.group.name }} · {{ item.group.language.name }} · {{ item.format_label }} · {{ item.questions.count }} {% t "вопросов" %}</div>
+    </div>
+    {% if user.is_student and item.id in attempts %}<span class="badge teal">{{ attempts.item }}{{ attempts|default:'' }}</span>{% endif %}
+  </a>
+  {% empty %}<div class="card empty">{% t "Тестов нет." %}</div>
+  {% endfor %}
+</div>
+{% endblock %}

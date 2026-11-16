@@ -1,0 +1,60 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Преподаватели" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <h1 class="display" style="font-size:40px;margin:0">{% t "Преподаватели" %}</h1>
+  <div class="gap">
+    <a class="btn-secondary" href="{% url 'web:lector-create' %}">{% icon 'plus' %} {% t "Лектор" %}</a>
+    <a class="btn-secondary" href="{% url 'web:assistant-create' %}">{% icon 'plus' %} {% t "Ассистент" %}</a>
+    <a class="btn" href="{% url 'web:teacher-create' %}">{% icon 'plus' %} {% t "Преподаватель" %}</a>
+  </div>
+</div>
+<p class="muted" style="margin:8px 0 16px">{% t "У каждого преподавателя — свои группы и один ассистент. Того же преподавателя можно назначить ведущим потока лекций. Отдельный логин лектора нужен только если человек не ведёт свои группы." %}</p>
+{% if lectors %}
+<h2 class="display" style="font-size:28px;margin:8px 0 12px">{% t "Лекторы" %}</h2>
+<div class="grid-3" style="margin-bottom:24px">
+  {% for person in lectors %}
+  <article class="card pad">
+    <a href="{% url 'web:user-detail' person.pk %}">
+      {% include "includes/avatar.html" with person=person size="avatar-lg" %}
+      <h2 style="margin:12px 0 4px;font-size:18px">{{ person.full_name }}</h2>
+      <p class="muted small mono">{{ person.login }}</p>
+    </a>
+    <p class="small muted">{% t "Потоки лекций" %}</p>
+  </article>
+  {% endfor %}
+</div>
+<h2 class="display" style="font-size:28px;margin:8px 0 12px">{% t "Преподаватели" %}</h2>
+{% endif %}
+<div class="grid-3" style="margin-top:8px">
+  {% for person in teachers %}
+  <article class="card pad">
+    <a href="{% url 'web:user-detail' person.pk %}">
+      {% include "includes/avatar.html" with person=person size="avatar-lg" %}
+      <h2 style="margin:12px 0 4px;font-size:18px">{{ person.full_name }}</h2>
+      <p class="muted small mono">{{ person.login }}</p>
+    </a>
+    {% for assistant in person.assistants.all %}
+      <p class="small" style="margin:8px 0 0">{% t "Ассистент:" %} <a href="{% url 'web:user-detail' assistant.pk %}">{{ assistant.full_name }}</a> <span class="mono muted">{{ assistant.login }}</span></p>
+    {% empty %}
+      <p class="muted small">{% t "Ассистент не назначен" %}</p>
+    {% endfor %}
+    {% for group in person.teaching_groups.all %}
+      {% if group.is_active %}
+      <p class="small muted" style="margin:4px 0 0">{{ group.name }}</p>
+      {% endif %}
+    {% empty %}
+      <p class="muted small">{% t "Пока нет групп" %}</p>
+    {% endfor %}
+    {% for stream in person.lecture_streams.all %}
+      {% if stream.is_active %}
+      <p class="small muted" style="margin:4px 0 0">{% t "Лекция" %}: {{ stream.name }}</p>
+      {% endif %}
+    {% endfor %}
+  </article>
+  {% empty %}
+  <div class="card empty">{% t "Преподавателей ещё нет. Добавьте первого и выдайте ему логин." %}</div>
+  {% endfor %}
+</div>
+{% endblock %}

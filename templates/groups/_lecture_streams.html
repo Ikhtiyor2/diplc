@@ -1,0 +1,5 @@
+{% for stream in group.active_lecture_streams %}
+<p class="muted small" style="margin:{% if forloop.first %}6{% else %}4{% endif %}px 0 0">
+  {% t "Лекция" %}: <strong>{{ stream.name }}</strong>{% if stream.schedule %} · {{ stream.schedule }}{% endif %} · {{ stream.lector.full_name }}
+</p>
+{% endfor %}

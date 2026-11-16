@@ -1,0 +1,47 @@
+{% extends "app.html" %}
+{% load icons %}
+{% block title %}{% t "Домашние задания" %}{% endblock %}
+{% block content %}
+<div class="row">
+  <div>
+    <h1 class="display" style="font-size:40px;margin:0">{% t "Домашние задания" %}</h1>
+    <p class="muted">{% if user.is_admin or user.is_teaching_staff %}{% t "Группа, название и срок сдачи на одной строке. Дату можно поменять здесь, не открывая файлы." %}{% else %}{% t "Файлы от преподавателя и сдача работ учениками." %}{% endif %}</p>
+  </div>
+  {% if user.is_admin or user.is_teaching_staff %}<a class="btn" href="{% url 'web:homework-create' %}">{% icon 'upload' 18 %} {% t "Загрузить ДЗ" %}</a>{% endif %}
+</div>
+
+{% if user.is_admin or user.is_teaching_staff %}
+<div class="card deadline-board" style="margin-top:16px">
+  <div class="deadline-head">
+    <span>{% t "Задание и группа" %}</span>
+    <span>{% t "Сдать до" %}</span>
+    <span></span>
+  </div>
+  {% for item in assignments %}
+    {% include "homework/_deadline_form.html" with item=item next_url=request.get_full_path %}
+  {% empty %}
+    <div class="card empty">{% t "Заданий нет. Загрузите PDF или фото урока." %}</div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="stack" style="margin-top:16px">
+  {% for item in assignments %}
+  <a class="card pad row deadline-row tone-{{ item.deadline_tone }}" href="{% url 'web:homework-detail' item.pk %}">
+    <div>
+      <strong>{{ item.title }}</strong>
+      <div class="small muted">{{ item.group.name }} · {% t "файлов:" %} {{ item.files.count }}</div>
+    </div>
+    <div class="gap">
+      {% if item.deadline %}
+        <span class="badge {% if item.deadline_tone == 'late' %}danger{% elif item.deadline_tone == 'soon' %}warn{% else %}ok{% endif %}">{% t "до" %} {{ item.deadline|date:"d.m.Y H:i" }}</span>
+      {% else %}
+        <span class="badge pending">{% t "Без срока" %}</span>
+      {% endif %}
+      {% if item.id in submissions %}<span class="badge teal">{% t "Сдано" %}</span>{% else %}<span class="badge">{% t "Сдать работу" %}</span>{% endif %}
+    </div>
+  </a>
+  {% empty %}<div class="card empty">{% t "Заданий нет. Загрузите PDF или фото урока." %}</div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

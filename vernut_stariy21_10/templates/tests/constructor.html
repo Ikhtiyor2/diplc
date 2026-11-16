@@ -1,0 +1,66 @@
+{% extends "app.html" %}
+{% load icons static %}
+{% block title %}{{ title|t }}{% endblock %}
+{% block content %}
+<div class="row" style="margin-bottom:16px">
+  <div>
+    <p class="muted small">{% t "Для преподавателя" %}</p>
+    <h1 class="display" style="font-size:40px;margin:0">{{ title|t }}</h1>
+    <p class="muted">{% t "Конструктор как на экзамене: секции слева," %} <strong>{% t "группы заданий" %}</strong> {% t "справа. Для IELTS Listening Part 1 добавьте группу" %} <strong>Notes / Form</strong> {% t "— вставьте бланк с пропусками" %} <code>{1}</code> <code>{2}</code>{% t ", ученик увидит ту же форму." %}</p>
+    <p class="badge teal" id="exam-label">{% t "Экзамен" %}</p>
+  </div>
+</div>
+
+<form method="post" enctype="multipart/form-data" id="builder-form" class="stack">
+  {% csrf_token %}
+  <input type="hidden" name="builder_json" id="builder-json">
+  <div id="audio-slot"></div>
+
+  <article class="card pad">
+    <div class="form-grid">
+      <label class="field full">{% t "Название" %} {{ form.title }}</label>
+      <label class="field">{% t "Группа" %} {{ form.group }}</label>
+      <label class="field">{% t "Формат" %} {{ form.kind }}</label>
+      <label class="field">{% t "Лимит, мин" %} {{ form.time_limit_minutes }}</label>
+      <label class="field">{% t "Доступен до" %} {{ form.available_until }}</label>
+      <label class="field full">{% t "Инструкция для ученика" %} {{ form.instructions }}</label>
+      <label class="field full">{% t "Описание" %} {{ form.description }}</label>
+      <label class="field">{% t "Опубликовать" %} {{ form.is_published }}</label>
+    </div>
+  </article>
+
+  <div class="builder">
+    <aside class="card pad builder-nav">
+      <div class="row">
+        <h2 class="display" style="margin:0;font-size:22px">{% t "Секции" %}</h2>
+        <button class="btn-secondary btn-sm" type="button" id="add-section">{% icon 'plus' 16 %} {% t "Секция" %}</button>
+      </div>
+      <div id="section-tabs" class="stack" style="margin-top:12px"></div>
+      <p class="small muted" id="builder-hint"></p>
+    </aside>
+
+    <div class="stack">
+      <article class="card pad" id="section-editor"></article>
+      <article class="card pad">
+        <div class="row">
+          <h2 class="display" style="margin:0;font-size:22px">{% t "Группы заданий" %}</h2>
+        </div>
+        <div class="type-grid" id="type-grid"></div>
+        <div id="questions-editor" class="stack" style="margin-top:14px"></div>
+      </article>
+    </div>
+  </div>
+
+  <div class="gap">
+    <button class="btn" type="submit">{% t "Сохранить тест" %}</button>
+    <a class="btn-secondary" href="{% url 'web:tests' %}">{% t "Отмена" %}</a>
+  </div>
+</form>
+{% endblock %}
+
+{% block page_js %}
+{{ builder|json_script:"builder-data" }}
+{{ exams|json_script:"exams-data" }}
+{{ group_languages|json_script:"groups-data" }}
+<script src="{% static 'js/constructor.js' %}"></script>
+{% endblock %}
